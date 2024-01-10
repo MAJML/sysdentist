@@ -1,458 +1,457 @@
+<style>
+.pres:hover {
+    background-color: #F8F9F9;
+    cursor: pointer;
+}
 
-    <style>
-    .pres:hover {
-        background-color: #F8F9F9;
-        cursor: pointer;
-    }
+#odonto {
+    background-color: white;
+    width: 80%;
+}
 
-    #odonto {
-        background-color: white;
-        width: 80%;
-    }
+#odonto tr {
+    background-color: white;
+}
 
-    #odonto tr {
-        background-color: white;
-    }
+#odonto td {
+    font-size: 12px;
+    background-color: white;
+}
 
-    #odonto td {
-        font-size: 12px;
-        background-color: white;
-    }
+#odonto_nino {
+    background-color: white;
+    width: 50%;
+}
 
-    #odonto_nino {
-        background-color: white;
-        width: 50%;
-    }
+#odonto_nino tr {
+    background-color: white;
+    text-align: center;
+}
 
-    #odonto_nino tr {
-        background-color: white;
-        text-align: center;
-    }
+#odonto_nino td {
+    text-align: center;
+    font-size: 12px;
+    background-color: white;
+}
 
-    #odonto_nino td {
-        text-align: center;
-        font-size: 12px;
-        background-color: white;
-    }
+.odon2 {
+    height: 45px;
+    width: 45px;
+    border: solid 1px black
+}
 
-    .odon2 {
-        height: 45px;
-        width: 45px;
-        border: solid 1px black
-    }
+.odon2 td {
+    border: solid 1px black
+}
 
-    .odon2 td {
-        border: solid 1px black
-    }
+table.inputs td {
+    padding: 50px;
+}
 
-    table.inputs td {
-        padding: 50px;
-    }
+#daa_info {
+    display: none;
+}
 
-    #daa_info {
-        display: none;
-    }
-
-    /* #timagen{
+/* #timagen{
             position: relative;
             width: 2500;
             margin: .5rem;
             pointer-events: none;
          }*/
-    #doc:hover {
-        background-color: #F9F9F9;
-        color: black;
-        cursor: pointer;
+#doc:hover {
+    background-color: #F9F9F9;
+    color: black;
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-item {
+    display: inherit;
+    width: 43px;
+    height: 35px;
+    border: 1px solid;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.flex-item:hover {
+    background-color: #ECECEC;
+    color: black;
+}
+
+.flex-item1 {
+    display: inherit;
+    width: 43px;
+    height: 35px;
+    background-color: transparent;
+    margin: 5px;
+}
+
+.flex-item p {
+    width: 100%;
+    text-align: center;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    margin: 0;
+}
+
+#notification_count {
+    width: 21px;
+    height: 21px;
+    padding: 0px 7px 0px 7px;
+    background: #FF4545;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 16px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    position: absolute;
+    margin-top: -8px;
+    font-size: 11px;
+}
+
+.dropdown-content {
+    padding-top: 50%;
+}
+
+#aa:hover {
+    background-color: #BBDEFB;
+}
+
+#ab:hover {
+    background-color: #C8E6C9;
+}
+
+#ac:hover {
+    background-color: #FFCCBC;
+}
+
+#tamanioh {
+    width: 100%;
+    height: 35rem;
+}
+
+#tamaniov {
+    width: 100%;
+    height: 35rem;
+}
+
+#tamanioh {
+    height: 35vw;
+}
+
+#tamaniov {
+    /* height: 50vw;*/
+}
+
+@media (min-width: 1540px) {
+    #tamaniov {
+        height: 35vw;
     }
 
-    .flex-container {
-        display: flex;
+    #timagen2 {
+        max-width: 40vw;
     }
+}
 
-    .flex-item {
-        display: inherit;
-        width: 43px;
-        height: 35px;
-        border: 1px solid;
-        cursor: pointer;
-        margin: 5px;
-    }
-
-    .flex-item:hover {
-        background-color: #ECECEC;
-        color: black;
-    }
-
-    .flex-item1 {
-        display: inherit;
-        width: 43px;
-        height: 35px;
-        background-color: transparent;
-        margin: 5px;
-    }
-
-    .flex-item p {
-        width: 100%;
-        text-align: center;
-        -webkit-align-self: center;
-        -ms-flex-item-align: center;
-        align-self: center;
-        margin: 0;
-    }
-
-    #notification_count {
-        width: 21px;
-        height: 21px;
-        padding: 0px 7px 0px 7px;
-        background: #FF4545;
-        color: #ffffff;
-        font-weight: bold;
-        margin-left: 16px;
-        border-radius: 50%;
-        -moz-border-radius: 50%;
-        -webkit-border-radius: 50%;
-        position: absolute;
-        margin-top: -8px;
-        font-size: 11px;
-    }
-
-    .dropdown-content {
-        padding-top: 50%;
-    }
-
-    #aa:hover {
-        background-color: #BBDEFB;
-    }
-
-    #ab:hover {
-        background-color: #C8E6C9;
-    }
-
-    #ac:hover {
-        background-color: #FFCCBC;
-    }
-
+@media (max-width: 1200px) {
     #tamanioh {
-        width: 100%;
-        height: 35rem;
+        height: 40vw;
+    }
+
+    #timagen {
+        max-width: 90vw;
     }
 
     #tamaniov {
-        width: 100%;
-        height: 35rem;
+        height: 80vw;
+    }
+
+    #timagen2 {
+        max-width: 70vw;
+    }
+}
+
+@media (max-width: 1440px) {
+    #tamaniov {
+        height: 50vw;
+    }
+
+    #timagen2 {
+        max-width: 60vw;
+    }
+}
+
+@media (max-width: 768px) {
+    #tamaniov {
+        height: 50vw;
+    }
+
+    #timagen2 {
+        max-width: 50vw;
+    }
+}
+
+@media (max-width: 500px) {
+    #tamaniov {
+        height: 100vw;
+    }
+
+    #timagen2 {
+        max-width: 100vw;
+    }
+}
+
+@media (max-width: 425px) {
+    .tablaOdon {
+        align-content: center;
+        align-items: center;
+        padding-left: 0%;
+    }
+
+    #finally1 {
+        display: none;
+    }
+
+    #finally3 {
+        display: inline-flex;
+    }
+}
+
+@media (min-width: 425px) {
+    .tablaOdon {
+        align-content: center;
+        align-items: center;
+        padding-left: 40%;
+    }
+
+    #finally3 {
+        display: none;
+    }
+
+    #finally1 {
+        display: inline-flex;
+    }
+}
+
+@media (min-width: 576px) {
+    .contenedores {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .cece {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-item {
+    display: inherit;
+    width: 43px;
+    height: 35px;
+    border: 1px solid;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.flex-item:hover {
+    background-color: #ECECEC;
+    color: black;
+}
+
+.flex-item1 {
+    display: inherit;
+    width: 43px;
+    height: 35px;
+    background-color: transparent;
+    margin: 5px;
+}
+
+.flex-item p {
+    width: 100%;
+    text-align: center;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    margin: 0;
+}
+
+@media (min-width: 400px) {
+    .ref {
+        max-width: 1400px;
+        margin: 1.75rem auto;
+    }
+}
+
+.cece {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (max-width: 991px) {
+    .agenda {
+        display: none;
+    }
+
+    .pacientes {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+}
+
+@media (min-width: 992px) {
+    .menu {
+        display: none;
+        cursor: pointer;
+    }
+
+    #navs {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .modal-xl {
+        max-width: 1140px;
     }
 
     #tamanioh {
         height: 35vw;
     }
 
+    #timagen {
+        max-width: 85vw;
+    }
+}
+
+@media only screen and (min-width: 2000px) {
+    .contenedores {
+        padding-left: 350px;
+        padding-right: 350px;
+    }
+
+    #tamanioh {
+        height: 30vw;
+    }
+
+    #timagen {
+        max-width: 70vw;
+    }
+
     #tamaniov {
-        /* height: 50vw;*/
+        height: 35vw;
     }
 
-    @media (min-width: 1540px) {
-        #tamaniov {
-            height: 35vw;
-        }
-
-        #timagen2 {
-            max-width: 40vw;
-        }
+    #timagen2 {
+        max-width: 40vw;
     }
+}
 
-    @media (max-width: 1200px) {
-        #tamanioh {
-            height: 40vw;
-        }
-
-        #timagen {
-            max-width: 90vw;
-        }
-
-        #tamaniov {
-            height: 80vw;
-        }
-
-        #timagen2 {
-            max-width: 70vw;
-        }
-    }
-
-    @media (max-width: 1440px) {
-        #tamaniov {
-            height: 50vw;
-        }
-
-        #timagen2 {
-            max-width: 60vw;
-        }
-    }
-
-    @media (max-width: 768px) {
-        #tamaniov {
-            height: 50vw;
-        }
-
-        #timagen2 {
-            max-width: 50vw;
-        }
-    }
-
-    @media (max-width: 500px) {
-        #tamaniov {
-            height: 100vw;
-        }
-
-        #timagen2 {
-            max-width: 100vw;
-        }
-    }
-
-    @media (max-width: 425px) {
-        .tablaOdon {
-            align-content: center;
-            align-items: center;
-            padding-left: 0%;
-        }
-
-        #finally1 {
-            display: none;
-        }
-
-        #finally3 {
-            display: inline-flex;
-        }
-    }
-
-    @media (min-width: 425px) {
-        .tablaOdon {
-            align-content: center;
-            align-items: center;
-            padding-left: 40%;
-        }
-
-        #finally3 {
-            display: none;
-        }
-
-        #finally1 {
-            display: inline-flex;
-        }
-    }
-
-    @media (min-width: 576px) {
-        .contenedores {
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-    }
-
-    @media only screen and (max-width: 800px) {
-        .cece {
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-    }
-
-    .card-body {
-        -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
-        padding: 0.5rem;
-        cursor: pointer;
-    }
-
-    .flex-container {
-        display: flex;
-    }
-
-    .flex-item {
-        display: inherit;
-        width: 43px;
-        height: 35px;
-        border: 1px solid;
-        cursor: pointer;
-        margin: 5px;
-    }
-
-    .flex-item:hover {
-        background-color: #ECECEC;
-        color: black;
-    }
-
-    .flex-item1 {
-        display: inherit;
-        width: 43px;
-        height: 35px;
-        background-color: transparent;
-        margin: 5px;
-    }
-
-    .flex-item p {
-        width: 100%;
-        text-align: center;
-        -webkit-align-self: center;
-        -ms-flex-item-align: center;
-        align-self: center;
-        margin: 0;
-    }
-
-    @media (min-width: 400px) {
-        .ref {
-            max-width: 1400px;
-            margin: 1.75rem auto;
-        }
-    }
-
-    .cece {
+@media only screen and (max-width: 2000px) {
+    .contenedores {
         padding-left: 20px;
         padding-right: 20px;
     }
+}
 
-    @media (max-width: 991px) {
-        .agenda {
-            display: none;
-        }
+#imageness,
+#archivoss {
+    color: #21345E;
+    color: #495057;
+    background-color: #fff;
+    border: 0px solid;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
 
-        .pacientes {
-            display: none;
-        }
+#imageness:hover,
+#archivoss:hover {
+    color: #908692;
+    background-color: #F8F9F9;
+}
 
-        .menu {
-            display: block;
-        }
-    }
+#imageness:focus,
+#archivoss:focus {
+    color: #0E6655;
+    border-bottom: 3px solid #908692;
+}
 
-    @media (min-width: 992px) {
-        .menu {
-            display: none;
-            cursor: pointer;
-        }
+#lask {
+    font-size: 16px;
+}
 
-        #navs {
-            display: none;
-        }
-    }
+#lask:focus {
+    color: #ffffff;
+    font-size: 16px;
+}
 
-    @media (min-width: 1200px) {
-        .modal-xl {
-            max-width: 1140px;
-        }
+.accion.active {
+    background-color: #5DADE2;
+    border-color: #5DADE2;
+}
 
-        #tamanioh {
-            height: 35vw;
-        }
+.accion {
+    width: 100%;
+    color: #626567;
+    text-align: inherit;
+}
 
-        #timagen {
-            max-width: 85vw;
-        }
-    }
+#lask {
+    font-size: 16px;
+}
 
-    @media only screen and (min-width: 2000px) {
-        .contenedores {
-            padding-left: 350px;
-            padding-right: 350px;
-        }
+#lask:focus {
+    color: #ffffff;
+    font-size: 16px;
+}
 
-        #tamanioh {
-            height: 30vw;
-        }
+.accion.active {
+    background-color: #5DADE2;
+    border-color: #5DADE2;
+}
 
-        #timagen {
-            max-width: 70vw;
-        }
+.accion {
+    width: 100%;
+    color: #626567;
+    text-align: inherit;
+}
 
-        #tamaniov {
-            height: 35vw;
-        }
+#cartas:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
 
-        #timagen2 {
-            max-width: 40vw;
-        }
-    }
+#carta {
+    border: 5px dotted #019494;
+}
 
-    @media only screen and (max-width: 2000px) {
-        .contenedores {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-    }
-
-    #imageness,
-    #archivoss {
-        color: #21345E;
-        color: #495057;
-        background-color: #fff;
-        border: 0px solid;
-        border-color: #dee2e6 #dee2e6 #fff;
-    }
-
-    #imageness:hover,
-    #archivoss:hover {
-        color: #908692;
-        background-color: #F8F9F9;
-    }
-
-    #imageness:focus,
-    #archivoss:focus {
-        color: #0E6655;
-        border-bottom: 3px solid #908692;
-    }
-
-    #lask {
-        font-size: 16px;
-    }
-
-    #lask:focus {
-        color: #ffffff;
-        font-size: 16px;
-    }
-
-    .accion.active {
-        background-color: #5DADE2;
-        border-color: #5DADE2;
-    }
-
-    .accion {
-        width: 100%;
-        color: #626567;
-        text-align: inherit;
-    }
-
-    #lask {
-        font-size: 16px;
-    }
-
-    #lask:focus {
-        color: #ffffff;
-        font-size: 16px;
-    }
-
-    .accion.active {
-        background-color: #5DADE2;
-        border-color: #5DADE2;
-    }
-
-    .accion {
-        width: 100%;
-        color: #626567;
-        text-align: inherit;
-    }
-
-    #cartas:hover {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    #carta {
-        border: 5px dotted #019494;
-    }
-
-    .listado.active {
-        z-index: 2;
-        color: #fff;
-        background-color: #7FB3D5;
-        border: 0px;
-    }
-    </style>
+.listado.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #7FB3D5;
+    border: 0px;
+}
+</style>
 </head>
 
 <body style="background-color: #FCFCFC">
@@ -462,15 +461,8 @@
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="histo" data-toggle="tab" href="#historial" role="tab"
                 aria-controls="historial" aria-selected="true">Historial</a>
-
-            <!--  <a class="nav-item nav-link" id="motivo" data-toggle="tab" href="#consulta" role="tab" aria-controls="consulta" aria-selected="false">Motivo de Consulta</a> -->
-            <!-- <a class="nav-item nav-link" id="fil" data-toggle="tab" href="#filiacion" role="tab" aria-controls="filiacion" aria-selected="false">Antecedentes</a>
-         <a class="nav-item nav-link" id="examenes" data-toggle="tab" href="#exam" role="tab" aria-controls="examenes" aria-selected="false">Examenes Clinicos</a> -->
             <a class="nav-item nav-link" id="auxiliares" data-toggle="tab" href="#aux" role="tab" aria-controls="aux"
                 aria-selected="false">Examenes Auxiliares</a>
-            <!--     <a class="nav-item nav-link" id="plan" data-toggle="tab" href="#tratamiento" role="tab" aria-controls="tratamiento" aria-selected="false">Plan de Tratamiento</a>
-         <a class="nav-item nav-link" id="cita" data-toggle="tab" href="#citas" role="tab" aria-controls="citas" aria-selected="false">Citas</a>
-         <a class="nav-item nav-link" id="tarea" data-toggle="tab" href="#tareas" role="tab" aria-controls="tareas" aria-selected="false">Notificaciones</a> -->
         </div>
         <div class="card">
 
@@ -498,7 +490,7 @@
 
                                         <div class="tab-pane p-3 fade show active" id="imagen"
                                             aria-labelledby="imageness">
-                                            <div id="image" class="row">
+                                            <!-- <div id="image" class="row">
                                                 <div class="col-12 col-sm-12 col-md-8 col-lg-12 col-xl-8">
                                                     <div class="card shadow p-1 mb-3">
                                                         <img id="modalimagen4" data-toggle="modal"
@@ -583,10 +575,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="tab-pane p-3  fade" id="informes" aria-labelledby="archivoss">
-                                            <div class="row text-center">
+                                            <!-- <div class="row text-center">
+
                                                 <div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">
                                                     <div class="card shadow p-1 mb-3" data-toggle="popover"
                                                         data-trigger="hover" data-placement="bottom" title="02/10/2019"
@@ -606,6 +599,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">
                                                     <div class="card shadow p-1 mb-3" data-toggle="popover"
                                                         data-trigger="hover" data-placement="bottom" title="02/10/2019"
@@ -625,6 +619,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">
                                                     <div class="card shadow p-1 mb-3" data-toggle="popover"
                                                         data-trigger="hover" data-placement="bottom" title="02/10/2019"
@@ -644,7 +639,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -656,24 +652,28 @@
                                                     <div class="row">
                                                         <div
                                                             class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
-                                                            <img src="<?=$baseUrl?>img/chica.png" class="rounded-circle" alt=""
-                                                                width="120px">
+                                                            <img src="<?=$baseUrl?>img/chica.png" class="rounded-circle"
+                                                                alt="" width="120px">
                                                         </div>
                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                                                             <div class="text-center">
                                                                 <b>
-                                                                    <h5><?=$paciente->nombres.' '.$paciente->apellidos?></h5>
+                                                                    <h5><?=$paciente->nombres.' '.$paciente->apellidos?>
+                                                                    </h5>
                                                                 </b>
                                                                 <span style="color: #FF0000; text-align: center">
                                                                     HC-CB74171528</span>
                                                             </div>
-                                                            <span class="text-black-50"><img src="<?=$baseUrl?>img/edificio.png"
-                                                                    alt="" width="11px"><b> Hospital sede
+                                                            <span class="text-black-50"><img
+                                                                    src="<?=$baseUrl?>img/edificio.png" alt=""
+                                                                    width="11px"><b> Hospital sede
                                                                     1</b></span><br>
-                                                            <span class="text-black-50"><img src="<?=$baseUrl?>img/tor.png" alt=""
-                                                                    width="12px"> 11/03/1998 (21 años)</span><br>
-                                                            <span class="text-black-50"><img src="<?=$baseUrl?>img/li.png" alt=""
-                                                                    width="14px"> <?=$paciente->dni?></span><br>
+                                                            <span class="text-black-50"><img
+                                                                    src="<?=$baseUrl?>img/tor.png" alt="" width="12px">
+                                                                11/03/1998 (21 años)</span><br>
+                                                            <span class="text-black-50"><img
+                                                                    src="<?=$baseUrl?>img/li.png" alt="" width="14px">
+                                                                <?=$paciente->dni?></span><br>
                                                         </div>
                                                         <div
                                                             class="col-6 col-sm-6 col-md-4 col-lg-6 col-xl-4 text-center p-1">
@@ -698,53 +698,13 @@
                                                             <a href="#" style="background-color: #C97973"
                                                                 data-toggle="modal" id="ocultar" data-target=".bd-e"
                                                                 class=" badge badge-pill text-white">
-                                                                <img src="<?=$baseUrl?>img/participacion.png" width="13px"
-                                                                    alt="">&nbsp;compartir
+                                                                <img src="<?=$baseUrl?>img/participacion.png"
+                                                                    width="13px" alt="">&nbsp;compartir
                                                             </a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="col-12 text-center"
-                                                    style="font-family: 'Questrial', sans-serif;">
-                                                    <hr>
-                                                    <span style="color: #16A085;font-size: 20;"><b>Historias Clinicas
-                                                            previas</b></span><br><br>
-                                                    <div class="row">
-                                                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
-                                                            <a class="text-decoration-none" data-target=".importar"
-                                                                data-toggle="modal" style="color: #566573;"
-                                                                href="#!"><img src="<?=$baseUrl?>img/hospital.png" width="35"><br>
-                                                                <span
-                                                                    style="font-size: 12px;text-decoration: none;">Clinica
-                                                                    CEDIDENT</span></a>
-                                                        </div>
-                                                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
-                                                            <a class="text-decoration-none" data-target=".importar"
-                                                                data-toggle="modal" style="color: #566573;"
-                                                                href="#!"><img src="<?=$baseUrl?>img/clinica.png" width="35"><br>
-                                                                <span
-                                                                    style="font-size: 12px;text-decoration: none;">Clinica
-                                                                    Señor de los Milagros</span></a>
-                                                        </div>
-                                                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
-                                                            <a class="text-decoration-none" data-target=".importar"
-                                                                data-toggle="modal" style="color: #566573;"
-                                                                href="#!"><img src="<?=$baseUrl?>img/hospital.png" width="35"><br>
-                                                                <span
-                                                                    style="font-size: 12px;text-decoration: none;">Clinica
-                                                                    San Judas Apostol III</span></a>
-                                                        </div>
-                                                        <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
-                                                            <a class="text-decoration-none" data-target=".importar"
-                                                                data-toggle="modal" style="color: #566573;"
-                                                                href="#!"><img src="<?=$baseUrl?>img/dentista.png" width="35"><br>
-                                                                <span
-                                                                    style="font-size: 12px;text-decoration: none;">Hospital
-                                                                    Santa Lucia</span></a>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                </div> -->
+
                                                 <div class="col-12">
                                                     <div class="p-2 text-dark"
                                                         style="border-radius: 5px; background-color: #FBF2FE">
@@ -757,7 +717,8 @@
                                                                 <a href="#" id="ocultar" data-toggle="modal"
                                                                     data-target=".bd"
                                                                     class="text-right badge badge-pill"><img
-                                                                        src="<?=$baseUrl?>img/OJO.png" alt="" width="20px"></a>
+                                                                        src="<?=$baseUrl?>img/OJO.png" alt=""
+                                                                        width="20px"></a>
                                                             </div>
                                                         </div>
                                                     </div><br>
@@ -774,7 +735,8 @@
 
                                                         <b>FECHA DE NACIMIENTO :</b><br>
                                                         <span id="fechaDeNacimiento" style="font-size: 14px"
-                                                            class="text-justify"><?=$paciente->fecha_nacimiento?> (21 años)</span><br>
+                                                            class="text-justify"><?=$paciente->fecha_nacimiento?> (21
+                                                            años)</span><br>
 
                                                         <b>DOCUMENTO DE IDENTIDAD :</b><br>
                                                         <span id="dni" style="font-size: 14px"
@@ -788,11 +750,6 @@
                                                         <span id="direccion" style="font-size: 14px"
                                                             class="text-justify"><?=$paciente->direccion?></span><br>
 
-                                                        <!--  <b>ANTEDENTES FAMILIARES :</b><br>
-                                          <span id="antecedentes" style="font-size: 14px" class="text-justify">
-                                             - Padre (vive) hipertenso (hace 20 años) y con hiperplasia prostática.<br>
-                                             - Madre (vive) hipertensa (hace 4 años) y con enfermedad de Parkinson.
-                                          </span><br> -->
                                                         <b>ALERGIAS :</b><br>
                                                         <span style="font-size: 14px" class="text-justify">
                                                             <ul class="list-unstyled">
@@ -821,10 +778,12 @@
                                                             class="text-justify"><?=$paciente->telefono_movil?></span><br>
 
                                                         <b>LUGAR DE PROCEDENCIA:</b><br>
-                                                        &nbsp; <span style="font-size: 14px" class="text-justify"><?=$paciente->dep_proc?></span><br>
+                                                        &nbsp; <span style="font-size: 14px"
+                                                            class="text-justify"><?=$paciente->dep_proc?></span><br>
 
                                                         <b>LUGAR DE NACIMIENTO:</b><br>
-                                                        &nbsp; <span style="font-size: 14px" class="text-justify"><?=$paciente->dep_nac?></span><br>
+                                                        &nbsp; <span style="font-size: 14px"
+                                                            class="text-justify"><?=$paciente->dep_nac?></span><br>
 
                                                         <b>CORREO ELECTRONICO:</b><br>
                                                         &nbsp; <span style="font-size: 14px"
@@ -853,7 +812,8 @@
                                 <a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                                     aria-controls="collapseOne">
                                     <div class="card-header" id="headingOne">
-                                        <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> &nbsp;Inicio de Enfermedad
+                                        <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> &nbsp;Inicio de
+                                        Enfermedad
                                     </div>
                                 </a>
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
@@ -1759,7 +1719,8 @@
                                 <a data-toggle="collapse" data-target="#collapsefive" aria-expanded="true"
                                     aria-controls="collapsefive">
                                     <div class="card-header" id="headingfive">
-                                        <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> Antecedestes Familiares
+                                        <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> Antecedestes
+                                        Familiares
                                     </div>
                                 </a>
                                 <div id="collapsefive" class="collapse" aria-labelledby="headingfive"
@@ -2519,7 +2480,8 @@
                                         <a data-toggle="collapse" data-target="#collapsesix" aria-expanded="true"
                                             aria-controls="collapsesix">
                                             <div class="card-header" id="headingsix">
-                                                <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> Exámen Extra Oral
+                                                <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> Exámen Extra
+                                                Oral
                                             </div>
                                         </a>
                                         <div id="collapsesix" class="collapse show" aria-labelledby="headingsix"
@@ -2660,7 +2622,8 @@
                                                     </div>
                                                     <div class="text-center"><br>
                                                         <button type="button" class="btn btn-success btn-sm"><img
-                                                                src="<?=$baseUrl?>img/disque.png" width="20px" alt="">Guardar y
+                                                                src="<?=$baseUrl?>img/disque.png" width="20px"
+                                                                alt="">Guardar y
                                                             Seguir</button>
                                                     </div>
                                                 </div>
@@ -2675,7 +2638,8 @@
                                         <a data-toggle="collapse" data-target="#collapseocho" aria-expanded="true"
                                             aria-controls="collapseocho">
                                             <div class="card-header" id="headingsix">
-                                                <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> Exámen Intra Oral
+                                                <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> Exámen Intra
+                                                Oral
                                             </div>
                                         </a>
                                         <div id="collapseocho" class="collapse show" aria-labelledby="headingsix"
@@ -2851,7 +2815,8 @@
                                                 </div>
                                                 <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12"><br>
                                                     <button type="button" class="btn btn-success btn-sm"><img
-                                                            src="<?=$baseUrl?>img/disque.png" width="20px" alt="">Guardar y
+                                                            src="<?=$baseUrl?>img/disque.png" width="20px"
+                                                            alt="">Guardar y
                                                         Seguir</button>
                                                 </div>
                                             </div>
@@ -2859,7 +2824,8 @@
                                         <a data-toggle="collapse" data-target="#collapsenine" aria-expanded="true"
                                             aria-controls="collapsenine">
                                             <div class="card-header" id="headingnine">
-                                                <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> Odontograma Inicial
+                                                <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> Odontograma
+                                                Inicial
                                             </div>
                                         </a>
                                         <div id="collapsenine" class="collapse" aria-labelledby="headingnine"
@@ -2929,7 +2895,8 @@
                                                     </table>
                                                     <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12"><br>
                                                         <button type="button" class="btn btn-success btn-sm"><img
-                                                                src="<?=$baseUrl?>img/disque.png" width="20px" alt="">Guardar y
+                                                                src="<?=$baseUrl?>img/disque.png" width="20px"
+                                                                alt="">Guardar y
                                                             Seguir</button>
                                                     </div>
                                                 </div>
@@ -2938,17 +2905,20 @@
                                         <a data-toggle="collapse" data-target="#collapseten" aria-expanded="true"
                                             aria-controls="collapseten">
                                             <div class="card-header" id="headingten">
-                                                <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px"> PeriOdontograma
+                                                <img src="<?=$baseUrl?>img/grabar.png" alt="" width="16px">
+                                                PeriOdontograma
                                             </div>
                                         </a>
                                         <div id="collapseten" class="collapse" aria-labelledby="headingten"
                                             data-parent="#accordionExample5">
                                             <div class="card-body">
                                                 <div class="text-center">
-                                                    <img src="<?=$baseUrl?>img/periodontograma.png" alt="" width="1000px">
+                                                    <img src="<?=$baseUrl?>img/periodontograma.png" alt=""
+                                                        width="1000px">
                                                     <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12"><br>
                                                         <button type="button" class="btn btn-success btn-sm"><img
-                                                                src="<?=$baseUrl?>img/disque.png" width="20px" alt="">Guardar y
+                                                                src="<?=$baseUrl?>img/disque.png" width="20px"
+                                                                alt="">Guardar y
                                                             Seguir</button>
                                                     </div>
                                                 </div>
@@ -4502,191 +4472,38 @@
                                 aria-controls="pdf" aria-selected="false">Diagnóstico Definitivo</a>
                         </div>
                         <div class="tab-content" id="nav-tabContent">
+                            <!-- CONTENT SUBIR IMAGENES -->
                             <div class="tab-pane fade show active" id="imagenes" role="tabpanel" aria-labelledby="img">
                                 <div class="row">
+
                                     <div class="p-3 mb-2 col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFileLang"
-                                                        lang="es">
+                                                    <input type="file" class="custom-file-input" id="subir_imagen_radiografia"
+                                                        name="subir_imagen_radiografia" lang="es">
                                                     <label class="custom-file-label"
-                                                        for="customFileLang">Imagenes...</label>
+                                                        for="subir_imagen_radiografia">Imagenes...</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <br><br>
-                                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                                        <div class="card shadow p-3 mb-5 bg-white rounded">
-                                            <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class="" width="80%">
-                                            </center>
-                                            <div class="card-body">
-                                                <p class="text-muted text-center" style="font-size: 10px;">
-                                                    2_20190814121035.jpg</p>
-                                                <div class="row">
-                                                    <div class="col-2 text-left">
-                                                        <a href="#"><img src="<?=$baseUrl?>img/borrar.png" width="16px"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="col-7 text-center">
-                                                        <span style="font-size: 13px;color:#C0392B;">03/09/2019</span>
-                                                    </div>
-                                                    <div class="col-2 text-right">
-                                                        <a href="#!" id="mostrar" data-toggle="modal"
-                                                            data-target=".informesdeimg"><img
-                                                                src="<?=$baseUrl?>img/lapizInforme.png" width="16px" alt=""></a>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div style="font-family: 'Manjari', sans-serif;">
-                                                    <label>Tipo de Imagen:</label>
-                                                    <select class="form-control border border-danger">
-                                                        <option selected disabled>Seleccionar...</option>
-                                                        <option> Rx. Cefalometrica</option>
-                                                        <option>Rx. Periapical</option>
-                                                        <option>Rx. Senos Maxilares</option>
-                                                        <option>Rx. Panorámicas</option>
-                                                        <option>Rx. ATM</option>
-                                                        <option>Rx. Frontal</option>
-                                                        <option>Rx. Carpal</option>
-                                                        <option>Tomografía</option>
-                                                        <option>Fotos Extraorales</option>
-                                                        <option>Fotos Intraorales</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    
+                                    <div class="content_imagenes_radiografia col-md-12 d-flex flex-wrap">
+
                                     </div>
-                                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                                        <div class="card shadow p-3 mb-5 bg-white rounded">
-                                            <center><img src="<?=$baseUrl?>img/2_20190814140331.jpg" class="" width="75%">
-                                            </center>
-                                            <div class="card-body">
-                                                <p class="text-muted text-center" style="font-size: 10px;">
-                                                    2_20190814140331.jpg</p>
-                                                <div class="row">
-                                                    <div class="col-2 text-left">
-                                                        <a href="#"><img src="<?=$baseUrl?>img/borrar.png" width="16px"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="col-7 text-center">
-                                                        <span style="font-size: 13px;color:#C0392B;">03/09/2019</span>
-                                                    </div>
-                                                    <div class="col-2 text-right">
-                                                        <a href="#!" id="mostrar" data-toggle="modal"
-                                                            data-target=".informesdeimg"><img
-                                                                src="<?=$baseUrl?>img/lapizInforme.png" width="16px" alt=""></a>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div style="font-family: 'Manjari', sans-serif;">
-                                                    <label>Tipo de Imagen:</label>
-                                                    <select class="form-control border border-danger">
-                                                        <option selected disabled>Seleccionar...</option>
-                                                        <option>Rx. Cefalometrica</option>
-                                                        <option>Rx. Periapical</option>
-                                                        <option>Rx. Senos Maxilares</option>
-                                                        <option>Rx. Panorámicas</option>
-                                                        <option>Rx. ATM</option>
-                                                        <option>Rx. Frontal</option>
-                                                        <option>Rx. Carpal</option>
-                                                        <option>Tomografía</option>
-                                                        <option>Fotos Extraorales</option>
-                                                        <option>Fotos Intraorales</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                                        <div class="card shadow p-3 mb-5 bg-white rounded ">
-                                            <center><img src="<?=$baseUrl?>img/2_20190814095013.jpg" class="" width="40%">
-                                            </center>
-                                            <div class="card-body">
-                                                <p class="text-muted text-center" style="font-size: 10px;">
-                                                    2_20190814095013.jpg</p>
-                                                <div class="row">
-                                                    <div class="col-2 text-left">
-                                                        <a href="#"><img src="<?=$baseUrl?>img/borrar.png" width="16px"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="col-7 text-center">
-                                                        <span style="font-size: 13px;color:#C0392B;">03/09/2019</span>
-                                                    </div>
-                                                    <div class="col-2 text-right">
-                                                        <a href="#!" id="mostrar" data-toggle="modal"
-                                                            data-target=".informesdeimg"><img
-                                                                src="<?=$baseUrl?>img/lapizInforme.png" width="16px" alt=""></a>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div style="font-family: 'Manjari', sans-serif;">
-                                                    <label>Tipo de Imagen:</label>
-                                                    <select class="form-control border border-danger">
-                                                        <option selected disabled>Seleccionar...</option>
-                                                        <option>Rx. Cefalometrica</option>
-                                                        <option>Rx. Periapical</option>
-                                                        <option>Rx. Senos Maxilares</option>
-                                                        <option>Rx. Panorámicas</option>
-                                                        <option>Rx. ATM</option>
-                                                        <option>Rx. Frontal</option>
-                                                        <option>Rx. Carpal</option>
-                                                        <option>Tomografía</option>
-                                                        <option>Fotos Extraorales</option>
-                                                        <option>Fotos Intraorales</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                                        <div class="card shadow p-3 mb-5 bg-white rounded">
-                                            <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class="" width="80%">
-                                            </center>
-                                            <div class="card-body">
-                                                <p class="text-muted text-center" style="font-size: 10px;">
-                                                    2_20190814121035.jpg</p>
-                                                <div class="row">
-                                                    <div class="col-2 text-left">
-                                                        <a href="#"><img src="<?=$baseUrl?>img/borrar.png" width="16px"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="col-7 text-center">
-                                                        <span style="font-size: 13px;color:#C0392B;">03/09/2019</span>
-                                                    </div>
-                                                    <div class="col-2 text-right">
-                                                        <a href="#!" id="mostrar" data-toggle="modal"
-                                                            data-target=".informesdeimg"><img
-                                                                src="<?=$baseUrl?>img/lapizInforme.png" width="16px" alt=""></a>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div style="font-family: 'Manjari', sans-serif;">
-                                                    <label>Tipo de Imagen:</label>
-                                                    <select class="form-control border border-danger">
-                                                        <option selected disabled>Seleccionar...</option>
-                                                        <option>Rx. Cefalometrica</option>
-                                                        <option>Rx. Periapical</option>
-                                                        <option>Rx. Senos Maxilares</option>
-                                                        <option>Rx. Panorámicas</option>
-                                                        <option>Rx. ATM</option>
-                                                        <option>Rx. Frontal</option>
-                                                        <option>Rx. Carpal</option>
-                                                        <option>Tomografía</option>
-                                                        <option>Fotos Extraorales</option>
-                                                        <option>Fotos Intraorales</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
+
                                     <div class="col-12 col-sm-12 col-lg-12 col-xl-12 text-center">
-                                        <button type="button" class="btn btn-success" onclick="ir_historial()"><img
-                                                src="<?=$baseUrl?>img/subir.png" width="18px" alt="">&nbsp;&nbsp;Subir</button>
+                                        <button type="button" class="btn btn-success" id="btn_subir_imagen"
+                                            onclick=""><img src="<?=$baseUrl?>img/subir.png" width="18px"
+                                                alt="">&nbsp;&nbsp;Subir</button>
                                     </div>
                                 </div>
                             </div>
+                            <!-- --------------------------------------------------------------------------- -->
+
                             <div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdfs">
                                 <div class="row">
                                     <div class="p-3 mb-2 col-12">
@@ -4774,8 +4591,9 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-12 col-lg-12 col-xl-12 text-center"><br>
-                                        <button type="button" class="btn btn-success"><img src="<?=$baseUrl?>img/subir.png"
-                                                width="18px" alt="">&nbsp;&nbsp;Subir</button>
+                                        <button type="button" class="btn btn-success"><img
+                                                src="<?=$baseUrl?>img/subir.png" width="18px"
+                                                alt="">&nbsp;&nbsp;Subir</button>
                                     </div>
                                 </div>
                             </div>
@@ -10009,7 +9827,8 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
-                                <center><img class="zoom" src="<?=$baseUrl?>img/Panoramicas/panoramica2.jpg" width="100%">
+                                <center><img class="zoom" src="<?=$baseUrl?>img/Panoramicas/panoramica2.jpg"
+                                        width="100%">
                                     <hr>
                                 </center>
                                 <div class="row">
@@ -10031,7 +9850,8 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center">
-                                        <a href="#" class="text-muted"><img src="<?=$baseUrl?>img/masss.png" width="16">&nbsp;
+                                        <a href="#" class="text-muted"><img src="<?=$baseUrl?>img/masss.png"
+                                                width="16">&nbsp;
                                             Agregar imagen</a>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 text-center">
@@ -10162,13 +9982,16 @@
                                     <div class="card" style="border-radius: 40px 40px 40px 40px;">
                                         <div class="card-body text-center"><br><br>
                                             <span>ASISTENCIA TÉCNICA:<br>
-                                                <img src="<?=$baseUrl?>img/viejo.png" width="20px" alt=""><b>(01) 325 6478</b>
+                                                <img src="<?=$baseUrl?>img/viejo.png" width="20px" alt=""><b>(01) 325
+                                                    6478</b>
                                                 <br>
                                             </span>
                                             <hr>
                                             <span>CONSULTAS Y SUGERENCIAS:</span><br>
-                                            <img src="<?=$baseUrl?>img/viejo.png" width="20px" alt=""><b>(01) 422 6797</b> <br>
-                                            <img src="<?=$baseUrl?>img/whatsapp.png" width="20px" alt=""> <b>983 523 514 </b><br>
+                                            <img src="<?=$baseUrl?>img/viejo.png" width="20px" alt=""><b>(01) 422
+                                                6797</b> <br>
+                                            <img src="<?=$baseUrl?>img/whatsapp.png" width="20px" alt=""> <b>983 523 514
+                                            </b><br>
                                             <hr>
                                             <img src="<?=$baseUrl?>img/logocsi.png" width="200px" alt=""><br><br>
                                             <img src="<?=$baseUrl?>img/sysdentist.png" width="120px" alt=""><br><br>
@@ -10224,7 +10047,8 @@
         <div class="modal fade imagen004">
             <div class="cece modal-dialog modal-xl" id="timagen">
                 <div class="modal-content">
-                    <img class="zoom" id="tamanioh" alt="Responsive image" src="<?=$baseUrl?>img/Panoramicas/panoramica1.jpg">
+                    <img class="zoom" id="tamanioh" alt="Responsive image"
+                        src="<?=$baseUrl?>img/Panoramicas/panoramica1.jpg">
                     <div class="container">
                         <div class="row"><br>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-3 text-center"><br>
@@ -10634,8 +10458,8 @@
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                             <div class="card shadow p-3 mb-1 bg-white rounded">
-                                                <center><img src="<?=$baseUrl?>img/senosMaxilares/senos maxilares.jpg" class=""
-                                                        style="width: 70%; height: 6rem;"></center>
+                                                <center><img src="<?=$baseUrl?>img/senosMaxilares/senos maxilares.jpg"
+                                                        class="" style="width: 70%; height: 6rem;"></center>
                                                 <p class="text-muted text-center" style="font-size: 14px;">Rx. Senos
                                                     Maxilares</p>
                                             </div>
@@ -11010,7 +10834,8 @@
                                     <div class="row" id="imagenesvistaprevia">
                                         <div class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-4">
                                             <div class="card shadow p-3 mb-1 bg-white rounded">
-                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class="" width="80%">
+                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class=""
+                                                        width="80%">
                                                 </center>
                                                 <div class="card-body">
                                                     <p class="text-muted text-center" style="font-size: 10px;">
@@ -11034,7 +10859,8 @@
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-4">
                                             <div class="card shadow p-3 mb-1 bg-white rounded">
-                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class="" width="80%">
+                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class=""
+                                                        width="80%">
                                                 </center>
                                                 <div class="card-body">
                                                     <p class="text-muted text-center" style="font-size: 10px;">
@@ -11058,7 +10884,8 @@
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-4">
                                             <div class="card shadow p-3 mb-1 bg-white rounded">
-                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class="" width="80%">
+                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class=""
+                                                        width="80%">
                                                 </center>
                                                 <div class="card-body">
                                                     <p class="text-muted text-center" style="font-size: 10px;">
@@ -11082,7 +10909,8 @@
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-4">
                                             <div class="card shadow p-3 mb-1 bg-white rounded">
-                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class="" width="80%">
+                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class=""
+                                                        width="80%">
                                                 </center>
                                                 <div class="card-body">
                                                     <p class="text-muted text-center" style="font-size: 10px;">
@@ -11106,7 +10934,8 @@
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-4">
                                             <div class="card shadow p-3 mb-1 bg-white rounded">
-                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class="" width="80%">
+                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class=""
+                                                        width="80%">
                                                 </center>
                                                 <div class="card-body">
                                                     <p class="text-muted text-center" style="font-size: 10px;">
@@ -11130,7 +10959,8 @@
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-12 col-lg-6 col-xl-4">
                                             <div class="card shadow p-3 mb-1 bg-white rounded">
-                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class="" width="80%">
+                                                <center><img src="<?=$baseUrl?>img/2_20190814121035.jpg" class=""
+                                                        width="80%">
                                                 </center>
                                                 <div class="card-body">
                                                     <p class="text-muted text-center" style="font-size: 10px;">
@@ -11825,7 +11655,8 @@
                                             <div class="card border border-info" disabled id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
-                                                        <img src="<?=$baseUrl?>img/university.png" width="45" alt=""><br>
+                                                        <img src="<?=$baseUrl?>img/university.png" width="45"
+                                                            alt=""><br>
                                                         <span style="font-size: 15px;"><b>Universidades</b></span>
                                                     </div>
                                                 </div>
@@ -12015,7 +11846,8 @@
                                             <div class="card border border-info" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
-                                                        <img src="<?=$baseUrl?>img/university.png" width="45" alt=""><br>
+                                                        <img src="<?=$baseUrl?>img/university.png" width="45"
+                                                            alt=""><br>
                                                         <span style="font-size: 15px;">Científica del Sur</span>
                                                     </div>
                                                 </div>
@@ -12026,7 +11858,8 @@
                                             <div class="card border border-info" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
-                                                        <img src="<?=$baseUrl?>img/university.png" width="45" alt=""><br>
+                                                        <img src="<?=$baseUrl?>img/university.png" width="45"
+                                                            alt=""><br>
                                                         <span style="font-size: 15px;">San Martín de Porres</span>
                                                     </div>
                                                 </div>
@@ -12816,7 +12649,8 @@
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4"><br>
                                     <div class="card shadow rounded-top p-3 mb-2 bg-white">
-                                        <center><img src="<?=$baseUrl?>img/ATM/atm.jpg" class="" style="width:100%;height:6rem;">
+                                        <center><img src="<?=$baseUrl?>img/ATM/atm.jpg" class=""
+                                                style="width:100%;height:6rem;">
                                         </center>
                                         <div class="text-center">
                                             <div class="custom-control custom-checkbox text-center">
@@ -13450,8 +13284,8 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
-                                <center><img class="zoom" src="<?=$baseUrl?>img/Panoramicas/panoramica2.jpg" width="100%"
-                                        height="78%">
+                                <center><img class="zoom" src="<?=$baseUrl?>img/Panoramicas/panoramica2.jpg"
+                                        width="100%" height="78%">
                                     <hr>
                                 </center>
                                 <div class="row">
@@ -13473,7 +13307,8 @@
                                         </div>
                                     </div>
                                     <div class="col-6 text-center">
-                                        <a href="#" class="text-muted"><img src="<?=$baseUrl?>img/masss.png" width="16">&nbsp;
+                                        <a href="#" class="text-muted"><img src="<?=$baseUrl?>img/masss.png"
+                                                width="16">&nbsp;
                                             Agregar imagen</a>
                                     </div>
                                     <div class="col-3 text-center">
@@ -13489,8 +13324,8 @@
                                             </b></span>
                                     </div>
                                     <div class="col-6 text-right">
-                                        <a href="#" class="btn btn-sm btn-light"><img src="<?=$baseUrl?>img/microfono.png"
-                                                width="30"></a>
+                                        <a href="#" class="btn btn-sm btn-light"><img
+                                                src="<?=$baseUrl?>img/microfono.png" width="30"></a>
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -13737,8 +13572,8 @@
                                     rows="2"></textarea>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6"><br>
-                                <button type="button" class="btn btn-danger" id="volver1"><img src="<?=$baseUrl?>img/flecha.png"
-                                        alt="" width="15px">Regresar</button><br><br>
+                                <button type="button" class="btn btn-danger" id="volver1"><img
+                                        src="<?=$baseUrl?>img/flecha.png" alt="" width="15px">Regresar</button><br><br>
                             </div>
                             <div class="text-right col-6 col-sm-6 col-md-6 col-lg-6"><br>
                                 <button class="btn btn-success" type="button" disabled>
@@ -14108,7 +13943,7 @@
         </script>
 
 
-<!--         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        <!--         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script> -->
 
@@ -14418,3 +14253,4 @@
             location.href = "detalles.php?id=historial"
         }
         </script>
+        <script src="<?=$baseUrl?>js/paciente_detalles/index.js"></script>

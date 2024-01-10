@@ -31,4 +31,9 @@ class Paciente_detalles
             header('Location:'.Util::baseUrl().'pacientes');
         }
     }
+
+    public function GuardarRadiografiaPaciente()
+    {
+        
+    }
 }
