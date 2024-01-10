@@ -63,7 +63,6 @@
                     <div class="col-sm-6"><br>
                         <div class="card">
                             <div class="card-body" id="card_pacientes">
-
                             </div>
                         </div>
                     </div>
