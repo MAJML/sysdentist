@@ -21,7 +21,8 @@ class Pacientes
 
     public function index()
     {
-        View::render(['pacientes/index'], ['title' => 'Pacientes | Dentist']);
+        $pacientes = $this->model->TodosPacientes();
+        View::render(['pacientes/index'], ['title' => 'Pacientes | Dentist', 'pacientes' => $pacientes]);
     }
 
     public function registrarPaciente()

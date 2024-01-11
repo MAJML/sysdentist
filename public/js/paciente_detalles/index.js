@@ -12,6 +12,7 @@ $("#btn_subir_imagen").click(function(){
         arrayDataImagen.push($('.contador_img'+i).attr('src'))  
         arrayDataTipoImagen.push($('.tipo_imagen'+i).val())  
     }
+
     $.ajax({
         type:"POST",
         dataType:"json",
@@ -19,15 +20,22 @@ $("#btn_subir_imagen").click(function(){
         data:{DataImagen:arrayDataImagen, DataTipoImagen:arrayDataTipoImagen, idPaciente:idPaciente},
         success:function(response){
             console.log("resssssss : ",response);
+            if(response == "ok"){
+                window.location.href = baseurl+'Paciente_detalles'+ "?token=" + idPaciente;
+            }
         },error:function(){
             console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
         }
     });
+    
     /* console.log(arrayDataImagen, arrayDataTipoImagen); */
 });
 
 
 $("#subir_imagen_radiografia").change(function(){
+    var fechaActual = new Date();
+    var formatoFecha = fechaActual.toLocaleDateString();
+    var cantidadCardRadiografia = $(".contador_divs_im").length+1
     var imagen = this.files[0];
     if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
         $("#subir_imagen_radiografia").val("");
@@ -53,7 +61,7 @@ $("#subir_imagen_radiografia").change(function(){
         $(datosImagen).on("load", function(event){
             var rutaImagen = event.target.result;
             $(".content_imagenes_radiografia").append(`
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 contador_divs_im">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 contador_divs_im" id="${cantidadCardRadiografia}">
                 <div class="card shadow p-3 mb-5 bg-white rounded">
                     <center><img src="${rutaImagen}" class="ruta_imagen_radiografia" width="80%">
                     </center>
@@ -61,14 +69,14 @@ $("#subir_imagen_radiografia").change(function(){
                         <p class="text-muted text-center" style="font-size: 10px;"> 2_20190814121035.jpg</p>
                         <div class="row">
                             <div class="col-2 text-left">
-                                <a href="#"><img src="${baseurl}img/borrar.png" width="16px"
+                                <a href="javascript:void(0);" onclick="eliminarSelectImagen(`+cantidadCardRadiografia+`)"><img src="${baseurl}img/borrar.png" width="16px"
                                         alt=""></a>
                             </div>
                             <div class="col-7 text-center">
-                                <span style="font-size: 13px;color:#C0392B;">03/09/2019</span>
+                                <span style="font-size: 13px;color:#C0392B;">${formatoFecha}</span>
                             </div>
                             <div class="col-2 text-right">
-                                <a href="#!" id="mostrar" data-toggle="modal"
+                                <a hidden href="javascript:void(0);" id="mostrar" data-toggle="modal"
                                     data-target=".informesdeimg"><img
                                         src="${baseurl}img/lapizInforme.png" width="16px" alt=""></a>
                             </div>
@@ -77,7 +85,6 @@ $("#subir_imagen_radiografia").change(function(){
                         <div style="font-family: 'Manjari', sans-serif;">
                             <label>Tipo de Imagen:</label>
                             <select class="form-control border border-danger contador_tipo_imagen" name="tipo_imagen">
-                                <option hidden>Seleccionar...</option>
                                 <option value="Rx. Cefalometrica">Rx. Cefalometrica</option>
                                 <option value="Rx. Periapical">Rx. Periapical</option>
                                 <option value="Rx. Senos Maxilares">Rx. Senos Maxilares</option>
@@ -107,3 +114,42 @@ $("#subir_imagen_radiografia").change(function(){
 
     }
 })
+
+for (let index = 0; index < $('.pacientesArchivos').length; index++) {
+    $('#btnDescargarImagen'+index).on('click', function() {
+        var urlImagen = $('#imgPacienteradio'+index).attr('src');
+        var enlaceTemporal = document.createElement('a');
+        enlaceTemporal.href = urlImagen;
+        enlaceTemporal.target = '_blank';
+        enlaceTemporal.download = 'imagen.jpg'; // Puedes personalizar el nombre del archivo
+
+        document.body.appendChild(enlaceTemporal);
+        enlaceTemporal.click();
+
+        document.body.removeChild(enlaceTemporal);
+    });
+
+    $("#imgPacienteradio"+index).click(function(){
+        $("#view_imagen_his").attr('src', $("#imgPacienteradio"+index).attr('src'))
+    });
+}
+
+
+function eliminarSelectImagen(cantidadCardRadiografia)
+{
+    $('#'+cantidadCardRadiografia).remove()
+/*     var indice = arraySelectAlumno.indexOf(idAlumno);
+    arraySelectAlumno.splice(indice, 1);   */
+    /* console.log("esto es el array : ",arraySelectAlumno) */
+/*     var nrows = 0;
+    $("#lista_alumno_agre tr").each(function() {
+        nrows++;
+    })
+    if(nrows == 0){
+        $("#btn_agregar_potulantes").attr('hidden', true)
+    }else{
+        $("#btn_agregar_potulantes").attr('hidden', false)
+    } */
+
+}
+

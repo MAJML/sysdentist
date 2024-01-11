@@ -17,8 +17,7 @@ class Paciente_detallesModel extends Model
     {
         $valor = "INSERT INTO examenes_archivos(paciente_id, archivo, tipo_imagen, file_type) VALUES";
         for ($i=0; $i < count($DataImagen); $i++) { 
-            $valor .= '(1,"'.$DataImagen[$i]. '","'.$DataTipoImagen[$i].'",1), ';
-
+            $valor .= '('.$idPaciente.',"'.$DataImagen[$i]. '","'.$DataTipoImagen[$i].'",1), ';
             /* $valor .= '(1, "asdasdasdasd", "asdasfasfdasfasdf", 1), '; */
         }
         $consulta = rtrim($valor, ', ');
@@ -26,8 +25,15 @@ class Paciente_detallesModel extends Model
         if($query->execute()){
             return "ok";
         }else{
-            return "error";          
+            return "error";      
         }
         
+    }
+
+    public function DataSubidaPaciente($id)
+    {
+        $query = $this->db->prepare("SELECT * FROM examenes_archivos WHERE paciente_id = $id");
+        $query->execute();
+        return $query->fetchAll();
     }
 }

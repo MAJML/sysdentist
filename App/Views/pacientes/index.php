@@ -34,27 +34,46 @@
                     <!---------------------fin Boton del modal------------------------->
                     <div class="container">
                         <hr>
-                        <div class="form-group row">
-                            <div class="col-sm-7">
-                                <!--input type="text" class="form-control" id="" placeholder="Busqueda..."-->
-                            </div>
-                            <div class="col-sm-5" id="doctor">
-                                <div class="row">
-                                    <div class="col-7" style="padding-top: 100px;">
-                                        <div class="card" style="border-radius: 50px 0px 50px 50px;">
-                                            <div class="card-body text-center">
-                                                <span
-                                                    style="font-family: 'Montserrat', sans-serif;font-size: 17px;">Aquí
-                                                    puedes registrar nuevos pacientes</span><br>
+
+                        <?php if (count($pacientes) > 0): ?>
+                            <div class="row col-md-12" id="content_paciente_data_llena">
+                                <?php foreach ($pacientes as $key => $value): ?>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card p-4">
+                                            <h5 class="text-center"><b>HC-ps70230264</b></h5>
+                                            <hr>
+                                            <p><b>DNI: </b> <?=$value->dni?></p>
+                                            <p><b>NOMBRES: </b> <?=$value->nombres.' '.$value->apellidos?></p>
+                                            <div class="d-flex justify-content-end">
+                                                <a href="<?=$baseUrl?>Paciente_detalles?token=<?=$value->id?>" class="btn btn-primary">DETALLE</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-5 text-right">
-                                        <img src="<?=$baseUrl?>img/manno.png" width="150">
+                                <?php endforeach; ?>
+                            </div>
+                        <?php else: ?>
+                            <div class="form-group row" id="content_paciente_s">
+                                <div class="col-sm-7">
+                                </div>
+                                <div class="col-sm-5" id="doctor">
+                                    <div class="row">
+                                        <div class="col-7" style="padding-top: 100px;">
+                                            <div class="card" style="border-radius: 50px 0px 50px 50px;">
+                                                <div class="card-body text-center">
+                                                    <span
+                                                        style="font-family: 'Montserrat', sans-serif;font-size: 17px;">Aquí
+                                                        puedes registrar nuevos pacientes</span><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 text-right">
+                                            <img src="<?=$baseUrl?>img/manno.png" width="150">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
+
                     </div>
                 </div>
             </div>

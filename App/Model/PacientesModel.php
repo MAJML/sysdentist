@@ -61,4 +61,11 @@ class PacientesModel extends Model
         $query->execute();
         return $query->fetch();
     }
+
+    public function TodosPacientes()
+    {
+        $query = $this->db->prepare("SELECT * FROM pacientes");
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

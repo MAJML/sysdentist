@@ -491,92 +491,28 @@ table.inputs td {
 
                                         <div class="tab-pane p-3 fade show active" id="imagen"
                                             aria-labelledby="imageness">
-                                            <!-- <div id="image" class="row">
-                                                <div class="col-12 col-sm-12 col-md-8 col-lg-12 col-xl-8">
-                                                    <div class="card shadow p-1 mb-3">
-                                                        <img id="modalimagen4" data-toggle="modal"
-                                                            data-target=".imagen004"
-                                                            src="<?=$baseUrl?>img/Panoramicas/panoramica1.jpg" style="width:100%;"
-                                                            height="300rem">
-                                                        <div class="card-body text-center">
-                                                            <a href=""><img src="<?=$baseUrl?>img/downloadimg.png"
-                                                                    style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <a href="#!" id="mostrar" data-toggle="modal"
-                                                                data-target=".informesdeimg"><img
-                                                                    src="<?=$baseUrl?>img/escritor.png" width="25px"
-                                                                    alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <a href="#img3" data-toggle="popover" data-trigger="hover"
-                                                                data-placement="top" title="02/10/2019"
-                                                                data-content="Dr. Valentina Isabel Mendoza Sanchez H. Solidaridad | Los Olivos | 999999999"><img
-                                                                    src="<?=$baseUrl?>img/archiv0.png"
-                                                                    style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-6 col-md-4 col-lg-6 col-xl-4">
-                                                    <div class="card shadow p-1 mb-3">
-                                                        <img id="modalimagen3" data-toggle="modal"
-                                                            data-target=".imagen003" src="<?=$baseUrl?>img/Frontales/fontal1.jpg"
-                                                            style="width:100%;" height="300rem">
-                                                        <div class="card-body text-center">
-                                                            <a href=""><img src="<?=$baseUrl?>img/downloadimg.png"
-                                                                    style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <a href="#!" id="mostrar" data-toggle="modal"
-                                                                data-target=".informesdeimg"><img
-                                                                    src="<?=$baseUrl?>img/escritor.png" width="25px"
-                                                                    alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <a href="#img4" data-toggle="popover" data-trigger="hover"
-                                                                data-placement="top" title="02/10/2019"
-                                                                data-content="Dr. Valentina Isabel Mendoza Sanchez H. Solidaridad | Los Olivos | 999999999"><img
-                                                                    src="<?=$baseUrl?>img/archiv0.png"
-                                                                    style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <div id="image" class="row">
+                                                <?php foreach ($pacienteArchivos as $key => $value): ?>
+                                                    <div class="col-12 col-sm-6 col-md-4 col-lg-6 col-xl-4 pacientesArchivos">
+                                                        <div class="card shadow p-1 mb-3">
+                                                            <img id="imgPacienteradio<?=$key?>" data-toggle="modal" data-target=".modal_view_historial_img" src="<?=$value->archivo?>" style="width:100%;" height="300rem">
+                                                            <div class="card-body text-center">
+                                                                <a href="javascript:void(0);" id="btnDescargarImagen<?=$key?>"><img src="<?=$baseUrl?>img/downloadimg.png"
+                                                                        style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <a href="#!" id="mostrar" data-toggle="modal"
+                                                                    data-target=".informesdeimg"><img
+                                                                        src="<?=$baseUrl?>img/escritor.png" width="25px"
+                                                                        alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <a hidden href="#" data-toggle="popover" data-trigger="hover"
+                                                                    data-placement="top" title="<?=$value->created_at?>"
+                                                                    data-content="Dr. Valentina Isabel Mendoza Sanchez H. Solidaridad | Los Olivos | 999999999"><img
+                                                                        src="<?=$baseUrl?>img/archiv0.png"
+                                                                        style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-12 col-sm-6 col-md-4 col-lg-6 col-xl-4">
-                                                    <div class="card shadow p-1 mb-3">
-                                                        <img id="modalimagen2" data-toggle="modal"
-                                                            data-target=".imagen002" class="myImg"
-                                                            src="<?=$baseUrl?>img/carpal/CARPAL.jpg" style="width:100%;"
-                                                            height="300rem">
-                                                        <div class="card-body text-center">
-                                                            <a href=""><img src="<?=$baseUrl?>img/downloadimg.png"
-                                                                    style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <a href="#!" id="mostrar" data-toggle="modal"
-                                                                data-target=".informesdeimg"><img
-                                                                    src="<?=$baseUrl?>img/escritor.png" width="25px"
-                                                                    alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <a href="#img2" data-toggle="popover" data-trigger="hover"
-                                                                data-placement="top" title="02/10/2019"
-                                                                data-content="Dr. Valentina Isabel Mendoza Sanchez H. Solidaridad | Los Olivos | 999999999"><img
-                                                                    src="<?=$baseUrl?>img/archiv0.png"
-                                                                    style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-12 col-md-8 col-lg-12 col-xl-8">
-                                                    <div class="card shadow p-1 mb-3">
-                                                        <img id="modalimagen1" data-toggle="modal"
-                                                            data-target=".imagen001" class="myImg"
-                                                            src="<?=$baseUrl?>img/ATM/atm.jpg" style="width:100%;"
-                                                            height="300rem">
-                                                        <div class="card-body text-center">
-                                                            <a href=""><img src="<?=$baseUrl?>img/downloadimg.png"
-                                                                    style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <a href="#!" id="mostrar" data-toggle="modal"
-                                                                data-target=".informesdeimg"><img
-                                                                    src="<?=$baseUrl?>img/escritor.png" width="25px"
-                                                                    alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <a href="#img1" data-toggle="popover" data-trigger="hover"
-                                                                data-placement="top" title="02/10/2019"
-                                                                data-content="Dr. Valentina Isabel Mendoza Sanchez H. Solidaridad | Los Olivos | 999999999"><img
-                                                                    src="<?=$baseUrl?>img/archiv0.png"
-                                                                    style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+                                                <?php endforeach; ?>
+                                            </div>
                                         </div>
                                         <div class="tab-pane p-3  fade" id="informes" aria-labelledby="archivoss">
                                             <!-- <div class="row text-center">
@@ -4476,7 +4412,6 @@ table.inputs td {
                             <!-- CONTENT SUBIR IMAGENES -->
                             <div class="tab-pane fade show active" id="imagenes" role="tabpanel" aria-labelledby="img">
                                 <div class="row">
-
                                     <div class="p-3 mb-2 col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
@@ -4497,10 +4432,11 @@ table.inputs td {
                                     
 
                                     <div class="col-12 col-sm-12 col-lg-12 col-xl-12 text-center">
-                                        <button type="button" class="btn btn-success" id="btn_subir_imagen"
+                                        <button type="submit" class="btn btn-success" id="btn_subir_imagen"
                                             onclick=""><img src="<?=$baseUrl?>img/subir.png" width="18px"
-                                                alt="">&nbsp;&nbsp;Subir</button>
-                                    </div>
+                                            alt="">&nbsp;&nbsp;Subir</button>
+                                    </div>  
+
                                 </div>
                             </div>
                             <!-- --------------------------------------------------------------------------- -->
@@ -10115,11 +10051,12 @@ table.inputs td {
             </div>
         </div>
 
-        <div class="modal fade imagen003">
+        <!-- MODAL HISTORIAL VISTA IMAGEN SUBIDA PACIENTE -->
+        <div class="modal fade modal_view_historial_img">
             <div class="modal-dialog modal-md" id="timagen2">
                 <div class="modal-content text-center"
                     style="background-color: transparent; border: 0px solid transparent;">
-                    <img class="zoom" id="tamaniov" alt="Responsive image" src="<?=$baseUrl?>img/Frontales/fontal1.jpg">
+                    <img class="zoom" id="view_imagen_his" alt="Responsive image" src="">
                     <div class="container" style="background-color: white;">
                         <div class="row"><br>
                             <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 text-center"><br>
@@ -10149,6 +10086,7 @@ table.inputs td {
                 </div>
             </div>
         </div>
+        <!-- ----------------------------------------------------------------------- -->
 
         <!--NOTIFICACIONES-->
         <div class="modal fade receptor" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
