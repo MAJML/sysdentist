@@ -456,6 +456,7 @@ table.inputs td {
 
 <body style="background-color: #FCFCFC">
     <div class="contenedores">
+        <input type="hidden" id="id_paciente" value="<?=$paciente->id?>">
         <h4 class="card-title text-center"><?=$paciente->nombres.' '.$paciente->apellidos?></h4>
         <h5 class="card-subtitle text-center mb-2" style="color:#FF0000;">HC-CB74171528</h5>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">

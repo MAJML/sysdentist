@@ -12,4 +12,22 @@ class Paciente_detallesModel extends Model
         $query->execute();
         return $query->fetch();
     }
+
+    public function GuardarRadiografiaPaciente($idPaciente, $DataImagen, $DataTipoImagen)
+    {
+        $valor = "INSERT INTO examenes_archivos(paciente_id, archivo, tipo_imagen, file_type) VALUES";
+        for ($i=0; $i < count($DataImagen); $i++) { 
+            $valor .= '(1,"'.$DataImagen[$i]. '","'.$DataTipoImagen[$i].'",1), ';
+
+            /* $valor .= '(1, "asdasdasdasd", "asdasfasfdasfasdf", 1), '; */
+        }
+        $consulta = rtrim($valor, ', ');
+        $query = $this->db->prepare($consulta);
+        if($query->execute()){
+            return "ok";
+        }else{
+            return "error";          
+        }
+        
+    }
 }

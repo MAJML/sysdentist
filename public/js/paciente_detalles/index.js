@@ -1,6 +1,7 @@
 console.log('esto es la consola de paciente detalles');
 var arrayDataImagen = [];
 var arrayDataTipoImagen = [];
+var idPaciente = $("#id_paciente").val();
 $("#btn_subir_imagen").click(function(){
     var elementos = document.getElementsByClassName('contador_divs_im');
     var ruta_imagen_radiografia = document.getElementsByClassName('ruta_imagen_radiografia');
@@ -15,7 +16,7 @@ $("#btn_subir_imagen").click(function(){
         type:"POST",
         dataType:"json",
         url: baseurl+'Paciente_detalles/GuardarRadiografiaPaciente',
-        data:{DataImagen:arrayDataImagen, DataTipoImagen:arrayDataTipoImagen},
+        data:{DataImagen:arrayDataImagen, DataTipoImagen:arrayDataTipoImagen, idPaciente:idPaciente},
         success:function(response){
             console.log("resssssss : ",response);
         },error:function(){

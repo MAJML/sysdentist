@@ -34,6 +34,10 @@ class Paciente_detalles
 
     public function GuardarRadiografiaPaciente()
     {
-        
+        $idPaciente = $_POST['idPaciente'];
+        $DataImagen = $_POST['DataImagen'];
+        $DataTipoImagen = $_POST['DataTipoImagen'];
+        $respuesta = $this->model->GuardarRadiografiaPaciente($idPaciente, $DataImagen, $DataTipoImagen);
+        View::renderJson($respuesta);
     }
 }
