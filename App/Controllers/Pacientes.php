@@ -27,10 +27,12 @@ class Pacientes
 
     public function registrarPaciente()
     {
+        $codigoPaciente = $_POST['nombres'][0].$_POST['apellidos'][0].'-'.$_POST['dni'];
         $data = array(
             'dni'                   => $_POST['dni'],
             'nombres'               => $_POST['nombres'],        
             'apellidos'             => $_POST['apellidos'],
+            'codigo_paciente'       => $codigoPaciente,
             'fecha_nacimiento'      => $_POST['fecha_nacimiento'],
             'genero'                => $_POST['genero'],
             'email'                 => $_POST['email'],

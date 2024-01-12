@@ -141,7 +141,7 @@
                         </div>
                         <div class="col-12" style="font-size: 13px">
                            <span style="font-size: 13px" class="text-right text-muted">02/10/2019 03:30</span><br>
-                              La <b>Dra. Marianela Rodriguez Wang</b><br> le refirió al Paciente <b>ALEJANDRA VERONICA CALLIRGOS BLAS</b> <br>
+                              La <b>Dra. Marianelaas Rodriguez Wang</b><br> le refirió al Paciente <b>ALEJANDRA VERONICA CALLIRGOS BLAS</b> <br>
                               <span style="font-size: 12px" class="text-danger">H. Nacional Loayza - Sede Los Olivos</span>
                            <div class="text-right">
                            <h6><a href="#" style="background-color: #27AE60" class="badge text-white">Ver</a></h6>
@@ -195,7 +195,7 @@
                         <div class="dropdown-menu dropdown-menu-right" style="position: absolute">
                            <div class="container text-center">
                               <span><img src="<?=$baseUrl?>img/logofondoblanco.png" width="120"></span><br>
-                              <span class="">Clínica Bellavista | La Victoria</span><hr>
+                              <span class="">Clínica Bellavistass | La Victoria</span><hr>
                            </div>
                            <a class="dropdown-item text-center" href="<?=$baseUrl?>usuarios">USUARIOS</a>
                            <a class="dropdown-item text-center" href="<?=$baseUrl?>sedes">SEDES</a>
@@ -273,12 +273,12 @@
             <li class="nav-item">
                <div class="dropdown">
                   <a style="color: white;" href="#!" class="nav-link btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  &nbsp;&nbsp;Marianela Rodriguez Wang&nbsp;<img src="<?=$baseUrl?>img/cir.png" width="10px" alt="">
+                  &nbsp;&nbsp;<?=$_SESSION['nombre_comercial']?>&nbsp;<img src="<?=$baseUrl?>img/cir.png" width="10px" alt="">
                   </a>
                   <div class="dropdown-menu dropdown-menu-center">
                      <div class="container text-center">
                         <span><img src="<?=$baseUrl?>img/logofondoblanco.png" width="120"></span><br>
-                        <span class="">Clínica Bellavista | La Victoria</span><hr>
+                        <span class=""><?=$_SESSION['nombre_comercial']?></span><hr>
                      </div>
                      <a class="dropdown-item text-center" href="<?=$baseUrl?>usuarios">USUARIOS</a>
                      <a class="dropdown-item text-center" href="<?=$baseUrl?>sedes">SEDES</a>

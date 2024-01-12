@@ -52,7 +52,7 @@ function ListarUsuarios(){
                 html = '<div class="col-sm-6 col-md-3 lalala"><br>';
                 html += '<div class="card rounded-0 text-center">'; 
                 html += '<div class="card-body">';
-                html += '<span><b>LOS OLIVOS</b></span>';
+                html += '<span><b>'+response[i]['sede']+'</b></span>';
                 html += '<h5 class="card-title"><img src="'+baseurl+response[i]['foto_perfil_usuario']+'" width="120px" height="120px" alt=""></h5>';
                 html += '<span class="card-text">';
                 html += '<b>'+response[i]['apellido']+' '+response[i]['nombre']+'</b> <br>';

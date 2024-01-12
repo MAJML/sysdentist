@@ -458,7 +458,7 @@ table.inputs td {
     <div class="contenedores">
         <input type="hidden" id="id_paciente" value="<?=$paciente->id?>">
         <h4 class="card-title text-center"><?=$paciente->nombres.' '.$paciente->apellidos?></h4>
-        <h5 class="card-subtitle text-center mb-2" style="color:#FF0000;">HC-CB74171528</h5>
+        <h5 class="card-subtitle text-center mb-2" style="color:#FF0000;"><?=$paciente->codigo_paciente?></h5>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="histo" data-toggle="tab" href="#historial" role="tab"
                 aria-controls="historial" aria-selected="true">Historial</a>
@@ -599,7 +599,7 @@ table.inputs td {
                                                                     </h5>
                                                                 </b>
                                                                 <span style="color: #FF0000; text-align: center">
-                                                                    HC-CB74171528</span>
+                                                                <?=$paciente->codigo_paciente?></span>
                                                             </div>
                                                             <span class="text-black-50"><img
                                                                     src="<?=$baseUrl?>img/edificio.png" alt=""

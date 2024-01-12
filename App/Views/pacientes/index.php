@@ -40,7 +40,7 @@
                                 <?php foreach ($pacientes as $key => $value): ?>
                                     <div class="col-md-6 mb-3">
                                         <div class="card p-4">
-                                            <h5 class="text-center"><b>HC-ps70230264</b></h5>
+                                            <h5 class="text-center"><b><?=$value->codigo_paciente?></b></h5>
                                             <hr>
                                             <p><b>DNI: </b> <?=$value->dni?></p>
                                             <p><b>NOMBRES: </b> <?=$value->nombres.' '.$value->apellidos?></p>
