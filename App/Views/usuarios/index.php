@@ -11,7 +11,7 @@
         </div>
     </div>
     <hr>
-    <div class="row">
+    <div class="row" id="content_usuarios_s">
 
         <div class="col-sm-6 col-md-3"><br>
             <div class="card rounded-0 text-center">
@@ -37,51 +37,24 @@
 
         <!-- ----------------------------------------------------------------- -->
 
-        <div class="col-sm-6 col-md-3"><br>
+        <!-- <div class="col-sm-6 col-md-3"><br>
             <div class="card rounded-0 text-center">
                 <div class="card-body">
                     <span><b>LOS OLIVOS</b></span>
-                    <h5 class="card-title"><img src="<?=$baseUrl?>img/medico2.png" width="120px" height="120px" alt="">
-                    </h5>
+                    <h5 class="card-title"><img src="<?=$baseUrl?>img/medico2.png" width="120px" height="120px" alt=""></h5>
                     <span class="card-text">
                         <b>Med. ESMERALDA TORRES SOLORZANO</b> <br>
-                        <span class="text-muted"><b>ESMERALDA</b><br></span>
-                        Medico <br>
+                        <span class="text-muted"><b>ESMERALDA</b><br></span> Medico <br>
                         <span class="badge badge-pill badge-success">Activo</span><br><br>
-                        <button type="button" data-toggle="modal" data-target=".bd"
-                            class="btn-sm btn btn-info rounded-0">Editar</button>
-                        <button type="button" class="btn-sm btn rounded-0" style="background-color: #566573;"><a
-                                href="#!" class="text-decoration-none text-white" data-toggle="modal"
-                                data-target=".firmas">Firma</a></button><br>
-                        <button type="button" data-toggle="modal" data-target="#eliminar"
-                            class="btn-sm btn btn-danger rounded-0">Desactivar</button>
+                        <button type="button" data-toggle="modal" data-target=".bd" class="btn-sm btn btn-info rounded-0">Editar</button>
+                        <button type="button" class="btn-sm btn rounded-0" style="background-color: #566573;">
+                        <a href="#!" class="text-decoration-none text-white" data-toggle="modal" data-target=".firmas">Firma</a></button><br>
+                        <button type="button" data-toggle="modal" data-target="#eliminar" class="btn-sm btn btn-danger rounded-0">Desactivar</button>
                     </span>
                 </div>
             </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3"><br>
-            <div class="card rounded-0 text-center">
-                <div class="card-body">
-                    <span><b>MIRAFLORES</b></span>
-                    <h5 class="card-title"><img class="rounded-circle" src="<?=$baseUrl?>img/perfil.jpg" width="120px"
-                            height="120px" alt=""></h5>
-                    <p class="card-text">
-                        <b>Med. KEVIN HINOSTROZA JIMENEZ</b> <br>
-                        <span class="text-muted"><b>KEVIN</b><br></span>
-                        Medico <br>
-                        <span class="badge badge-pill badge-danger">Inactivo</span><br><br>
-                        <button type="button" data-toggle="modal" data-target=".bd"
-                            class="btn-sm btn btn-info rounded-0">Editar</button>
-                        <button type="button" class="btn-sm btn rounded-0" style="background-color: #566573;"><a
-                                href="#!" class="text-decoration-none text-white" data-toggle="modal"
-                                data-target=".firmas">Firma</a></button><br>
-                        <button type="button" data-toggle="modal" data-target="#eliminar"
-                            class="btn-sm btn btn-danger rounded-0">Desactivar</button>
-                        </span>
-                </div>
-            </div>
-        </div>
+        </div> -->
+        
     </div>
 </div>
 
@@ -140,14 +113,14 @@
                     <div class="col-6">
                         <label for="">Sede:</label>
                         <select class="form-control border border-info" name="sede" id="sede" required>
-                            <option selected disabled value="">Seleccionar Sede</option>
-                            <option value="">Los Olivos</option>
-                            <option value="">La Victoria</option>
-                            <option value="">San Juan de Miraflores</option>
-                            <option value="">Villa Maria del Triunfo</option>
-                            <option value="">La Victoria</option>
-                            <option value="">San Juan de Lurigancho</option>
-                            <option value="">Villa el Salvador</option>
+                            <option hidden>Seleccionar Sede</option>
+                            <option value="Los Olivos">Los Olivos</option>
+                            <option value="La Victoria">La Victoria</option>
+                            <option value="San Juan de Miraflores">San Juan de Miraflores</option>
+                            <option value="Villa Maria del Triunfo">Villa Maria del Triunfo</option>
+                            <option value="La Victoria">La Victoria</option>
+                            <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
+                            <option value="Villa el Salvador">Villa el Salvador</option>
                         </select>
                     </div>
                     <div class="col-3">
@@ -173,29 +146,29 @@
                     <div class="col-12">
                         <label for="">Especialidad:</label>
                         <select name="especialidad" class="form-control border border-info" id="especialidad" required>
-                            <option selected value="">Seleccionar Especialidad</option>
-                            <option value="">SALUD PUBLICA ESTOMATOLOGICA</option>
-                            <option value="">REHABILITACION ORAL</option>
-                            <option value="">RADIOLOGIA BUCAL Y MAXILO FACIAL</option>
-                            <option value="">PERIODONCIA E IMPLANTES</option>
-                            <option value="">ORTODONCIA Y ORTOPEDIA MAXILAR</option>
-                            <option value="">ODONTOLOGIA RESTAURADORA Y ESTETICA</option>
-                            <option value="">ODONTOPEDIATRIA</option>
-                            <option value="">MEDICINA Y PATOLOGIA ESTOMATOLOGICA</option>
-                            <option value="">ESTOMATOLOGIA DE PACIENTES ESPECIALES</option>
-                            <option value="">CIRUGIA BUCAL MAXILO FACIAL</option>
-                            <option value="">AUDITORIA ODONTOLOGICA </option>
-                            <option value="">ENDODONCIA </option>
-                            <option value="">ORTODONCIA Y ORTOPEDIA MAXILAR </option>
-                            <option value="">ODONTOLOGO GENERAL </option>
-                            <option value="">IMPLANTOLOGIA ORAL INTEGRAL </option>
+                            <option hidden>Seleccionar Especialidad</option>
+                            <option value="SALUD PUBLICA ESTOMATOLOGICA">SALUD PUBLICA ESTOMATOLOGICA</option>
+                            <option value="REHABILITACION ORAL">REHABILITACION ORAL</option>
+                            <option value="RADIOLOGIA BUCAL Y MAXILO FACIAL">RADIOLOGIA BUCAL Y MAXILO FACIAL</option>
+                            <option value="PERIODONCIA E IMPLANTES">PERIODONCIA E IMPLANTES</option>
+                            <option value="ORTODONCIA Y ORTOPEDIA MAXILAR">ORTODONCIA Y ORTOPEDIA MAXILAR</option>
+                            <option value="ODONTOLOGIA RESTAURADORA Y ESTETICA">ODONTOLOGIA RESTAURADORA Y ESTETICA</option>
+                            <option value="ODONTOPEDIATRIA">ODONTOPEDIATRIA</option>
+                            <option value="MEDICINA Y PATOLOGIA ESTOMATOLOGICA">MEDICINA Y PATOLOGIA ESTOMATOLOGICA</option>
+                            <option value="ESTOMATOLOGIA DE PACIENTES ESPECIALES">ESTOMATOLOGIA DE PACIENTES ESPECIALES</option>
+                            <option value="CIRUGIA BUCAL MAXILO FACIAL">CIRUGIA BUCAL MAXILO FACIAL</option>
+                            <option value="AUDITORIA ODONTOLOGICA">AUDITORIA ODONTOLOGICA </option>
+                            <option value="ENDODONCIA">ENDODONCIA </option>
+                            <option value="ORTODONCIA Y ORTOPEDIA MAXILAR">ORTODONCIA Y ORTOPEDIA MAXILAR </option>
+                            <option value="ODONTOLOGO GENERAL">ODONTOLOGO GENERAL </option>
+                            <option value="IMPLANTOLOGIA ORAL INTEGRAL">IMPLANTOLOGIA ORAL INTEGRAL </option>
                         </select>
                     </div>
                     <div class="col-12">
                         <label for="">Subir Foto de perfil:</label><br>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input border border-info" id="customFileLang">
-                            <input type="file" name="foto_perfil_usuario">
+                            <!-- <input type="file" class="custom-file-input border border-info" id="customFileLang"> -->
+                            <input type="file" name="foto_perfil_usuario" id="customFileLang" required>
                             <label class="custom-file-label border border-info" for="customFileLang">Seleccionar
                                 Archivo</label>
                         </div>

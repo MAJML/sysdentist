@@ -46,8 +46,13 @@ function consultaSunat(ruc){
         },
         success:function(response){
             /* console.log(response.data.nombre_o_razon_social); */
-            $("#razon_social").val(response.data.nombre_o_razon_social)
-            $("#nombre_comercial").val(response.data.nombre_o_razon_social)
+/*             var cadenaConComillas = '"Hola, mundo!"';
+            var cadenaSinComillas = cadenaConComillas.replace(/^"(.*)"$/, '$1'); */
+
+            razon_social = response.data.nombre_o_razon_social.replace(/^"(.*)"$/, '$1');
+
+            $("#razon_social").val(razon_social)
+            $("#nombre_comercial").val(razon_social)
         },error:function(){
             console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
         }

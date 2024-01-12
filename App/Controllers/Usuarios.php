@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Model\UsuariosModel;
 use Core\View;
 use Core\Util;
 
@@ -15,6 +16,7 @@ class Usuarios
             header('Location: '.Util::baseUrl());
             exit;
         }
+        $this -> model = new UsuariosModel();
     }
     
     public function index()
@@ -50,6 +52,13 @@ class Usuarios
             'especialidad'      => $_POST['especialidad'],
             'foto_perfil_usuario'   => $ruta_foto_user
         );
-        View::renderJson($data);
+        $respuesta = $this->model->RegistroUsuario($data);
+        View::renderJson($respuesta);
+    }
+
+    public function listarUsuarios()
+    {
+        $respuesta = $this->model->listarUsuarios();
+        View::renderJson($respuesta);
     }
 }
