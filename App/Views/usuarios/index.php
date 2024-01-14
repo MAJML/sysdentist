@@ -73,27 +73,31 @@
                 <div class="row">
                     <div class="col-6">
                         <label for="">Tipo de Documento:</label>
-                        <select class="form-control border border-info" >
-                            <option value="">DNI</option>
-                            <option value="">Carnet de Extranjeria</option>
+                        <select class="form-control border border-info" id="tipo_documento_usuario">
+                            <option value="DNI">DNI</option>
+                            <option value="Carnet de Extranjeria">Carnet de Extranjeria</option>
                         </select>
                     </div>
                     <div class="col-6">
                         <label for="">DNI</label>
-                        <input class="form-control border border-info" type="text" name="dni" required>
+                        <input class="form-control border border-info buscar_reniec" type="text" name="dni" id="dni" required>
                     </div>
                     <div class="col-6">
                         <label for="">Nombre:</label>
-                        <input class="form-control border border-info" type="text" name="nombre" required>
+                        <input class="form-control border border-info" type="text" name="nombre" id="nombre" required>
                     </div>
                     <div class="col-6">
                         <label for="">Apellidos:</label>
-                        <input class="form-control border border-info" type="text" name="apellido" required>
+                        <input class="form-control border border-info" type="text" name="apellido" id="apellido" required>
                     </div>
                     <div class="col-6">
+                        <label for="">Correo Electronico:</label>
+                        <input class="form-control border border-info" type="text" name="correo" id="correo" required>
+                    </div>
+<!--                     <div class="col-6">
                         <label for="">Usuario:</label>
                         <input class="form-control border border-info" type="text" name="usuario" required>
-                    </div>
+                    </div> -->
                     <div class="col-6">
                         <label for="">Contraseña:</label>
                         <input class="form-control border border-info" type="text" name="password" required>
@@ -107,20 +111,12 @@
                         <input class="form-control border border-info" type="text" name="telefono_movil" required>
                     </div>
                     <div class="col-6">
-                        <label for="">Correo Electronico:</label>
-                        <input class="form-control border border-info" type="text" name="correo" required>
-                    </div>
-                    <div class="col-6">
                         <label for="">Sede:</label>
                         <select class="form-control border border-info" name="sede" id="sede" required>
                             <option hidden>Seleccionar Sede</option>
-                            <option value="Los Olivos">Los Olivos</option>
-                            <option value="La Victoria">La Victoria</option>
-                            <option value="San Juan de Miraflores">San Juan de Miraflores</option>
-                            <option value="Villa Maria del Triunfo">Villa Maria del Triunfo</option>
-                            <option value="La Victoria">La Victoria</option>
-                            <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
-                            <option value="Villa el Salvador">Villa el Salvador</option>
+                            <?php foreach ($sedes as $key => $value): ?>
+                                <option value=""><?=$value->nombre.' | '.$value->direccion?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="col-3">

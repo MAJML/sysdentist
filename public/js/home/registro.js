@@ -10,7 +10,19 @@ $(document).on('submit', "#form_registro_empresa", function(event){
         success:function(response){
             $("#form_registro_empresa")[0].reset();
             if(response == 'ok'){
-                window.location.href = baseurl+"pacientes";
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Empresa registrada, ya puede Iniciar Sesión",
+                    showConfirmButton: true,
+                    confirmButtonText: 'Cerrar',
+                    closeOnConfirm: false,
+                    timer: 1500
+                }).then((result)=>{
+                    if(result.value){
+                        window.location.href = baseurl;
+                    }
+                });
             }else{
                 Swal.fire({
                     position: "center",
@@ -29,7 +41,7 @@ $(document).on('submit', "#form_registro_empresa", function(event){
 $("#ruc").keyup(function(){
     ruc = $("#ruc").val()
     if (ruc.length >= 11) {
-        consultaSunat(ruc)
+        rucRepetido(ruc)
     }
 });
 
@@ -53,6 +65,32 @@ function consultaSunat(ruc){
 
             $("#razon_social").val(razon_social)
             $("#nombre_comercial").val(razon_social)
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+}
+
+function rucRepetido(ruc){
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Home/consultarRucRepetido',
+        data:{ruc:ruc},
+        success:function(response){
+            /* console.log('esta es la funcion de ruc repetido: ', response); */
+            if(response == false){
+                consultaSunat(ruc)
+            }else{
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Esta Empresa ya esta registrado",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                $("#form_registro_empresa")[0].reset();
+            }
         },error:function(){
             console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
         }

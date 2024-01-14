@@ -4,14 +4,14 @@
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
                 aria-selected="true">PACIENTES</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
                 aria-selected="false">PACIENTES ASIGNADOS</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
                 aria-selected="false">HISTORIAL</a>
-        </li>
+        </li> -->
     </ul>
 </div><br>
 
@@ -225,13 +225,13 @@
                         <label>Genero</label>
                         <select class="form-control" id="genero" name="genero" required>
                             <option hidden>Elige Genero</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>
+                            <option value="MASCULINO">Masculino</option>
+                            <option value="FEMENINO">Femenino</option>
                         </select>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6  col-xl-4">
                         <label>E-mail</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="email">
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-6 col-xl-4">
                         <label>Discapacidad</label>
@@ -266,7 +266,7 @@
                         <label>Convenio</label>
                         <select class="form-control" id="convenio" name="convenio" required>
                             <option hidden>Elige Convenio</option>
-                            <option value="Sin Convenio">Sin Convenio</option>
+                            <option value="Sin Convenio" selected>Sin Convenio</option>
                             <option value="Medilink: SaludTotal">Medilink: SaludTotal</option>
                         </select>
                     </div>
@@ -295,31 +295,31 @@
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Departamento</label>
                         <select class="form-control" id="dep_nac" name="dep_nac" required>
-                            <option>Lima</option>
-                            <option>Arequipa</option>
-                            <option>Amazonas</option>
-                            <option>Ica</option>
-                            <option>Cusco</option>
+                            <option>LIMA</option>
+                            <option>AREQUIPA</option>
+                            <option>AMAZONAS</option>
+                            <option>ICA</option>
+                            <option>CUSCO</option>
                         </select>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Provincia</label>
                         <select class="form-control" id="prov_nac" name="prov_nac" required>
-                            <option>Lima</option>
-                            <option>Arequipa</option>
-                            <option>Amazonas</option>
-                            <option>Ica</option>
-                            <option>Cusco</option>
+                            <option>LIMA</option>
+                            <option>AREQUIPA</option>
+                            <option>AMAZONAS</option>
+                            <option>ICA</option>
+                            <option>CUSCO</option>
                         </select>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Distrito</label>
                         <select class="form-control" id="dist_nac" name="dist_nac" required>
-                            <option>Lima</option>
-                            <option>Arequipa</option>
-                            <option>Amazonas</option>
-                            <option>Ica</option>
-                            <option>Cusco</option>
+                            <option>LIMA</option>
+                            <option>AREQUIPA</option>
+                            <option>AMAZONAS</option>
+                            <option>ICA</option>
+                            <option>CUSCO</option>
                         </select>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -329,31 +329,31 @@
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Departamento</label>
                         <select class="form-control" id="dep_proc" name="dep_proc" required>
-                            <option>Lima</option>
-                            <option>Arequipa</option>
-                            <option>Amazonas</option>
-                            <option>Ica</option>
-                            <option>Cusco</option>
+                            <option>LIMA</option>
+                            <option>AREQUIPA</option>
+                            <option>AMAZONAS</option>
+                            <option>ICA</option>
+                            <option>CUSCO</option>
                         </select>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Provincia</label>
                         <select class="form-control" id="prov_proc" name="prov_proc" required>
-                            <option>Lima</option>
-                            <option>Arequipa</option>
-                            <option>Amazonas</option>
-                            <option>Ica</option>
-                            <option>Cusco</option>
+                            <option>LIMA</option>
+                            <option>AREQUIPA</option>
+                            <option>AMAZONAS</option>
+                            <option>ICA</option>
+                            <option>CUSCO</option>
                         </select>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Distrito</label>
                         <select class="form-control" id="dist_proc" name="dist_proc" required>
-                            <option>Lima</option>
-                            <option>Arequipa</option>
-                            <option>Amazonas</option>
-                            <option>Ica</option>
-                            <option>Cusco</option>
+                            <option>LIMA</option>
+                            <option>AREQUIPA</option>
+                            <option>AMAZONAS</option>
+                            <option>ICA</option>
+                            <option>CUSCO</option>
                         </select>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">

@@ -184,10 +184,10 @@
                             <div class="form-group">
                                 <label for="">RUC: </label>
                                 <input class="form-control" type="number" name="ruc" id="ruc" required>
-                                <label for="">RAZON SOCIAL: </label>
-                                <textarea class="form-control" name="razon_social" id="razon_social" rows="2" required readonly></textarea>
-                                <label for="">NOMBRE COMERCIAL: </label>
-                                <textarea class="form-control" name="nombre_comercial" id="nombre_comercial" rows="1" required readonly></textarea>
+                                <label for="">RAZON SOCIAL <span class="text-danger">(No se aceptan caracteres Especiales)</span>: </label>
+                                <textarea class="form-control" name="razon_social" id="razon_social" rows="2" required></textarea>
+                                <label for="">NOMBRE COMERCIAL <span class="text-danger">(No se aceptan caracteres Especiales)</span>: </label>
+                                <textarea class="form-control" name="nombre_comercial" id="nombre_comercial" rows="1" required></textarea>
                                 <!-- <label for="">USUARIO ADMINISTRADOR: </label>
                                 <input class="form-control" type="text" name="usuario_admin" required> -->
                                 <label for="">CORREO: </label>
@@ -197,11 +197,9 @@
                                 <label for="">TIPO DE NEGOCIO:</label>
                                 <select name="tipo_negocio" class="form-control border-danger" id="" required>
                                     <option value="" hidden>Seleccionar Tipo</option>
+                                    <option value="Centro Radiologica">Centro Radiologico</option>
                                     <option value="Odontólogo Particular">Odontólogo Particular</option>
                                     <option value="Clinica Privada">Clinica Privada</option>
-                                    <option value="Hospital Nacional">Hospital Nacional</option>
-                                    <option value="Universidad">Universidad</option>
-                                </select><br>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">Acepto <a href="" data-toggle="modal" data-target="#exampleModalScrollable">terminos y condiciones</a></label>

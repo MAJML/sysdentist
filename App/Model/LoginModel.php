@@ -19,7 +19,14 @@ class LoginModel extends Model
 
     public function comparandoData($email)
     {
-        $query = $this->db->prepare("SELECT ruc, razon_social, nombre_comercial, correo, password, tipo_negocio FROM empresa WHERE correo = '".$email."'");
+        $query = $this->db->prepare("SELECT id, ruc, razon_social, nombre_comercial, correo, password, tipo_negocio FROM empresa WHERE correo = '".$email."'");
+        $query->execute();
+        return $query->fetch();
+    }
+
+    public function consultarRucRepetido($ruc)
+    {
+        $query = $this->db->prepare("SELECT * FROM empresa WHERE ruc = '".$ruc."'");
         $query->execute();
         return $query->fetch();
     }

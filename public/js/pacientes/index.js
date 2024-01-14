@@ -54,12 +54,14 @@ function consultaReniec(dni){
             $("#dni").css("border","1px solid #E74C3C ")
         },
         success:function(response){
-            /* console.log("api reniec : ",response); */
+            console.log("api reniec : ",response);
             if(response.success == true){
                 $("#dni").css("border","1px solid #14B76E")
                 $("#nombres").val(response.data.nombres)
                 $("#apellidos").val(response.data.apellido_paterno+' '+response.data.apellido_materno)
-                $("#fecha_nacimiento").val(response.data.fecha_nacimiento)                
+                $("#fecha_nacimiento").val(response.data.fecha_nacimiento)    
+                $("#direccion").html(response.data.direccion)   
+                $("#genero").val(response.data.sexo)         
             }else{
                 $("#dni").css("border","1px solid #E74C3C ")
             }

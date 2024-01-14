@@ -34,6 +34,7 @@ class Home
         $respuesta  = $this->model->comparandoData($email);
         if($respuesta){
             if($email == $respuesta->correo && password_verify($password, $respuesta->password)){
+                $_SESSION['id_session'] = $respuesta->id;
                 $_SESSION['nombre_comercial'] = $respuesta->nombre_comercial;
                 $_SESSION['correo'] = $respuesta->correo;
                 View::renderJson('entro');
@@ -56,10 +57,6 @@ class Home
             'tipo_negocio'      => $_POST['tipo_negocio']
         );
         $respuesta = $this->model->registroEmpresa($data);
-        if($respuesta == 'ok'){
-            $_SESSION['nombre_comercial'] = $_POST['nombre_comercial'];
-            $_SESSION['correo'] = $_POST['correo'];
-        }
         View::renderJson($respuesta);
     }
 
@@ -93,5 +90,12 @@ class Home
         session_destroy();
         header('Location: '.Util::baseUrl());
 		exit;
+    }
+
+    public function consultarRucRepetido()
+    {
+        $ruc = $_POST['ruc'];
+        $respuesta = $this->model->consultarRucRepetido($ruc);
+        View::renderJson($respuesta);
     }
 }

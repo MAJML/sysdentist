@@ -466,7 +466,6 @@ table.inputs td {
                 aria-selected="false">Examenes Auxiliares</a>
         </div>
         <div class="card">
-
             <div class="card-body">
 
                 <div class="tab-content card-text" id="nav-tabContent">
@@ -607,7 +606,7 @@ table.inputs td {
                                                                     1</b></span><br>
                                                             <span class="text-black-50"><img
                                                                     src="<?=$baseUrl?>img/tor.png" alt="" width="12px">
-                                                                11/03/1998 (21 años)</span><br>
+                                                                11/03/1998</span><br>
                                                             <span class="text-black-50"><img
                                                                     src="<?=$baseUrl?>img/li.png" alt="" width="14px">
                                                                 <?=$paciente->dni?></span><br>
@@ -660,7 +659,7 @@ table.inputs td {
                                                         </div>
                                                     </div><br>
                                                     <div style="color: #717D7E; font-size: 14px">
-                                                        <b>INFORMACION PRINCIPAL :</b><br>
+                                                        <!-- <b>INFORMACION PRINCIPAL :</b><br>
                                                         <span id="informacionPrincipal" style="font-size: 14px">
                                                             Paciente consciente, alerta orientado en tiempo, espacio y
                                                             persona, cuya edad aparente concuerda con la edad
@@ -668,12 +667,11 @@ table.inputs td {
                                                             en posición decúbito dorsal, biotipo constitucional
                                                             normolíneo, sin alteración en el estado músculo nutricional
                                                             y esquelético.
-                                                        </span><br><br>
+                                                        </span><br><br> -->
 
                                                         <b>FECHA DE NACIMIENTO :</b><br>
                                                         <span id="fechaDeNacimiento" style="font-size: 14px"
-                                                            class="text-justify"><?=$paciente->fecha_nacimiento?> (21
-                                                            años)</span><br>
+                                                            class="text-justify"><?=$paciente->fecha_nacimiento?></span><br>
 
                                                         <b>DOCUMENTO DE IDENTIDAD :</b><br>
                                                         <span id="dni" style="font-size: 14px"
@@ -687,7 +685,7 @@ table.inputs td {
                                                         <span id="direccion" style="font-size: 14px"
                                                             class="text-justify"><?=$paciente->direccion?></span><br>
 
-                                                        <b>ALERGIAS :</b><br>
+                                                        <!-- <b>ALERGIAS :</b><br>
                                                         <span style="font-size: 14px" class="text-justify">
                                                             <ul class="list-unstyled">
                                                                 <ul>
@@ -696,7 +694,7 @@ table.inputs td {
                                                                     <li>Anafilaxia</li>
                                                                 </ul>
                                                             </ul>
-                                                        </span>
+                                                        </span> -->
                                                         <div class="text-center" id="botonvermas">
                                                             <a href="#!">Ver mas</a>
                                                         </div>
@@ -4403,10 +4401,10 @@ table.inputs td {
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="imageness" data-toggle="tab" href="#imagenes"
                                 role="tab" aria-controls="imagenes" aria-selected="true">Imagenes</a>
-                            <a class="nav-item nav-link" id="archivoss" data-toggle="tab" href="#pdf" role="tab"
+                            <!-- <a class="nav-item nav-link" id="archivoss" data-toggle="tab" href="#pdf" role="tab"
                                 aria-controls="pdf" aria-selected="false">PDF</a>
                             <a class="nav-item nav-link" id="archivoss" data-toggle="tab" href="#definitivo" role="tab"
-                                aria-controls="pdf" aria-selected="false">Diagnóstico Definitivo</a>
+                                aria-controls="pdf" aria-selected="false">Diagnóstico Definitivo</a> -->
                         </div>
                         <div class="tab-content" id="nav-tabContent">
                             <!-- CONTENT SUBIR IMAGENES -->
@@ -8643,7 +8641,7 @@ table.inputs td {
                 <div class="modal-content container" style="font-family: 'Manjari', sans-serif;">
                     <div class="row text-center">
                         <div class="col-11 p-2">
-                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS (21 AÑOS)</h5>
+                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS</h5>
                             <h6 class="card-subtitle text-center mb-2" style="color:#FF0000;">HC-CB74171528</h6>
                         </div>
                         <div class="col-1 text-left">
@@ -9752,7 +9750,7 @@ table.inputs td {
                 <div class="modal-content">
                     <div class="row text-center" style="font-family: 'Manjari', sans-serif;">
                         <div class="col-10 p-2">
-                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS (21 AÑOS)</h5>
+                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS</h5>
                             <h6 class="card-subtitle text-center mb-2" style="color:#FF0000;">HC-CB74171528</h6>
                         </div>
                         <div class="col-1 text-left">
@@ -10093,7 +10091,7 @@ table.inputs td {
             <div class="modal-dialog modal-lg">
                 <div class="modal-content card">
                     <div class="card-header text-center">
-                        <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS (21 AÑOS)</h5>
+                        <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS</h5>
                         <span class="card-subtitle text-center mb-2" style="color: red;">HC-CB74171528</span>
                     </div>
                     <div class="card-body">
@@ -10610,7 +10608,7 @@ table.inputs td {
                 <div class="modal-content container">
                     <div class="row text-center" style="font-family: 'Manjari', sans-serif;">
                         <div class="col-11 p-3">
-                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS (21 AÑOS)</h5>
+                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS</h5>
                             <h6 class="card-subtitle text-center mb-2" style="color:#FF0000;">HC-CB74171528</h6>
                         </div>
                         <div class="col-1 text-left">
@@ -10726,17 +10724,17 @@ table.inputs td {
                                         <div class="card border-info" style=" border-radius: 15px">
                                             <div class="card-body">
                                                 <div style="color: #717D7E; font-size: 14px">
-                                                    <b>INFORMACION PRINCIPAL :</b><br>
+                                                    <!-- <b>INFORMACION PRINCIPAL :</b><br>
                                                     <span id="informacionPrincipal" style="font-size: 14px">
                                                         Paciente consciente, alerta orientado en tiempo, espacio y
                                                         persona, cuya edad aparente concuerda con la edad cronologica;
                                                         en posición decúbito dorsal, biotipo constitucional normolíneo,
                                                         sin alteración en el estado músculo nutricional y esquelético.
-                                                    </span><br><br>
+                                                    </span><br><br> -->
 
                                                     <b>FECHA DE NACIMIENTO :</b><br>
                                                     <span id="fechaDeNacimiento" style="font-size: 14px"
-                                                        class="text-justify">11/03/1998 (21 años)</span><br>
+                                                        class="text-justify">11/03/1998</span><br>
 
                                                     <b>DOCUMENTO DE IDENTIDAD :</b><br>
                                                     <span id="dni" style="font-size: 14px"
@@ -10756,7 +10754,7 @@ table.inputs td {
                                           - Padre (vive) hipertenso (hace 20 años) y con hiperplasia prostática.<br>
                                           - Madre (vive) hipertensa (hace 4 años) y con enfermedad de Parkinson.
                                        </span><br> -->
-                                                    <b>ALERGIAS :</b><br>
+                                                    <!-- <b>ALERGIAS :</b><br>
                                                     <span style="font-size: 14px" class="text-justify">
                                                         <ul class="list-unstyled">
                                                             <ul>
@@ -10765,7 +10763,7 @@ table.inputs td {
                                                                 <li>Anafilaxia</li>
                                                             </ul>
                                                         </ul>
-                                                    </span>
+                                                    </span> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -11520,8 +11518,8 @@ table.inputs td {
                 <div class="modal-content" style="background-color:#ffffff;">
                     <div class="row text-center">
                         <div class="col-10 col-sm-10 col-md-11 col-lg-11 col-xl-11 p-3">
-                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS (21 AÑOS)</h5>
-                            <span class="card-subtitle text-center mb-2" style="color: red;"><b>HC-CB74171528</b></span>
+                            <h5 class="card-title text-center"><?=$paciente->nombres.' '.$paciente->apellidos?></h5>
+                            <span class="card-subtitle text-center mb-2" style="color: red;"><b><?=$paciente->codigo_paciente?></b></span>
                         </div>
                         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-left">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -11530,6 +11528,7 @@ table.inputs td {
                         </div>
                     </div>
                     <div class="row cece" style="font-family: 'Quicksand', sans-serif;">
+
                         <div class="col-12" id="doctores">
                             <div class="row">
                                 <div class="col-12 todo1">
@@ -11537,7 +11536,7 @@ table.inputs td {
                                         <div class="col-12 text-center">
                                             <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar</b></span>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro1">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro1" nombre="Centro Radiologico">
                                             <div class="card border border-info mb-2" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11548,7 +11547,7 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro2">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro2" nombre="Odontólogo Particular">
                                             <div class="card border border-info" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11559,7 +11558,7 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro3">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro3" name="Clinica Privada">
                                             <div class="card border border-info" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11974,7 +11973,8 @@ table.inputs td {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 text-center titulo">
+
+                        <!-- <div class="col-12 text-center titulo">
                             <div class="card" style="border: 1px solid #2E86C1;">
                                 <div class="card-body">
                                     <div class="row" style="color: #607D8B;">
@@ -11995,8 +11995,9 @@ table.inputs td {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" id="otroProfecional"><br>
+                        </div> -->
+
+                        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4" id="otroProfecional"><br>
                             <div class="row"><br>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-12 col-xl-12 ">
                                     <div class="card bg-white shadow-sm" style="font-size: 14px">
@@ -12123,8 +12124,9 @@ table.inputs td {
                                     </div><br>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" id="otroProfecional1">
+                        </div> -->
+
+                        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" id="otroProfecional1">
                             <div class="row" id="RadiografiaIntraoral">
                                 <div class="col-12 text-center"><br>
                                     <span style="color: #ABB2B9; font-size: 25px;"><b>Radiografías Intraoral
@@ -13199,7 +13201,8 @@ table.inputs td {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+
                     </div><br>
                 </div>
             </div>
@@ -13211,7 +13214,7 @@ table.inputs td {
                 <div class="modal-content">
                     <div class="row text-center" style="font-family: 'Manjari', sans-serif;">
                         <div class="col-11 p-3">
-                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS (21 AÑOS)</h5>
+                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS</h5>
                             <h6 class="card-subtitle text-center mb-2" style="color:#FF0000;"><b>HC-CB74171528</b></h6>
                         </div>
                         <div class="col-1 text-left">
@@ -13533,7 +13536,7 @@ table.inputs td {
                 <div class="p-3 mb-2 modal-content">
                     <div class="row text-center">
                         <div class="col-11">
-                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS (21 AÑOS)</h5>
+                            <h5 class="card-title text-center">ALEJANDRA VERONICA CALLIRGOS BLAS</h5>
                             <h6 class="card-subtitle text-center mb-2" style="color: red;">HC-CB74171528</h6>
                         </div>
                         <div class="col-1">

@@ -16,6 +16,7 @@ class Paciente_detalles
             header('Location: '.Util::baseUrl());
             exit;
         }
+        date_default_timezone_set('America/Lima');
         $this -> model = new Paciente_detallesModel();
     }
     
@@ -27,6 +28,7 @@ class Paciente_detalles
         if($results['token'] != null || $results['token'] != ''){
             $paciente = $this->model->DataPaciente($id=$results['token']);
             $DataSubida = $this->model->DataSubidaPaciente($id=$results['token']);
+            
             View::render(['paciente_detalles/index'], ['title' => 'Pacientes | Detalles | Dentist', 'paciente' => $paciente, 'pacienteArchivos' => $DataSubida]);
         }else{
             header('Location:'.Util::baseUrl().'pacientes');

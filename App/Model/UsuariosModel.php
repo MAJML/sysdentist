@@ -16,12 +16,26 @@ class UsuariosModel extends Model
 
     public function RegistroUsuario($data)
     {
-        $query = $this->db->prepare('INSERT INTO usuarios(dni, nombre, apellido, usuario, password, telefono_movil, correo, sede, colegiatura, genero, tipo_doctor, especialidad, foto_perfil_usuario)          
-        VALUES ("'.$data["dni"].'", "'.$data["nombre"].'", "'.$data["apellido"].'", "'.$data["usuario"].'", "'.$data["password"].'", "'.$data["telefono_movil"].'", "'.$data["correo"].'", "'.$data["sede"].'", "'.$data["colegiatura"].'", "'.$data["genero"].'", "'.$data["tipo_doctor"].'", "'.$data["especialidad"].'", "'.$data["foto_perfil_usuario"].'")');
+        $query = $this->db->prepare('INSERT INTO usuarios(id_empresa, dni, nombre, apellido, password, telefono_movil, correo, sede, colegiatura, genero, tipo_doctor, especialidad, foto_perfil_usuario)          
+        VALUES ("'.$data["id_empresa"].'","'.$data["dni"].'", "'.$data["nombre"].'", "'.$data["apellido"].'", "'.$data["password"].'", "'.$data["telefono_movil"].'", "'.$data["correo"].'", "'.$data["sede"].'", "'.$data["colegiatura"].'", "'.$data["genero"].'", "'.$data["tipo_doctor"].'", "'.$data["especialidad"].'", "'.$data["foto_perfil_usuario"].'")');
         if($query->execute()){
             return "ok";
         }else{
             return "error";          
         }
+    }
+
+    public function sedes()
+    {
+        $query = $this->db->prepare("SELECT * FROM sedes");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function validarUsuarioRepetido($dni)
+    {
+        $query = $this->db->prepare("SELECT * FROM usuarios WHERE dni = $dni");
+        $query->execute();
+        return $query->fetch();
     }
 }

@@ -21,7 +21,8 @@ class Usuarios
     
     public function index()
     {
-        View::render(['usuarios/index'], ['title' => 'Usuarios | Dentist']);
+        $sedes = $this->model->sedes();
+        View::render(['usuarios/index'], ['title' => 'Usuarios | Dentist' ,'sedes' => $sedes]);
     }
 
     public function RegistroUsuario()
@@ -38,10 +39,10 @@ class Usuarios
             move_uploaded_file($_FILES["foto_perfil_usuario"]["tmp_name"], $ruta_foto_user);  
         } 
         $data = array(
+            'id_empresa'        => $_SESSION['id_session'],
             'dni'               => $dni,
             'nombre'            => $_POST['nombre'],    
             'apellido'          => $_POST['apellido'],
-            'usuario'           => $_POST['usuario'],
             'password'          => $_POST['password'],
             'telefono_movil'    => $_POST['telefono_movil'],
             'correo'            => $_POST['correo'],
@@ -59,6 +60,38 @@ class Usuarios
     public function listarUsuarios()
     {
         $respuesta = $this->model->listarUsuarios();
+        View::renderJson($respuesta);
+    }
+
+    public function buscarReniec()
+    {
+        $token = 'Bearer d482b352b7a8a0d3bdd22e81fdc5dadf5369fe7807aa2a3f2cba4fd0e57cc063';
+        $dni = $_POST['dni'];
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://consulta.api-peru.com/api/dni/' . $dni,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 2,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_HTTPHEADER => array(
+            'Referer: https://apis.net.pe/consulta-dni-api',
+            'Authorization: Bearer ' . $token
+        ),
+        ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $persona = json_decode($response);
+        View::renderJson($persona);
+    }
+
+    public function validarUsuarioRepetido()
+    {
+        $dni = $_POST['dni'];
+        $respuesta = $this->model->validarUsuarioRepetido($dni);
         View::renderJson($respuesta);
     }
 }
