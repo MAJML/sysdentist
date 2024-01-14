@@ -55,6 +55,34 @@ $(".buscar_reniec").keyup(function(){
     }
 });
 
+$("#correo_usuario").keyup(function(){
+    correo = $("#correo_usuario").val()
+    VerificarCorreoRepetido(correo)
+});
+
+function VerificarCorreoRepetido(correo){
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Usuarios/verificarCorreoRepetido',
+        data:{correo:correo},
+        success:function(response){
+            if(response != false){
+                $("#correo_usuario").val('')
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Este correo ya esta registrado",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+}
+
 function consultaReniec(dni){
     $.ajax({
         type:"POST",
@@ -125,7 +153,6 @@ function ListarUsuarios(){
         success:function(response){
             /* console.log("registrar sede : ", response); */
             for (let i = 0; i < response.length; i++) {
-                console.log(i); 
                 html = '<div class="col-sm-6 col-md-3 lalala"><br>';
                 html += '<div class="card rounded-0 text-center">'; 
                 html += '<div class="card-body">';

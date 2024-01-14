@@ -21,7 +21,11 @@ class Pacientes
 
     public function index()
     {
-        $pacientes = $this->model->TodosPacientes();
+        if($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null){
+            $pacientes = $this->model->PacientesAsignados($idUsuario = $_SESSION['id_session']);
+        }else{
+            $pacientes = $this->model->TodosPacientes();
+        }
         View::render(['pacientes/index'], ['title' => 'Pacientes | Dentist', 'pacientes' => $pacientes]);
     }
 

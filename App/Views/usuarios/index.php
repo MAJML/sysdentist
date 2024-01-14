@@ -92,7 +92,7 @@
                     </div>
                     <div class="col-6">
                         <label for="">Correo Electronico:</label>
-                        <input class="form-control border border-info" type="text" name="correo" id="correo" required>
+                        <input class="form-control border border-info" type="text" name="correo" id="correo_usuario" required>
                     </div>
 <!--                     <div class="col-6">
                         <label for="">Usuario:</label>
@@ -115,7 +115,7 @@
                         <select class="form-control border border-info" name="sede" id="sede" required>
                             <option hidden>Seleccionar Sede</option>
                             <?php foreach ($sedes as $key => $value): ?>
-                                <option value=""><?=$value->nombre.' | '.$value->direccion?></option>
+                                <option value="<?=$value->nombre.' | '.$value->direccion?>"><?=$value->nombre.' | '.$value->direccion?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -443,3 +443,4 @@
     </div>
 </footer>
 <script src="<?=$baseUrl?>js/usuarios/index.js"></script>
+<script> $("#dni").attr('disabled', false)</script>

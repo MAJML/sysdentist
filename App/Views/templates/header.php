@@ -190,15 +190,15 @@
                   <div class="col-12 col-sm-12 col-md-4 col-lg-7 col-xl-7 text-center">
                      <div class="dropdown">
                         <a style="color: white;" href="#!" class="nav-link btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           &nbsp;&nbsp;Marianela Rodriguez Wang&nbsp;<img src="<?=$baseUrl?>img/cir.png" width="10px" alt="">
+                           &nbsp;&nbsp;<?=$_SESSION['nombre_comercial']?>&nbsp;<img src="<?=$baseUrl?>img/cir.png" width="10px" alt="">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" style="position: absolute">
                            <div class="container text-center">
                               <span><img src="<?=$baseUrl?>img/logofondoblanco.png" width="120"></span><br>
-                              <span class="">Clínica Bellavistass | La Victoria</span><hr>
+                              <span class=""><?=$_SESSION['nombre_comercial']?></span><hr>
                            </div>
-                           <a class="dropdown-item text-center" href="<?=$baseUrl?>usuarios">USUARIOS</a>
-                           <a class="dropdown-item text-center" href="<?=$baseUrl?>sedes">SEDES</a>
+                           <a class="dropdown-item text-center" href="<?=$baseUrl?>usuarios" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>USUARIOS</a>
+                           <a class="dropdown-item text-center" href="<?=$baseUrl?>sedes" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>SEDES</a>
                            <a class="text-center dropdown-item" style="color: red" href="<?=$baseUrl?>Home/cerrarSesion">CERRAR SESIÓN</a>
                         </div>
                      </div>
@@ -280,8 +280,8 @@
                         <span><img src="<?=$baseUrl?>img/logofondoblanco.png" width="120"></span><br>
                         <span class=""><?=$_SESSION['nombre_comercial']?></span><hr>
                      </div>
-                     <a class="dropdown-item text-center" href="<?=$baseUrl?>usuarios">USUARIOS</a>
-                     <a class="dropdown-item text-center" href="<?=$baseUrl?>sedes">SEDES</a>
+                     <a class="dropdown-item text-center" href="<?=$baseUrl?>usuarios" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>USUARIOS</a>
+                     <a class="dropdown-item text-center" href="<?=$baseUrl?>sedes" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>SEDES</a>
                      <a class="text-center dropdown-item" style="color: red" href="<?=$baseUrl?>Home/cerrarSesion"><b>CERRAR SESIÓN</b></a>
                   </div>
                </div>

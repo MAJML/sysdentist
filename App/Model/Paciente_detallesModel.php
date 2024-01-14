@@ -36,4 +36,28 @@ class Paciente_detallesModel extends Model
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function centro($centro)
+    {
+        $query = $this->db->prepare("SELECT * FROM empresa WHERE tipo_negocio = '".$centro."'");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function centroUsuarios($idCentro)
+    {
+        $query = $this->db->prepare("SELECT * FROM usuarios WHERE id_empresa = '".$idCentro."'");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function reasignarPaciente($idUsuario, $idPaciente)
+    {
+        $query = $this->db->prepare('UPDATE pacientes SET id_usuario= '.$idUsuario.' WHERE id="'.$idPaciente.'"');
+        if($query->execute()){
+            return "ok";
+        }else{
+            return "error";          
+        }
+    }
 }

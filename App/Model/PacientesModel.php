@@ -66,7 +66,39 @@ class PacientesModel extends Model
 
     public function TodosPacientes()
     {
-        $query = $this->db->prepare("SELECT * FROM pacientes");
+        $query = $this->db->prepare("SELECT 
+        PC.id,
+        PC.id_usuario,
+        PC.dni,
+        PC.nombres,
+        PC.apellidos,
+        PC.codigo_paciente,
+        PC.fecha_nacimiento,
+        US.nombre as 'nombre_usuario',
+        US.apellido as 'apellido_usuario',
+        US.especialidad as 'especialidad_usuario'
+        FROM pacientes PC
+        LEFT JOIN usuarios US on US.id=PC.id_usuario");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function PacientesAsignados($idUsuario)
+    {
+        $query = $this->db->prepare("SELECT 
+        PC.id,
+        PC.id_usuario,
+        PC.dni,
+        PC.nombres,
+        PC.apellidos,
+        PC.codigo_paciente,
+        PC.fecha_nacimiento,
+        US.nombre as 'nombre_usuario',
+        US.apellido as 'apellido_usuario',
+        US.especialidad as 'especialidad_usuario'
+        FROM pacientes PC
+        LEFT JOIN usuarios US on US.id=PC.id_usuario
+        WHERE PC.id_usuario = $idUsuario");
         $query->execute();
         return $query->fetchAll();
     }

@@ -197,7 +197,7 @@
                                 <label for="">TIPO DE NEGOCIO:</label>
                                 <select name="tipo_negocio" class="form-control border-danger" id="" required>
                                     <option value="" hidden>Seleccionar Tipo</option>
-                                    <option value="Centro Radiologica">Centro Radiologico</option>
+                                    <option value="Centro Radiologico">Centro Radiologico</option>
                                     <option value="Odontólogo Particular">Odontólogo Particular</option>
                                     <option value="Clinica Privada">Clinica Privada</option>
                                 <div class="form-check">

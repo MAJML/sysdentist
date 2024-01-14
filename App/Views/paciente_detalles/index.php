@@ -11517,7 +11517,16 @@ table.inputs td {
             <div class="cece modal-dialog ref modal-xl">
                 <div class="modal-content" style="background-color:#ffffff;">
                     <div class="row text-center">
-                        <div class="col-10 col-sm-10 col-md-11 col-lg-11 col-xl-11 p-3">
+                        <div class="col-1">
+                            <a href="" class="p-3 text-dark fs-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 p-3">
                             <h5 class="card-title text-center"><?=$paciente->nombres.' '.$paciente->apellidos?></h5>
                             <span class="card-subtitle text-center mb-2" style="color: red;"><b><?=$paciente->codigo_paciente?></b></span>
                         </div>
@@ -11528,7 +11537,6 @@ table.inputs td {
                         </div>
                     </div>
                     <div class="row cece" style="font-family: 'Quicksand', sans-serif;">
-
                         <div class="col-12" id="doctores">
                             <div class="row">
                                 <div class="col-12 todo1">
@@ -11536,18 +11544,17 @@ table.inputs td {
                                         <div class="col-12 text-center">
                                             <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar</b></span>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro1" nombre="Centro Radiologico">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro1" id="tipodecentro1" nombre="Centro Radiologico">
                                             <div class="card border border-info mb-2" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
                                                         <img src="<?=$baseUrl?>img/dental.png" width="45" alt=""><br>
-                                                        <span style="font-size: 15px;"><b>Centros
-                                                                Radiologícos</b></span>
+                                                        <span style="font-size: 15px;"><b>Centros Radiologícos</b></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro2" nombre="Odontólogo Particular">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro2" id="tipodecentro2" nombre="Odontólogo Particular">
                                             <div class="card border border-info" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11558,7 +11565,7 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro3" name="Clinica Privada">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro3" id="tipodecentro3" nombre="Clinica Privada">
                                             <div class="card border border-info" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11568,7 +11575,8 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro4">
+
+                                        <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro4" id="tipodecentro4">
                                             <div class="card border border-info" disabled id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11579,7 +11587,7 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro5">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro5" id="tipodecentro5">
                                             <div class="card border border-info" disabled id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11589,7 +11597,7 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1" id="tipodecentro6">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro6" id="tipodecentro6">
                                             <div class="card border border-info" disabled id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11599,44 +11607,27 @@ table.inputs td {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
+
                                     </div>
                                 </div>
                                 <div class="col-12 todo2">
+
                                     <div class="row" style="padding: 0px 0px 200px 0px;" id="centro">
                                         <div class="col-12 text-center"><br>
-                                            <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar Centro
-                                                    Radiologíco</b></span>
+                                            <span style="color: #ABB2B9; font-size: 25px;" id="texto_centro"><b>Seleccionar Centro Radiologíco</b></span>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 p-1"
-                                            id="busquedaHospital">
-                                            <input class="form-control rounded-pill" type="search"
-                                                placeholder="Buscar Centro">
+                                        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 p-1" id="busquedaHospital">
+                                            <input class="form-control rounded-pill" type="search" placeholder="Buscar Centro">
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select"
-                                            id="centro1">
-                                            <div class="card border border-info" id="doc">
-                                                <div class="card-body">
-                                                    <div class="text-center">
-                                                        <img src="<?=$baseUrl?>img/dental.png" width="45" alt=""><br>
-                                                        <span style="font-size: 16px;">Caleidox S.A.C. </span>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                        <div class="col-md-12 d-flex flex-wrap centros_radiologicos" id="">
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select"
-                                            id="centro2">
-                                            <div class="card border border-info" id="doc">
-                                                <div class="card-body">
-                                                    <div class="text-center">
-                                                        <img src="<?=$baseUrl?>img/dental.png" width="45" alt=""><br>
-                                                        <span style="font-size: 16px;">Ceramax </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><br><br><br><br>
+
+
                                     </div>
-                                    <div class="row" style="padding: 0px 0px 200px 0px;" id="odontologo">
+
+                                    <!-- <div class="row" style="padding: 0px 0px 200px 0px;" id="odontologo">
                                         <div class="col-12 text-center"><br>
                                             <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar Odontólogo
                                                     Particular</b></span>
@@ -11669,6 +11660,7 @@ table.inputs td {
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row" style="padding: 0px 0px 200px 0px;" id="clinicaprivada">
                                         <div class="col-12 text-center"><br>
                                             <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar Clínica
@@ -11702,6 +11694,7 @@ table.inputs td {
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row" style="padding: 0px 0px 200px 0px;" id="Hospital">
                                         <div class="col-12 text-center"><br>
                                             <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar Hospital
@@ -11736,6 +11729,7 @@ table.inputs td {
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row" style="padding: 0px 0px 200px 0px;" id="externos">
                                         <div class="col-12 text-center"><br>
                                             <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar Centro
@@ -11769,6 +11763,7 @@ table.inputs td {
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row" style="padding: 0px 0px 200px 0px;" id="universidad">
                                         <div class="col-12 text-center"><br>
                                             <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar
@@ -11803,9 +11798,9 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div class="col-12 todo3">
+                                <!-- <div class="col-12 todo3">
                                     <div class="row sede">
                                         <div class="col-12 text-center"><br>
                                             <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar
@@ -11891,7 +11886,7 @@ table.inputs td {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-12 todo4">
                                     <div class="row medico">
                                         <div class="col-12 text-center"><br>
@@ -14042,12 +14037,17 @@ table.inputs td {
             $("#odontologo,#clinicaprivada,#Hospital,#externos,#universidad,.tipodecentroprincipal").hide()
         })
         $("#tipodecentro2").click(function() {
-            $("#odontologo").show()
-            $("#centro,#Hospital,#externos,#universidad,.tipodecentroprincipal,#clinicaprivada").hide()
+            $("#centro").show()
+            $("#odontologo,#clinicaprivada,#Hospital,#externos,#universidad,.tipodecentroprincipal").hide()
+            /* $("#odontologo").show()
+            $("#centro,#Hospital,#externos,#universidad,.tipodecentroprincipal,#clinicaprivada").hide() */
         })
         $("#tipodecentro3").click(function() {
-            $(".todo,#clinicaprivada ").show()
-            $("#centro,#odontologo,#Hospital,#externos,#universidad,.tipodecentroprincipal").hide()
+            $("#centro").show()
+            $("#odontologo,#clinicaprivada,#Hospital,#externos,#universidad,.tipodecentroprincipal").hide()
+
+            /* $(".todo,#clinicaprivada ").show()
+            $("#centro,#odontologo,#Hospital,#externos,#universidad,.tipodecentroprincipal").hide() */
         })
         $("#tipodecentro4").click(function() {
             $(".todo,#Hospital").show()

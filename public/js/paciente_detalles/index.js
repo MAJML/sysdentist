@@ -134,22 +134,177 @@ for (let index = 0; index < $('.pacientesArchivos').length; index++) {
     });
 }
 
+$(".tipodecentro1").click(function(){
+    var centro = $(".tipodecentro1").attr('nombre')
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Paciente_detalles/centro',
+        data:{centro:centro},
+        beforeSend: function() {
+            /* $(".centros_radiologicos").remove() */
+        },
+        success:function(response){
+            /* console.log("data centro : ",response); */
+            for (let i = 0; i < response.length; i++) {
+                html = '<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
+                html += '<div class="card border border-info" id="">';
+                html += '<div class="card-body">';
+                html += '<div class="text-center">';
+                html += '<img src="'+baseurl+'img/dental.png" width="45" alt=""><br>';
+                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                $(".centros_radiologicos").append(html);
+            }
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+}); 
 
-function eliminarSelectImagen(cantidadCardRadiografia)
-{
+$(".tipodecentro2").click(function(){
+    var centro = $(".tipodecentro2").attr('nombre')
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Paciente_detalles/centro',
+        data:{centro:centro},
+        beforeSend: function() {
+            /* $(".centros_radiologicos").remove() */
+        },
+        success:function(response){
+            /* console.log("data centro : ",response); */
+            for (let i = 0; i < response.length; i++) {
+                html = '<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
+                html += '<div class="card border border-info" id="">';
+                html += '<div class="card-body">';
+                html += '<div class="text-center">';
+                html += '<img src="'+baseurl+'img/dental.png" width="45" alt=""><br>';
+                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                $(".centros_radiologicos").append(html);
+            }
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+}); 
+
+$(".tipodecentro3").click(function(){
+    var centro = $(".tipodecentro3").attr('nombre')
+    $("#texto_centro").html('Seleccione Clinica Privada')
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Paciente_detalles/centro',
+        data:{centro:centro},
+        beforeSend: function() {
+            /* $(".centros_radiologicos").remove() */
+        },
+        success:function(response){
+            /* console.log("data centro : ",response); */
+            for (let i = 0; i < response.length; i++) {
+                html = '<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
+                html += '<div class="card border border-info" id="">';
+                html += '<div class="card-body">';
+                html += '<div class="text-center">';
+                html += '<img src="'+baseurl+'img/dental.png" width="45" alt=""><br>';
+                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                $(".centros_radiologicos").append(html);
+            }
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+}); 
+
+function centroUsuarios(idCentro){
+    $("#busquedaHospital").hide()
+    $(".centros_radiologicos div").remove()
+    $("#texto_centro").html('Seleccione el Doctor')
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Paciente_detalles/centroUsuarios',
+        data:{idCentro:idCentro},
+        success:function(response){
+            console.log("data centroUsuarios : ",response);
+            if(response.length > 0){
+                for (let i = 0; i < response.length; i++) {
+                    html = '<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="reasignarPaciente('+response[i]['id']+')">';
+                    html += '<div class="card border border-info" id="">';
+                    html += '<div class="card-body">';
+                    html += '<div class="text-center">';
+                    html += '<img src="'+baseurl+'img/doctor.png"" width="45" alt=""><br>';
+                    html += '<span style="font-size: 16px;">'+response[i]['nombre']+' '+response[i]['apellido']+' || '+response[i]['sede']+'</span><br>';
+                    html += '<span><b>Especialidad : </b>'+response[i]['especialidad']+'</span>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    $(".centros_radiologicos").append(html);
+                }
+            }else{
+                $("#texto_centro").html('No hay ningun Doctor registrado')
+            }
+            
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+
+}
+
+function reasignarPaciente(idUsuario) {
+    Swal.fire({
+        title: "¿Esta seguro de reasignar al paciente?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, reasignar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type:"POST",
+                dataType:"json",
+                url: baseurl+'Paciente_detalles/reasignarPaciente',
+                data:{idUsuario:idUsuario, idPaciente:idPaciente},
+                success:function(response){
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Paciente Reasignado",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    window.location.href = baseurl+'Paciente_detalles'+ "?token=" + idPaciente;
+                },error:function(){
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Error del sistema, Intentelo m,as tarde",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
+        }
+      });
+
+}
+
+function eliminarSelectImagen(cantidadCardRadiografia){
     $('#'+cantidadCardRadiografia).remove()
-/*     var indice = arraySelectAlumno.indexOf(idAlumno);
-    arraySelectAlumno.splice(indice, 1);   */
-    /* console.log("esto es el array : ",arraySelectAlumno) */
-/*     var nrows = 0;
-    $("#lista_alumno_agre tr").each(function() {
-        nrows++;
-    })
-    if(nrows == 0){
-        $("#btn_agregar_potulantes").attr('hidden', true)
-    }else{
-        $("#btn_agregar_potulantes").attr('hidden', false)
-    } */
-
 }
 

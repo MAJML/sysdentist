@@ -43,7 +43,7 @@ class Usuarios
             'dni'               => $dni,
             'nombre'            => $_POST['nombre'],    
             'apellido'          => $_POST['apellido'],
-            'password'          => $_POST['password'],
+            'password'          => password_hash($_POST['password'], PASSWORD_DEFAULT),
             'telefono_movil'    => $_POST['telefono_movil'],
             'correo'            => $_POST['correo'],
             'sede'              => $_POST['sede'],
@@ -92,6 +92,12 @@ class Usuarios
     {
         $dni = $_POST['dni'];
         $respuesta = $this->model->validarUsuarioRepetido($dni);
+        View::renderJson($respuesta);
+    }
+
+    public function verificarCorreoRepetido(){
+        $correo = $_POST['correo'];
+        $respuesta = $this->model->verificarCorreoRepetido($correo);
         View::renderJson($respuesta);
     }
 }

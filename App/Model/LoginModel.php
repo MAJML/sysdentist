@@ -24,6 +24,13 @@ class LoginModel extends Model
         return $query->fetch();
     }
 
+    public function comparandoUsuarios($email)
+    {
+        $query = $this->db->prepare("SELECT id, id_empresa, dni, nombre, apellido, correo, password FROM usuarios WHERE correo = '".$email."'");
+        $query->execute();
+        return $query->fetch();
+    }
+
     public function consultarRucRepetido($ruc)
     {
         $query = $this->db->prepare("SELECT * FROM empresa WHERE ruc = '".$ruc."'");

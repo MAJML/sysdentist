@@ -32,11 +32,23 @@ class Home
         $email = $_POST['email'];
         $password = $_POST['password'];
         $respuesta  = $this->model->comparandoData($email);
+        $usuarios = $this->model->comparandoUsuarios($email);
         if($respuesta){
             if($email == $respuesta->correo && password_verify($password, $respuesta->password)){
                 $_SESSION['id_session'] = $respuesta->id;
                 $_SESSION['nombre_comercial'] = $respuesta->nombre_comercial;
                 $_SESSION['correo'] = $respuesta->correo;
+                $_SESSION['id_empresa'] = '';
+                View::renderJson('entro');
+            }else{
+                View::renderJson('Credenciales Incorrectas');
+            }
+        }else if($usuarios){
+            if($email == $usuarios->correo && password_verify($password, $usuarios->password)){
+                $_SESSION['id_session'] = $usuarios->id;
+                $_SESSION['nombre_comercial'] = $usuarios->nombre.' '.$usuarios->apellido;
+                $_SESSION['correo'] = $usuarios->correo;
+                $_SESSION['id_empresa'] = $usuarios->id_empresa;
                 View::renderJson('entro');
             }else{
                 View::renderJson('Credenciales Incorrectas');

@@ -38,4 +38,11 @@ class UsuariosModel extends Model
         $query->execute();
         return $query->fetch();
     }
+
+    public function verificarCorreoRepetido($correo)
+    {
+        $query = $this->db->prepare("SELECT * FROM usuarios WHERE correo = '".$correo."'");
+        $query->execute();
+        return $query->fetch();
+    }
 }

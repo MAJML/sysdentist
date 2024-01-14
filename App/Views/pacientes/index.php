@@ -22,11 +22,10 @@
                 <div class="row" style="font-size: 14px;">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-9">
                         <span class=""
-                            style="color: #444c64; font-size: 30px;font-family: 'Montserrat', sans-serif;"><b>Directorio
-                                de Pacientes</b>
+                            style="color: #444c64; font-size: 30px;font-family: 'Montserrat', sans-serif;"><b>Directorio de Pacientes</b>
                     </div>
                     <!---------------------Boton del modal----------------------------->
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 text-right">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 text-right" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>
                         <button type="button" data-toggle="modal" data-target=".bd"
                             class="btn btn-sm btn-success text-white" id="ocultar"><img width="18px"
                                 src="<?=$baseUrl?>img/mas.png" alt="">&nbsp;AGREGAR PACIENTE NUEVO</button></span>
@@ -44,6 +43,7 @@
                                             <hr>
                                             <p><b>DNI: </b> <?=$value->dni?></p>
                                             <p><b>NOMBRES: </b> <?=$value->nombres.' '.$value->apellidos?></p>
+                                            <p><b>DOCTOR: </b><?= ($value->id_usuario != '' || $value->id_usuario != null) ? $value->nombre_usuario.' '.$value->apellido_usuario:'NO ASIGNADO' ?></p>
                                             <div class="d-flex justify-content-end">
                                                 <a href="<?=$baseUrl?>Paciente_detalles?token=<?=$value->id?>" class="btn btn-primary">DETALLE</a>
                                             </div>

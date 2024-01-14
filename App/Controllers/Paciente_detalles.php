@@ -64,6 +64,27 @@ class Paciente_detalles
         } */
 
         View::renderJson($respuesta);
+    }
 
+    public function centro()
+    {
+        $centro = $_POST['centro'];
+        $respuesta = $this->model->centro($centro);
+        View::renderJson($respuesta);
+    }
+
+    public function centroUsuarios()
+    {
+        $idCentro = $_POST['idCentro'];
+        $respuesta = $this->model->centroUsuarios($idCentro);
+        View::renderJson($respuesta);
+    }
+
+    public function reasignarPaciente()
+    {
+        $idUsuario = $_POST['idUsuario'];
+        $idPaciente = $_POST['idPaciente'];
+        $respuesta = $this->model->reasignarPaciente($idUsuario, $idPaciente);
+        View::renderJson($respuesta);
     }
 }
