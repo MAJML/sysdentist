@@ -26,7 +26,19 @@ class LoginModel extends Model
 
     public function comparandoUsuarios($email)
     {
-        $query = $this->db->prepare("SELECT id, id_empresa, dni, nombre, apellido, correo, password FROM usuarios WHERE correo = '".$email."'");
+        $query = $this->db->prepare("SELECT 
+        US.id, 
+        US.id_empresa, 
+        US.dni, 
+        US.nombre, 
+        US.apellido, 
+        US.correo, 
+        US.password ,
+        EM.tipo_negocio,
+        EM.tipo_negocio
+        FROM usuarios US 
+        INNER JOIN empresa EM on EM.id=US.id_empresa
+        WHERE US.correo = '".$email."'");
         $query->execute();
         return $query->fetch();
     }

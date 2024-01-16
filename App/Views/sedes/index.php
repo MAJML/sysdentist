@@ -113,7 +113,7 @@
                 </tr> -->
             </tbody>
         </table><hr>
-        <div class="">
+        <!-- <div class="">
             <div class="text-left">
                 <span style="font-size: 40px;color: black;">Encabezado de Informe</span><br>
             </div>
@@ -184,7 +184,7 @@
                     </div>
                 </div>
             </div>
-        </div><br>
+        </div><br> -->
     </div>
 
     <!-- Modal -->

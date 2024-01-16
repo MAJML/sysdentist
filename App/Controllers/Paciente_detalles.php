@@ -28,8 +28,8 @@ class Paciente_detalles
         if($results['token'] != null || $results['token'] != ''){
             $paciente = $this->model->DataPaciente($id=$results['token']);
             $DataSubida = $this->model->DataSubidaPaciente($id=$results['token']);
-            
-            View::render(['paciente_detalles/index'], ['title' => 'Pacientes | Detalles | Dentist', 'paciente' => $paciente, 'pacienteArchivos' => $DataSubida]);
+            $DataFileArchivos = $this->model->DataFileArchivosSubidos($id=$results['token']);
+            View::render(['paciente_detalles/index'], ['title' => 'Pacientes | Detalles | Dentist', 'paciente' => $paciente, 'pacienteArchivos' => $DataSubida, 'pacienteArchivosFile' => $DataFileArchivos]);
         }else{
             header('Location:'.Util::baseUrl().'pacientes');
         }
@@ -66,10 +66,50 @@ class Paciente_detalles
         View::renderJson($respuesta);
     }
 
+    public function SubirArchivos()
+    {
+        ini_set('upload_max_filesize', '1000M');
+        ini_set('post_max_size', '1000M');
+        $id_paciente = $_POST["id_paciente"];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $uploadsDirectory = './img/archivos/'.$id_paciente.'/'; 
+            if (!is_dir($uploadsDirectory)) {
+                mkdir($uploadsDirectory, 0777);
+            }   
+            if (!empty($_FILES['archivos']['name'][0])) {
+                foreach ($_FILES['archivos']['name'] as $key => $name) {
+                    $tmpFilePath = $_FILES['archivos']['tmp_name'][$key];
+                    // Verificar si el archivo es un .zip o .rar
+                    $allowedExtensions = ['zip', 'rar'];
+                    $fileExtension = pathinfo($name, PATHINFO_EXTENSION);
+                    if (in_array($fileExtension, $allowedExtensions)) {
+                        $newFilePath = $uploadsDirectory . $name;
+                        // Mover el archivo al directorio de destino
+                        move_uploaded_file($tmpFilePath, $newFilePath);
+                        $respuesta = $this->model->GuardarArchivoComprimido($id_paciente, $newFilePath);
+                        View::renderJson('guardado');
+                        /* echo "Archivo '$name' subido correctamente.<br>"; */
+                    } else {
+                        View::renderJson('error_tipe_archivo');
+                        /* echo "Error: Archivo '$name' no es un .zip o .rar.<br>"; */
+                    }
+                }
+            } else {
+                View::renderJson('error');
+                /* echo "Error: No se seleccionaron archivos para subir.<br>"; */
+            }
+        }
+    }
+
     public function centro()
     {
         $centro = $_POST['centro'];
+        /* $contadorDoctor = $this->model->ContarDoctorCentro($centro); */
         $respuesta = $this->model->centro($centro);
+        /* $array = array(
+            'respuesta'         => $respuesta,
+            'contadorDoctor'    => $contadorDoctor
+        ); */
         View::renderJson($respuesta);
     }
 
@@ -85,6 +125,14 @@ class Paciente_detalles
         $idUsuario = $_POST['idUsuario'];
         $idPaciente = $_POST['idPaciente'];
         $respuesta = $this->model->reasignarPaciente($idUsuario, $idPaciente);
+        View::renderJson($respuesta);
+    }
+
+    public function enviarPacienteEmpresa()
+    {
+        $idPaciente = $_POST['idPaciente'];
+        $idCentro = $_POST['idCentro'];
+        $respuesta = $this->model->enviarPacienteEmpresa($idPaciente, $idCentro);
         View::renderJson($respuesta);
     }
 }

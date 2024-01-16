@@ -21,7 +21,10 @@ class Pacientes
 
     public function index()
     {
-        if($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null){
+        /* Si es usuario */
+        if($_SESSION['tipo_empresa'] == 'Centro Radiologico'){
+            $pacientes = $this->model->TodosPacientesTotales();
+        }else if($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null){
             $pacientes = $this->model->PacientesAsignados($idUsuario = $_SESSION['id_session']);
         }else{
             $pacientes = $this->model->TodosPacientes();
@@ -33,6 +36,7 @@ class Pacientes
     {
         $codigoPaciente = $_POST['nombres'][0].$_POST['apellidos'][0].'-'.$_POST['dni'];
         $data = array(
+            'empresa_padre'         => $_SESSION['empresa'],
             'dni'                   => $_POST['dni'],
             'nombres'               => $_POST['nombres'],        
             'apellidos'             => $_POST['apellidos'],
@@ -60,7 +64,25 @@ class Pacientes
 
     public function buscarReniec()
     {
-        $token = 'Bearer d482b352b7a8a0d3bdd22e81fdc5dadf5369fe7807aa2a3f2cba4fd0e57cc063';
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://apiperu.dev/api/dni/".$_POST['dni']."?api_token=3fccc8c48f59ff6ee58afff70a360af5fdcc214f571128165cdc050da28f2770",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_SSL_VERIFYPEER => false
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            $persona = json_decode($response);
+            View::renderJson($persona);
+        }
+
+        /* $token = 'Bearer d482b352b7a8a0d3bdd22e81fdc5dadf5369fe7807aa2a3f2cba4fd0e57cc063';
         $dni = $_POST['dni'];
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -80,7 +102,7 @@ class Pacientes
         $response = curl_exec($curl);
         curl_close($curl);
         $persona = json_decode($response);
-        View::renderJson($persona);
+        View::renderJson($persona); */
     }
 
     public function buscarPacienteCreado()

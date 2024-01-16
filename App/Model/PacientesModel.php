@@ -9,6 +9,7 @@ class PacientesModel extends Model
     public function registrarPaciente($data)
     {
         $query = $this->db->prepare('INSERT INTO pacientes(
+        id_empresa_padre,
         dni, 
         nombres, 
         apellidos, 
@@ -30,6 +31,7 @@ class PacientesModel extends Model
         dist_proc,
         observax)          
         VALUES (
+            "'.$data["empresa_padre"].'", 
             "'.$data["dni"].'", 
             "'.$data["nombres"].'", 
             "'.$data["apellidos"].'", 
@@ -76,16 +78,44 @@ class PacientesModel extends Model
         PC.fecha_nacimiento,
         US.nombre as 'nombre_usuario',
         US.apellido as 'apellido_usuario',
-        US.especialidad as 'especialidad_usuario'
+        US.especialidad as 'especialidad_usuario',
+        EM.razon_social,
+        EM.nombre_comercial,
+        EM.tipo_negocio
         FROM pacientes PC
-        LEFT JOIN usuarios US on US.id=PC.id_usuario");
+        LEFT JOIN usuarios US on US.id=PC.id_usuario
+        LEFT JOIN empresa EM on EM.id=PC.id_empresa_padre
+        WHERE PC.id_empresa_padre='".$_SESSION['empresa']."'");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function TodosPacientesTotales()
+    {
+        $query = $this->db->prepare("SELECT 
+        PC.id,
+        PC.id_usuario,
+        PC.dni,
+        PC.nombres,
+        PC.apellidos,
+        PC.codigo_paciente,
+        PC.fecha_nacimiento,
+        US.nombre as 'nombre_usuario',
+        US.apellido as 'apellido_usuario',
+        US.especialidad as 'especialidad_usuario',
+        EM.razon_social,
+        EM.nombre_comercial,
+        EM.tipo_negocio
+        FROM pacientes PC
+        LEFT JOIN usuarios US on US.id=PC.id_usuario
+        LEFT JOIN empresa EM on EM.id=PC.id_empresa_padre");
         $query->execute();
         return $query->fetchAll();
     }
 
     public function PacientesAsignados($idUsuario)
     {
-        $query = $this->db->prepare("SELECT 
+        /* $query = $this->db->prepare("SELECT 
         PC.id,
         PC.id_usuario,
         PC.dni,
@@ -98,7 +128,25 @@ class PacientesModel extends Model
         US.especialidad as 'especialidad_usuario'
         FROM pacientes PC
         LEFT JOIN usuarios US on US.id=PC.id_usuario
-        WHERE PC.id_usuario = $idUsuario");
+        WHERE PC.id_usuario = $idUsuario"); */
+        $query = $this->db->prepare("SELECT 
+        PC.id,
+        PC.id_usuario,
+        PC.dni,
+        PC.nombres,
+        PC.apellidos,
+        PC.codigo_paciente,
+        PC.fecha_nacimiento,
+        US.nombre as 'nombre_usuario',
+        US.apellido as 'apellido_usuario',
+        US.especialidad as 'especialidad_usuario',
+        EM.razon_social,
+        EM.nombre_comercial,
+        EM.tipo_negocio
+        FROM pacientes PC
+        LEFT JOIN usuarios US on US.id=PC.id_usuario
+        LEFT JOIN empresa EM on EM.id=PC.id_empresa_padre
+        WHERE PC.id_empresa_padre = '".$_SESSION['empresa']."'");
         $query->execute();
         return $query->fetchAll();
     }

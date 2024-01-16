@@ -65,7 +65,24 @@ class Usuarios
 
     public function buscarReniec()
     {
-        $token = 'Bearer d482b352b7a8a0d3bdd22e81fdc5dadf5369fe7807aa2a3f2cba4fd0e57cc063';
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://apiperu.dev/api/dni/".$_POST['dni']."?api_token=3fccc8c48f59ff6ee58afff70a360af5fdcc214f571128165cdc050da28f2770",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_SSL_VERIFYPEER => false
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            $persona = json_decode($response);
+            View::renderJson($persona);
+        }
+
+        /* $token = 'Bearer d482b352b7a8a0d3bdd22e81fdc5dadf5369fe7807aa2a3f2cba4fd0e57cc063';
         $dni = $_POST['dni'];
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -85,7 +102,7 @@ class Usuarios
         $response = curl_exec($curl);
         curl_close($curl);
         $persona = json_decode($response);
-        View::renderJson($persona);
+        View::renderJson($persona); */
     }
 
     public function validarUsuarioRepetido()

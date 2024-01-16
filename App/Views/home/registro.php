@@ -201,7 +201,7 @@
                                     <option value="Odontólogo Particular">Odontólogo Particular</option>
                                     <option value="Clinica Privada">Clinica Privada</option>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
                                     <label class="form-check-label" for="defaultCheck1">Acepto <a href="" data-toggle="modal" data-target="#exampleModalScrollable">terminos y condiciones</a></label>
                                 </div><br>
                                 <button type="submit" style="background-color: #00E1CD;" class="btn btn-sm btn-block">ACEPTAR</button>

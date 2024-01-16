@@ -9,7 +9,7 @@ class UsuariosModel extends Model
 
     public function listarUsuarios()
     {
-        $query = $this->db->prepare("SELECT * FROM usuarios");
+        $query = $this->db->prepare("SELECT * FROM usuarios WHERE id_empresa='".$_SESSION['id_session']."'");
         $query->execute();
         return $query->fetchAll();
     }
@@ -27,7 +27,7 @@ class UsuariosModel extends Model
 
     public function sedes()
     {
-        $query = $this->db->prepare("SELECT * FROM sedes");
+        $query = $this->db->prepare("SELECT * FROM sedes WHERE id_empresa='".$_SESSION['empresa']."'");
         $query->execute();
         return $query->fetchAll();
     }

@@ -18,6 +18,30 @@ $("#btn_subir_imagen").click(function(){
         dataType:"json",
         url: baseurl+'Paciente_detalles/GuardarRadiografiaPaciente',
         data:{DataImagen:arrayDataImagen, DataTipoImagen:arrayDataTipoImagen, idPaciente:idPaciente},
+        beforeSend: function() {
+            let timerInterval;
+                Swal.fire({
+                title: "Cargando...",
+                html: "Se esta subiendo el archivo, por favor espere",
+                allowOutsideClick: false,
+                timerProgressBar: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+                }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        },
         success:function(response){
             console.log("resssssss : ",response);
             if(response == "ok"){
@@ -31,8 +55,113 @@ $("#btn_subir_imagen").click(function(){
     /* console.log(arrayDataImagen, arrayDataTipoImagen); */
 });
 
+if($("#input_archivo_file").val() == '' || $("#input_archivo_file").val() == null){
+    $(".btn_subir_file_ar").attr('disabled', true)
+}
+if($("#subir_imagen_radiografia").val() == "" || $("#subir_imagen_radiografia").val() == null){
+    $("#btn_subir_imagen").attr('disabled', true)
+}
+
+$(document).on('submit', "#form_subir_archivos_rar_zip", function(event){
+    event.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+        type: 'POST',
+        url: baseurl+'Paciente_detalles/SubirArchivos',
+        data: formData,
+        contentType: false,
+        processData: false,
+        beforeSend: function() {
+            let timerInterval;
+                Swal.fire({
+                title: "Cargando...",
+                html: "Se esta subiendo el archivo, por favor espere",
+                allowOutsideClick: false,
+                timerProgressBar: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const timer = Swal.getPopup().querySelector("b");
+                    timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+                }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        },
+        success:function(response){
+            console.log(response);
+            if(response == 'guardado'){
+                $("#form_subir_archivos_rar_zip")[0].reset()
+                $('.contador_divs_file').remove()
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "¡Archivo subido al sistema!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                window.location.href = baseurl+'Paciente_detalles'+ "?token=" + idPaciente;
+            }else if(response == 'error_tipe_archivo'){
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "¡El archivo debe ser .rar o .zip!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else if(response == 'error'){
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "¡No seleccionaron ningun archivo!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+});
+
+$("#input_archivo_file").change(function(){
+    $(".btn_subir_file_ar").attr('disabled', false)
+    var fechaActual = new Date();
+    var formatoFecha = fechaActual.toLocaleDateString();
+    $(".content_archivos_file_d").append(`
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 contador_divs_file">
+                <div class="card shadow p-3 mb-5 bg-white rounded"><center><img src="${baseurl}img/archivo-rar.png" class="ruta_imagen_radiografia" width="80%">
+                    </center>
+                    <div class="card-body">
+                        <p class="text-muted text-center" style="font-size: 10px;"> 2_20190814121035.jpg</p>
+                        <div class="row">
+                            <div class="col-2 text-left">
+                                <a href="javascript:void(0);" onclick="eliminarSelectFile()"><img src="${baseurl}img/borrar.png" width="16px"
+                                        alt=""></a>
+                            </div>
+                            <div class="col-7 text-center">
+                                <span style="font-size: 13px;color:#C0392B;">${formatoFecha}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    `)
+    $("#cont_arrch_file").removeClass("content_archivos_file_d")
+});
+function eliminarSelectFile(){
+    $("#cont_arrch_file").addClass("content_archivos_file_d")
+    $('.contador_divs_file').remove()
+}
+
 
 $("#subir_imagen_radiografia").change(function(){
+    
     var fechaActual = new Date();
     var formatoFecha = fechaActual.toLocaleDateString();
     var cantidadCardRadiografia = $(".contador_divs_im").length+1
@@ -56,6 +185,7 @@ $("#subir_imagen_radiografia").change(function(){
                 timer: 1500
             });
     }else{
+        $("#btn_subir_imagen").attr('disabled', false)
         var datosImagen = new FileReader;
         datosImagen.readAsDataURL(imagen);
         $(datosImagen).on("load", function(event){
@@ -145,14 +275,15 @@ $(".tipodecentro1").click(function(){
             /* $(".centros_radiologicos").remove() */
         },
         success:function(response){
-            /* console.log("data centro : ",response); */
+            console.log("data centro : ",response);
             for (let i = 0; i < response.length; i++) {
                 html = '<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
                 html += '<div class="card border border-info" id="">';
                 html += '<div class="card-body">';
                 html += '<div class="text-center">';
                 html += '<img src="'+baseurl+'img/dental.png" width="45" alt=""><br>';
-                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span>';
+                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span><br>';
+                html += '<span style="font-size: 16px;"> hay '+response[i]['doctores']+' doctores</span>';
                 html += '</div>';
                 html += '</div>';
                 html += '</div>';
@@ -183,7 +314,8 @@ $(".tipodecentro2").click(function(){
                 html += '<div class="card-body">';
                 html += '<div class="text-center">';
                 html += '<img src="'+baseurl+'img/dental.png" width="45" alt=""><br>';
-                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span>';
+                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span><br>';
+                html += '<span style="font-size: 16px;"> hay '+response[i]['doctores']+' doctores</span>';
                 html += '</div>';
                 html += '</div>';
                 html += '</div>';
@@ -215,7 +347,8 @@ $(".tipodecentro3").click(function(){
                 html += '<div class="card-body">';
                 html += '<div class="text-center">';
                 html += '<img src="'+baseurl+'img/dental.png" width="45" alt=""><br>';
-                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span>';
+                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span><br>';
+                html += '<span style="font-size: 16px;"> hay '+response[i]['doctores']+' doctores</span>';
                 html += '</div>';
                 html += '</div>';
                 html += '</div>';
@@ -257,12 +390,48 @@ function centroUsuarios(idCentro){
             }else{
                 $("#texto_centro").html('No hay ningun Doctor registrado')
             }
-            
+            btnre = '<span class="btn btn-success w-50 mx-auto mt-5" onclick="enviarPacienteEmpresa('+idCentro+','+idPaciente+')">Reasignar a esta empresa</span><br><br><br>';
+            $(".centros_radiologicos").append(btnre)
         },error:function(){
             console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
         }
     });
 
+}
+
+function enviarPacienteEmpresa(idCentro, idPaciente){
+    /* console.log(idCentro+'xd xd '+idPaciente); */
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Paciente_detalles/enviarPacienteEmpresa',
+        data:{idPaciente:idPaciente, idCentro:idCentro},
+        beforeSend: function() {
+        },
+        success:function(response){
+            console.log("data enviarPacienteEmpresa : ",response);
+            if(response == 'ok'){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Paciente Reasignado",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                window.location.href = baseurl+'Paciente_detalles'+ "?token=" + idPaciente;
+            }else{
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Error del sistema, Intentelo m,as tarde",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
 }
 
 function reasignarPaciente(idUsuario) {

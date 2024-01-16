@@ -107,8 +107,8 @@
             }
    </style>
     <nav class="navbar navbar-expand-lg" style="background-color: #3c8dbc;">
-      <span class="navbar-brand" style="font-size: 20px;color: white;"><a class="text-decoration-none text-white" href="<?=$baseUrl?>pacientes"><img width="16px" src="<?=$baseUrl?>img/nav.png" alt="">&nbsp;<b>SysDentist</b></a></span>
-      <span class="agenda"><a style="color: white;" class="nav-link"  href="<?=$baseUrl?>agenda">AGENDA</a></span>
+      <span class="navbar-brand" style="font-size: 20px;color: white;"><a class="text-decoration-none text-white" href="<?=$baseUrl?>pacientes"><img width="16px" src="<?=$baseUrl?>img/nav.png" alt="">&nbsp;<b>Cedident</b></a></span>
+      <span class="agenda"><a style="color: white;" class="nav-link"  href="<?=$baseUrl?>agenda" hidden>AGENDA</a></span>
       <span class=""><a style="color: white;" class="nav-link"  href="<?=$baseUrl?>pacientes">PACIENTES</a></span>
       <div class="menu align-content-center">
          <button class="btn btn-default" data-toggle="dropdown"><span id="notification_count">1</span><img src="<?=$baseUrl?>img/nott.png" width="28px" alt=""></button>
@@ -172,7 +172,7 @@
             <li class="nav-item" id="navs">
                <div class="row text-center">
                   <div class="col-6 col-sm-3 col-md-2 col-lg-1 col-xl-1 text-center">
-                     <span class=""><a style="color: white;" class="nav-link"  href="agenda.php">AGENDA</a></span>
+                     <span class=""><a style="color: white;" class="nav-link"  href="agenda.php" hidden>AGENDA</a></span>
                   </div>
                   <div class="col-6 col-sm-3 col-md-2 col-lg-1 col-xl-1 text-center">
                      <span class=""><a style="color: white;" class="nav-link"  href="pacientes.php">PACIENTES</a></span>
@@ -196,6 +196,7 @@
                            <div class="container text-center">
                               <span><img src="<?=$baseUrl?>img/logofondoblanco.png" width="120"></span><br>
                               <span class=""><?=$_SESSION['nombre_comercial']?></span><hr>
+                              <p class="text-primary"><?=$_SESSION['tipo_negocio']?></p>
                            </div>
                            <a class="dropdown-item text-center" href="<?=$baseUrl?>usuarios" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>USUARIOS</a>
                            <a class="dropdown-item text-center" href="<?=$baseUrl?>sedes" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>SEDES</a>
@@ -279,6 +280,7 @@
                      <div class="container text-center">
                         <span><img src="<?=$baseUrl?>img/logofondoblanco.png" width="120"></span><br>
                         <span class=""><?=$_SESSION['nombre_comercial']?></span><hr>
+                        <p class="text-primary"><?=$_SESSION['tipo_negocio']?></p>
                      </div>
                      <a class="dropdown-item text-center" href="<?=$baseUrl?>usuarios" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>USUARIOS</a>
                      <a class="dropdown-item text-center" href="<?=$baseUrl?>sedes" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>SEDES</a>

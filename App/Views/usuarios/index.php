@@ -13,7 +13,7 @@
     <hr>
     <div class="row" id="content_usuarios_s">
 
-        <div class="col-sm-6 col-md-3"><br>
+        <!-- <div class="col-sm-6 col-md-3"><br>
             <div class="card rounded-0 text-center">
                 <div class="card-body">
                     <span><b>LOS OLIVOS</b></span>
@@ -33,7 +33,7 @@
                     </span>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- ----------------------------------------------------------------- -->
 
@@ -121,7 +121,7 @@
                     </div>
                     <div class="col-3">
                         <label for="">Colegiatura:</label>
-                        <input class="form-control border border-info" type="text" name="colegiatura" required>
+                        <input class="form-control border border-info" type="text" name="colegiatura">
                     </div>
                     <div class="col-3">
                         <label for="">Género:</label>
@@ -164,7 +164,7 @@
                         <label for="">Subir Foto de perfil:</label><br>
                         <div class="custom-file">
                             <!-- <input type="file" class="custom-file-input border border-info" id="customFileLang"> -->
-                            <input type="file" name="foto_perfil_usuario" id="customFileLang" required>
+                            <input type="file" name="foto_perfil_usuario" id="customFileLang">
                             <label class="custom-file-label border border-info" for="customFileLang">Seleccionar
                                 Archivo</label>
                         </div>

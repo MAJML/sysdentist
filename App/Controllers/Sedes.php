@@ -27,6 +27,7 @@ class Sedes
     public function registrarSede()
     {
         $data = array(
+            'id_empresa'        => $_SESSION['id_session'],
             'name_sede'         => $_POST['name_sede'],
             'direccion_sede'    => $_POST['direccion_sede'],
             'telefono_sede'     => $_POST['telefono_sede']

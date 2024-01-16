@@ -38,7 +38,10 @@ class Home
                 $_SESSION['id_session'] = $respuesta->id;
                 $_SESSION['nombre_comercial'] = $respuesta->nombre_comercial;
                 $_SESSION['correo'] = $respuesta->correo;
+                $_SESSION['tipo_negocio'] = $respuesta->tipo_negocio;
                 $_SESSION['id_empresa'] = '';
+                $_SESSION['empresa'] = $respuesta->id;
+                $_SESSION['tipo_empresa'] = $respuesta->tipo_negocio;
                 View::renderJson('entro');
             }else{
                 View::renderJson('Credenciales Incorrectas');
@@ -48,7 +51,10 @@ class Home
                 $_SESSION['id_session'] = $usuarios->id;
                 $_SESSION['nombre_comercial'] = $usuarios->nombre.' '.$usuarios->apellido;
                 $_SESSION['correo'] = $usuarios->correo;
+                $_SESSION['tipo_negocio'] = $usuarios->tipo_negocio;
                 $_SESSION['id_empresa'] = $usuarios->id_empresa;
+                $_SESSION['empresa'] = $usuarios->id_empresa;
+                $_SESSION['tipo_empresa'] = $usuarios->tipo_negocio;
                 View::renderJson('entro');
             }else{
                 View::renderJson('Credenciales Incorrectas');
@@ -74,27 +80,46 @@ class Home
 
     public function consultaSunat()
     {
-        $token = 'Bearer d482b352b7a8a0d3bdd22e81fdc5dadf5369fe7807aa2a3f2cba4fd0e57cc063';
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://apiperu.dev/api/ruc/".$_POST['ruc']."?api_token=3fccc8c48f59ff6ee58afff70a360af5fdcc214f571128165cdc050da28f2770",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_SSL_VERIFYPEER => false
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            /* echo $response; */
+            $persona = json_decode($response, true);
+            View::renderJson($persona);
+        }
+
+/*         $token = 'Bearer d482b352b7a8a0d3bdd22e81fdc5dadf5369fe7807aa2a3f2cba4fd0e57cc063';
         $ruc = $_POST['ruc'];
         $curl = curl_init();
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://consulta.api-peru.com/api/ruc/' . $ruc,
+        CURLOPT_URL => 'https://consulta.api-peru.com/api/ruc/'.$ruc,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 2,
+        CURLOPT_MAXREDIRS => 10,
         CURLOPT_TIMEOUT => 0,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'GET',
         CURLOPT_HTTPHEADER => array(
-            'Referer: https://apis.net.pe/consulta-dni-api',
-            'Authorization: Bearer ' . $token
+            "Authorization: $token",
+            "Content-Type: application/json"
         ),
         ));
         $response = curl_exec($curl);
         curl_close($curl);
-        $persona = json_decode($response);
-        View::renderJson($persona);
+        $persona = json_decode($response, true);
+        View::renderJson($response); */
     }
 
     public function cerrarSesion()

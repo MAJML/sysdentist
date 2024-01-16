@@ -37,7 +37,6 @@ $(document).on('submit', "#form_registrar_usuario", function(event){
     });
 });
 
-
 $("#tipo_documento_usuario").change(function(){
     tipo_document = $('#tipo_documento_usuario').val()
     if(tipo_document == 'DNI'){

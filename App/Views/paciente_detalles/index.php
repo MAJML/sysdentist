@@ -451,6 +451,12 @@ table.inputs td {
     background-color: #7FB3D5;
     border: 0px;
 }
+#cargando {
+    display: none;
+}
+#porcentaje {
+    font-weight: bold;
+}
 </style>
 </head>
 
@@ -463,7 +469,7 @@ table.inputs td {
             <a class="nav-item nav-link active" id="histo" data-toggle="tab" href="#historial" role="tab"
                 aria-controls="historial" aria-selected="true">Historial</a>
             <a class="nav-item nav-link" id="auxiliares" data-toggle="tab" href="#aux" role="tab" aria-controls="aux"
-                aria-selected="false">Examenes Auxiliares</a>
+                aria-selected="false" <?= ($_SESSION['tipo_empresa'] == 'Centro Radiologico')?'':'hidden' ?>>Examenes Auxiliares</a>
         </div>
         <div class="card">
             <div class="card-body">
@@ -483,7 +489,7 @@ table.inputs td {
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="archivoss" data-toggle="tab" href="#informes"
-                                                aria-selected="false">Archivos</a>
+                                                aria-selected="false">Tomografía</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content">
@@ -498,11 +504,11 @@ table.inputs td {
                                                             <div class="card-body text-center">
                                                                 <a href="javascript:void(0);" id="btnDescargarImagen<?=$key?>"><img src="<?=$baseUrl?>img/downloadimg.png"
                                                                         style="width:25px;"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <a href="#!" id="mostrar" data-toggle="modal"
+                                                                <a style="display:none;" href="#!" id="mostrar" data-toggle="modal"
                                                                     data-target=".informesdeimg"><img
                                                                         src="<?=$baseUrl?>img/escritor.png" width="25px"
                                                                         alt=""></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <a hidden href="#" data-toggle="popover" data-trigger="hover"
+                                                                <a style="display:none;" href="#" data-toggle="popover" data-trigger="hover"
                                                                     data-placement="top" title="<?=$value->created_at?>"
                                                                     data-content="Dr. Valentina Isabel Mendoza Sanchez H. Solidaridad | Los Olivos | 999999999"><img
                                                                         src="<?=$baseUrl?>img/archiv0.png"
@@ -514,69 +520,29 @@ table.inputs td {
                                             </div>
                                         </div>
                                         <div class="tab-pane p-3  fade" id="informes" aria-labelledby="archivoss">
-                                            <!-- <div class="row text-center">
+                                            <div class="row text-center">
+                                                <?php foreach ($pacienteArchivosFile as $key => $value): ?>
+                                                    <div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">
+                                                        <div class="card shadow p-1 mb-3" data-toggle="popover"
+                                                            data-trigger="hover" data-placement="bottom" title="<?=$value->created_at?>"
+                                                            data-content="<?=$value->archivo?>">
+                                                            <div class="card-body">
+                                                                <img src="<?=$baseUrl?>img/archivo-rar.png" width="50px" alt="">
+                                                            </div>
 
-                                                <div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">
-                                                    <div class="card shadow p-1 mb-3" data-toggle="popover"
-                                                        data-trigger="hover" data-placement="bottom" title="02/10/2019"
-                                                        data-content="Dr. Valentina Isabel Mendoza Sanchez H. Solidaridad | Los Olivos | 999999999">
-                                                        <div class="card-body">
-                                                            <img src="<?=$baseUrl?>img/pdf.png" width="50px" alt="">
-                                                        </div>
-                                                        <div class="card-footer" style="background-color: white;">
-                                                            <div
-                                                                style="font-family: 'Manjari', sans-serif; font-size: 15px;">
-                                                                <b>EST. ANATOMO PATOLÓGICO</b>
-                                                                <hr>
-                                                                <span style="font-size: 12px;"><a href="#!"><img
-                                                                            src="<?=$baseUrl?>img/archiv0.png"
-                                                                            style="width:25px;"><br>Descargar</a></span>
+                                                            <p><?= date("j/m/Y")?></p>
+
+                                                            <div class="card-footer" style="background-color: white;">
+                                                                <div style="font-family: 'Manjari', sans-serif; font-size: 15px;">
+                                                                    <span style="font-size: 12px;">
+                                                                        <a href="<?=$value->archivo?>" download><img src="<?=$baseUrl?>img/archiv0.png" style="width:25px;"><br>Descargar</a>
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">
-                                                    <div class="card shadow p-1 mb-3" data-toggle="popover"
-                                                        data-trigger="hover" data-placement="bottom" title="02/10/2019"
-                                                        data-content="Dr. Valentina Isabel Mendoza Sanchez H. Solidaridad | Los Olivos | 999999999">
-                                                        <div class="card-body">
-                                                            <img src="<?=$baseUrl?>img/doc.png" width="50px" alt="">
-                                                        </div>
-                                                        <div class="card-footer" style="background-color: white;">
-                                                            <div
-                                                                style="font-family: 'Manjari', sans-serif; font-size: 15px;">
-                                                                <b>ANÁLISIS SANGRE </b>
-                                                                <hr>
-                                                                <span style="font-size: 12px;"><a href="#!"><img
-                                                                            src="<?=$baseUrl?>img/archiv0.png"
-                                                                            style="width:25px;"><br>Descargar</a></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">
-                                                    <div class="card shadow p-1 mb-3" data-toggle="popover"
-                                                        data-trigger="hover" data-placement="bottom" title="02/10/2019"
-                                                        data-content="Dr. Valentina Isabel Mendoza Sanchez H. Solidaridad | Los Olivos | 999999999">
-                                                        <div class="card-body">
-                                                            <img src="<?=$baseUrl?>img/doc.png" width="50px" alt="">
-                                                        </div>
-                                                        <div class="card-footer" style="background-color: white;">
-                                                            <div
-                                                                style="font-family: 'Manjari', sans-serif; font-size: 15px;">
-                                                                <b>MODELO DE ESTUDIO</b>
-                                                                <hr>
-                                                                <span style="font-size: 12px;"><a href="#!"><img
-                                                                            src="<?=$baseUrl?>img/archiv0.png"
-                                                                            style="width:25px;"><br>Descargar</a></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div> -->
+                                                <?php endforeach; ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -611,8 +577,7 @@ table.inputs td {
                                                                     src="<?=$baseUrl?>img/li.png" alt="" width="14px">
                                                                 <?=$paciente->dni?></span><br>
                                                         </div>
-                                                        <div
-                                                            class="col-6 col-sm-6 col-md-4 col-lg-6 col-xl-4 text-center p-1">
+                                                        <div hidden class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center p-1">
                                                             <a class="badge badge-pill text-white"
                                                                 style="background-color: #5A6DB9;" id="agendarOcultar"
                                                                 href="#!" data-toggle="modal" data-target=".agendar">
@@ -620,8 +585,7 @@ table.inputs td {
                                                                     alt="">&nbsp;Agendar Cita
                                                             </a>
                                                         </div>
-                                                        <div
-                                                            class="col-6 col-sm-6 col-md-4 col-lg-6 col-xl-4 text-center p-1">
+                                                        <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center p-1">
                                                             <a href="#" style="background-color: #73C97E"
                                                                 data-toggle="modal" id="reef" data-target=".referenciar"
                                                                 class=" badge badge-pill text-white">
@@ -629,8 +593,7 @@ table.inputs td {
                                                                     alt="">&nbsp;Referir Paciente
                                                             </a>
                                                         </div>
-                                                        <div
-                                                            class="col-12 col-sm-12 col-md-4 col-lg-12 col-xl-4 text-center p-1">
+                                                        <div hidden class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center p-1">
                                                             <a href="#" style="background-color: #C97973"
                                                                 data-toggle="modal" id="ocultar" data-target=".bd-e"
                                                                 class=" badge badge-pill text-white">
@@ -4401,9 +4364,9 @@ table.inputs td {
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="imageness" data-toggle="tab" href="#imagenes"
                                 role="tab" aria-controls="imagenes" aria-selected="true">Imagenes</a>
-                            <!-- <a class="nav-item nav-link" id="archivoss" data-toggle="tab" href="#pdf" role="tab"
-                                aria-controls="pdf" aria-selected="false">PDF</a>
-                            <a class="nav-item nav-link" id="archivoss" data-toggle="tab" href="#definitivo" role="tab"
+                            <a class="nav-item nav-link" id="archivoss" data-toggle="tab" href="#pdf" role="tab"
+                                aria-controls="pdf" aria-selected="false">Tomografía</a>
+                            <!-- <a class="nav-item nav-link" id="archivoss" data-toggle="tab" href="#definitivo" role="tab"
                                 aria-controls="pdf" aria-selected="false">Diagnóstico Definitivo</a> -->
                         </div>
                         <div class="tab-content" id="nav-tabContent">
@@ -4440,68 +4403,28 @@ table.inputs td {
                             <!-- --------------------------------------------------------------------------- -->
 
                             <div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdfs">
-                                <div class="row">
+                                <div id="cargando">
+                                    <p id="porcentaje">0%</p>
+                                </div>
+                                <form class="row" id="form_subir_archivos_rar_zip" method="post" enctype="multipart/form-data">
                                     <div class="p-3 mb-2 col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFileLang"
-                                                        lang="es">
+                                                    <input type="hidden" name="id_paciente" value="<?=$paciente->id?>"></input>
+                                                    <!-- <label for="archivos">Selecciona archivos (.zip o .rar):</label>
+                                                    <input type="file" name="archivos[]" id="archivos" multiple accept=".zip, .rar"> -->
+                                                    <input type="file" class="custom-file-input" id="input_archivo_file" lang="es" name="archivos[]" multiple accept=".zip, .rar" required>
                                                     <label class="custom-file-label"
-                                                        for="customFileLang">Documento...</label>
+                                                        for="input_archivo_file">Subir archivos comprimidos .RAR .ZIP...</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2"><br>
-                                        <div class="card">
-                                            <div class="card-body justify-content-center text-center">
-                                                <img src="<?=$baseUrl?>img/pdf.png" width="50px" alt="">
-                                            </div>
-                                            <div class="card-footer text-center" style="background-color: white;">
-                                                <small class="text-black">03/09/2019</small>
-                                                <hr>
-                                                <div style="font-family: 'Manjari', sans-serif;">
-                                                    <label style="font-size: 13px;"><b>Subida doc. :</b></label>
-                                                    <select style="font-size: 13px;"
-                                                        class="form-control border border-danger">
-                                                        <option selected disabled>Seleccionar...</option>
-                                                        <option>EST. ANATOMO PATOLÓGICO</option>
-                                                        <option>ANÁLISIS SANGRE</option>
-                                                        <option>MODELO DE ESTÚDIO</option>
-                                                        <option>FOTOGRAFÍA CLÍNICA
-                                                            <hr>
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2"><br>
-                                        <div class="card">
-                                            <div class="card-body justify-content-center text-center">
-                                                <img src="<?=$baseUrl?>img/ppt.png" width="50px" alt="">
-                                            </div>
-                                            <div class="card-footer text-center" style="background-color: white;">
-                                                <small class="text-black">03/09/2019</small>
-                                                <hr>
-                                                <div style="font-family: 'Manjari', sans-serif;">
-                                                    <label style="font-size: 13px;"><b>Subida doc. :</b></label>
-                                                    <select style="font-size: 13px;"
-                                                        class="form-control border border-danger">
-                                                        <option selected disabled>Seleccionar...</option>
-                                                        <option>EST. ANATOMO PATOLÓGICO</option>
-                                                        <option>ANÁLISIS SANGRE</option>
-                                                        <option>MODELO DE ESTÚDIO</option>
-                                                        <option>FOTOGRAFÍA CLÍNICA
-                                                            <hr>
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2"><br>
+                                    <div id="cont_arrch_file" class="content_archivos_file_d col-md-12 d-flex flex-wrap">
+
+                                    </div>                        
+                                    <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2"><br>
                                         <div class="card">
                                             <div class="card-body justify-content-center text-center">
                                                 <img src="<?=$baseUrl?>img/doc.png" width="50px" alt="">
@@ -4524,13 +4447,14 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
+
                                     <div class="col-12 col-sm-12 col-lg-12 col-xl-12 text-center"><br>
-                                        <button type="button" class="btn btn-success"><img
+                                        <button type="submit" class="btn btn-success btn_subir_file_ar"><img
                                                 src="<?=$baseUrl?>img/subir.png" width="18px"
                                                 alt="">&nbsp;&nbsp;Subir</button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                             <div class="tab-pane fade" id="definitivo" role="tabpanel" aria-labelledby="diag">
                                 <div class="cece p-4">
@@ -11544,7 +11468,7 @@ table.inputs td {
                                         <div class="col-12 text-center">
                                             <span style="color: #ABB2B9; font-size: 25px;"><b>Seleccionar</b></span>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro1" id="tipodecentro1" nombre="Centro Radiologico">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro1" id="tipodecentro1" nombre="Centro Radiologico" <?=($_SESSION['tipo_negocio'] == 'Centro Radiologico')?'hidden':''?>>
                                             <div class="card border border-info mb-2" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11554,7 +11478,7 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro2" id="tipodecentro2" nombre="Odontólogo Particular">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro2" id="tipodecentro2" nombre="Odontólogo Particular" <?=($_SESSION['tipo_negocio'] == 'Odontólogo Particular' || $_SESSION['tipo_negocio'] == 'Clinica Privada')?'hidden':''?>>
                                             <div class="card border border-info" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11565,7 +11489,7 @@ table.inputs td {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro3" id="tipodecentro3" nombre="Clinica Privada">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 tipodecentro3" id="tipodecentro3" nombre="Clinica Privada" <?=($_SESSION['tipo_negocio'] == 'Odontólogo Particular' || $_SESSION['tipo_negocio'] == 'Clinica Privada')?'hidden':''?>>
                                             <div class="card border border-info" id="doc">
                                                 <div class="card-body">
                                                     <div class="text-center">
@@ -11622,6 +11546,8 @@ table.inputs td {
                                         </div>
 
                                         <div class="col-md-12 d-flex flex-wrap centros_radiologicos" id="">
+
+                                            
                                         </div>
 
 

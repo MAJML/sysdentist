@@ -54,7 +54,7 @@ function consultaReniec(dni){
             $("#dni").css("border","1px solid #E74C3C ")
         },
         success:function(response){
-            console.log("api reniec : ",response);
+            /* console.log("api reniec : ",response); */
             if(response.success == true){
                 $("#dni").css("border","1px solid #14B76E")
                 $("#nombres").val(response.data.nombres)

@@ -26,20 +26,27 @@ class Paciente_detallesModel extends Model
             return "ok";
         }else{
             return "error";      
-        }
-        
+        }  
     }
 
     public function DataSubidaPaciente($id)
     {
-        $query = $this->db->prepare("SELECT * FROM examenes_archivos WHERE paciente_id = $id");
+        $query = $this->db->prepare("SELECT * FROM examenes_archivos WHERE paciente_id = $id and file_type=1");
         $query->execute();
         return $query->fetchAll();
     }
 
     public function centro($centro)
     {
-        $query = $this->db->prepare("SELECT * FROM empresa WHERE tipo_negocio = '".$centro."'");
+        $query = $this->db->prepare("SELECT 
+        EM.id,
+        EM.ruc,
+        EM.razon_social,
+        EM.nombre_comercial,
+        EM.correo,
+        EM.tipo_negocio,
+        (select count(*) from usuarios US Where US.id_empresa=EM.id) as 'doctores'
+        FROM empresa EM WHERE tipo_negocio = '".$centro."'");
         $query->execute();
         return $query->fetchAll();
     }
@@ -54,6 +61,41 @@ class Paciente_detallesModel extends Model
     public function reasignarPaciente($idUsuario, $idPaciente)
     {
         $query = $this->db->prepare('UPDATE pacientes SET id_usuario= '.$idUsuario.' WHERE id="'.$idPaciente.'"');
+        if($query->execute()){
+            return "ok";
+        }else{
+            return "error";          
+        }
+    }
+    public function GuardarArchivoComprimido($id_paciente, $newFilePath)
+    {
+        $query = $this->db->prepare('INSERT INTO examenes_archivos(paciente_id, archivo, tipo_imagen, file_type) VALUES("'.$id_paciente.'", "'.$newFilePath.'", "comprimido", "2")');
+        if($query->execute()){
+            return "ok";
+        }else{
+            return "error";      
+        }
+    }
+
+    public function DataFileArchivosSubidos($id)
+    {
+        $query = $this->db->prepare("SELECT * FROM examenes_archivos WHERE paciente_id = $id and file_type =2");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function ContarDoctorCentro($centro)
+    {
+        $query = $this->db->prepare("SELECT count(*) as 'cantidad_usuarios' FROM usuarios US
+        inner join empresa EM on EM.id=US.id_empresa
+        WHERE EM.tipo_negocio ='".$centro."' and EM.id='".$_SESSION['empresa']."'");
+        $query->execute();
+        return $query->fetch();
+    }
+
+    public function enviarPacienteEmpresa($idPaciente, $idCentro)
+    {
+        $query = $this->db->prepare('UPDATE pacientes SET id_empresa_padre="'.$idCentro.'", id_usuario= NULL  WHERE id="'.$idPaciente.'"');
         if($query->execute()){
             return "ok";
         }else{

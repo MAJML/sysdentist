@@ -25,7 +25,7 @@
                             style="color: #444c64; font-size: 30px;font-family: 'Montserrat', sans-serif;"><b>Directorio de Pacientes</b>
                     </div>
                     <!---------------------Boton del modal----------------------------->
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 text-right" <?= ($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null)? 'hidden': '' ?>>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 text-right">
                         <button type="button" data-toggle="modal" data-target=".bd"
                             class="btn btn-sm btn-success text-white" id="ocultar"><img width="18px"
                                 src="<?=$baseUrl?>img/mas.png" alt="">&nbsp;AGREGAR PACIENTE NUEVO</button></span>
@@ -44,6 +44,7 @@
                                             <p><b>DNI: </b> <?=$value->dni?></p>
                                             <p><b>NOMBRES: </b> <?=$value->nombres.' '.$value->apellidos?></p>
                                             <p><b>DOCTOR: </b><?= ($value->id_usuario != '' || $value->id_usuario != null) ? $value->nombre_usuario.' '.$value->apellido_usuario:'NO ASIGNADO' ?></p>
+                                            <p><b>REFERIDO: </b><?= ($value->nombre_comercial != '' || $value->nombre_comercial != null)?$value->nombre_comercial:'NO REFERID'  ?></p>
                                             <div class="d-flex justify-content-end">
                                                 <a href="<?=$baseUrl?>Paciente_detalles?token=<?=$value->id?>" class="btn btn-primary">DETALLE</a>
                                             </div>
@@ -182,8 +183,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" style="color:#1A5276;font-family: 'Montserrat', sans-serif;"><b>Paciente
-                        Nuevo</b></h2>
+                <h2 class="modal-title" style="color:#1A5276;font-family: 'Montserrat', sans-serif;"><b>Paciente Nuevo</b></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -235,7 +235,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-6 col-xl-4">
                         <label>Discapacidad</label>
-                        <select class="form-control" id="sino" id="discapacidad" name="discapacidad" required>
+                        <select class="form-control" id="sino" id="discapacidad" name="discapacidad" >
                             <option value="no">NO</option>
                             <option value="si">SI</option>
                         </select>
@@ -256,15 +256,15 @@
                     <!--discapacitado-->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Teléfono Móvil</label>
-                        <input type="text" class="form-control" id="telefono_movil" name="telefono_movil" required>
+                        <input type="text" class="form-control" id="telefono_movil" name="telefono_movil" >
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <label>Teléfono Fijo</label>
-                        <input type="text" class="form-control" id="telefono_fijo" name="telefono_fijo" required>
+                        <input type="text" class="form-control" id="telefono_fijo" name="telefono_fijo" >
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <label>Convenio</label>
-                        <select class="form-control" id="convenio" name="convenio" required>
+                        <select class="form-control" id="convenio" name="convenio" >
                             <option hidden>Elige Convenio</option>
                             <option value="Sin Convenio" selected>Sin Convenio</option>
                             <option value="Medilink: SaludTotal">Medilink: SaludTotal</option>
@@ -273,28 +273,20 @@
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
                         <label>Actividad o Profesión</label>
                         <input type="text" class="form-control" id="actividad_profesional" name="actividad_profesional"
-                            required>
+                            >
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <label>Dirección</label>
-                        <textarea class="form-control" rows="1" id="direccion" name="direccion" required></textarea>
+                        <textarea class="form-control" rows="1" id="direccion" name="direccion"></textarea>
                     </div>
-                    <div class="text-right col-12 col-sm-12 col-md-12 col-lg-12"><br>
-                        <button type="button" class="btn btn-success" id="oculto"><img src="<?=$baseUrl?>img/flechaa.png" alt=""
-                                width="15px">Siguiente</button><br><br>
-                    </div>
-                </div>
-                <!--FIN DATOS PERSONALES-->
-
-                <!--PROCEDENCIA-->
-                <div class="row container" id="ocultado">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <h4>LUGAR DE NACIMIENTO</h4>
+                    
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" hidden>
+                        <h4>LUGAR DE NACIMIENTddO</h4>
                         <hr>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4" hidden>
                         <label>Departamento</label>
-                        <select class="form-control" id="dep_nac" name="dep_nac" required>
+                        <select class="form-control" id="dep_nac" name="dep_nac" >
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -302,9 +294,9 @@
                             <option>CUSCO</option>
                         </select>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4" hidden>
                         <label>Provincia</label>
-                        <select class="form-control" id="prov_nac" name="prov_nac" required>
+                        <select class="form-control" id="prov_nac" name="prov_nac" >
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -312,9 +304,9 @@
                             <option>CUSCO</option>
                         </select>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4" hidden>
                         <label>Distrito</label>
-                        <select class="form-control" id="dist_nac" name="dist_nac" required>
+                        <select class="form-control" id="dist_nac" name="dist_nac" >
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -328,7 +320,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Departamento</label>
-                        <select class="form-control" id="dep_proc" name="dep_proc" required>
+                        <select class="form-control" id="dep_proc" name="dep_proc" >
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -338,7 +330,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Provincia</label>
-                        <select class="form-control" id="prov_proc" name="prov_proc" required>
+                        <select class="form-control" id="prov_proc" name="prov_proc" >
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -348,7 +340,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Distrito</label>
-                        <select class="form-control" id="dist_proc" name="dist_proc" required>
+                        <select class="form-control" id="dist_proc" name="dist_proc" >
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -360,11 +352,7 @@
                         <label>Observaciones</label>
                         <textarea class="form-control" rows="2" id="observax" name="observax"></textarea>
                     </div>
-                    <div class="col-6 col-sm-6 col-md-6 col-lg-6"><br>
-                        <button type="button" class="btn btn-danger" id="regresar"><img src="<?=$baseUrl?>img/flecha.png" alt=""
-                                width="15px">Regresar</button><br><br>
-                    </div>
-                    <div class="text-right col-6 col-sm-6 col-md-6 col-lg-6"><br>
+                    <div class="text-right col-12 col-sm-12 col-md-12 col-lg-12"><br>
                         <!--button class="btn btn-success" type="button" disabled>
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                         Registrar...
@@ -372,7 +360,7 @@
                         <button type="submit" class="btn btn-success">Registrar...</button><br>
                     </div>
                 </div>
-                <!--FIN PROCEDENCIA-->
+                <!--FIN DATOS PERSONALES-->
             </form>
         </div>
     </div>
