@@ -1,4 +1,5 @@
 console.log('esto es la consola de paciente detalles');
+const historialDeFunciones = [];
 var arrayDataImagen = [];
 var arrayDataTipoImagen = [];
 var idPaciente = $("#id_paciente").val();
@@ -129,6 +130,7 @@ $(document).on('submit', "#form_subir_archivos_rar_zip", function(event){
     });
 });
 
+
 $("#input_archivo_file").change(function(){
     $(".btn_subir_file_ar").attr('disabled', false)
     var fechaActual = new Date();
@@ -175,12 +177,12 @@ $("#subir_imagen_radiografia").change(function(){
                 showConfirmButton: false,
                 timer: 1500
             });
-    }else if(imagen["size"] > 1000000){
+    }else if(imagen["size"] > 3000000){
         $("#subir_imagen_radiografia").val("");
             Swal.fire({
                 position: "center",
                 icon: "error",
-                title: "¡La imagen no debe pesar mas de 1MB!",
+                title: "¡La imagen no debe pesar mas de 3MB!",
                 showConfirmButton: false,
                 timer: 1500
             });

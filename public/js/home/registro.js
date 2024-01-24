@@ -72,7 +72,7 @@ function consultaSunat(ruc){
                 $("#razon_social").attr('placeholder', 'No se encontro el ruc Ingrese manualmente')
                 $("#nombre_comercial").attr('placeholder', 'No se encontro el ruc Ingrese manualmente')
             }else{
-                razon_social = response.data.nombre_o_razon_social.replace(/^"(.*)"$/, '$1');
+                razon_social = response.data.nombre_o_razon_social.replace(/['"]/g, '');
                 $("#razon_social").val(razon_social)
                 $("#nombre_comercial").val(razon_social)
             }

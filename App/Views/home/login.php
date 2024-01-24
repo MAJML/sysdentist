@@ -186,7 +186,7 @@
                             <label for="">E-mail:</label>
                             <input class="form-control" type="email" name="email" required><br>
                             <label for="">Contraseña:</label>
-                            <input class="form-control" type="text" name="password" required><br>
+                            <input class="form-control" type="password" name="password" required><br>
                            <!--  <label for="">RUC:</label>
                             <input class="form-control" type="text" name=""><br> -->
                             <div class="text-center">

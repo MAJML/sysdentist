@@ -152,6 +152,9 @@
                 background-size : 300% 150%;
             }
         }
+        .minuscula{
+            text-transform: lowercase;
+        }
     </style>
     <div class="contenedor">
         <div class="row">
@@ -191,7 +194,7 @@
                                 <!-- <label for="">USUARIO ADMINISTRADOR: </label>
                                 <input class="form-control" type="text" name="usuario_admin" required> -->
                                 <label for="">CORREO: </label>
-                                <input class="form-control" type="email" name="correo" id="" required>
+                                <input class="form-control minuscula" type="email" name="correo" id="" required>
                                 <label for="">CONTRASEÑA: </label>
                                 <input class="form-control" type="text" name="password" id="" required>
                                 <label for="">TIPO DE NEGOCIO:</label>

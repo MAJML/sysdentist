@@ -37,7 +37,7 @@
                         <?php if (count($pacientes) > 0): ?>
                             <div class="row col-md-12" id="content_paciente_data_llena">
                                 <?php foreach ($pacientes as $key => $value): ?>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-6 mb-3 elemento">
                                         <div class="card p-4">
                                             <h5 class="text-center"><b><?=$value->codigo_paciente?></b></h5>
                                             <hr>
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                         <?php endif; ?>
-
+                        <div id="paginacion"></div>
                     </div>
                 </div>
             </div>
@@ -689,3 +689,28 @@
     </div>
 </div>
 <script src="<?=$baseUrl?>js/pacientes/index.js"></script>
+
+  
+<script>
+    // Aquí es donde inicializamos el plugin de paginación
+    $(document).ready(function() {
+    var elementosPorPagina = 8; // Número de elementos por página
+    var totalElementos = $('.elemento').length; // Total de elementos
+
+    $('#paginacion').twbsPagination({
+        totalPages: Math.ceil(totalElementos / elementosPorPagina),
+        visiblePages: 5, // Número de páginas visibles en la paginación
+        onPageClick: function (event, page) {
+        // Lógica para mostrar los elementos de la página actual
+        var inicio = (page - 1) * elementosPorPagina;
+        var fin = inicio + elementosPorPagina;
+
+        $('.elemento').hide().slice(inicio, fin).show();
+        },
+        first: 'Primera',
+        prev: 'Anterior',
+        next: 'Siguiente',
+        last: 'Última'
+    });
+    });
+</script>
