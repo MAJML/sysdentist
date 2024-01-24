@@ -117,13 +117,16 @@ class Pacientes
     {
         $paciente = $_POST['paciente'];
         if($_SESSION['tipo_empresa'] == 'Centro Radiologico'){
-            $pacientes = $this->model->TodosPacientesTotales();
+            /* $pacientes = $this->model->TodosPacientesTotales(); */
+            $respuesta = $this->model->buscarPacientesTodosR($paciente);
         }else if($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null){
-            $pacientes = $this->model->PacientesAsignados($idUsuario = $_SESSION['id_session']);
+            /* $pacientes = $this->model->PacientesAsignados($idUsuario = $_SESSION['id_session']); */
+            $respuesta = $this->model->buscarPacientesTodosAsignados($paciente);
         }else{
-            $pacientes = $this->model->TodosPacientes();
+            $respuesta = $this->model->buscarPacientesTodos($paciente);
+            /* $pacientes = $this->model->TodosPacientes(); */
         }
-        $respuesta = $this->model->buscarPacientesTodosR($paciente);
+        
         View::renderJson($respuesta);
     }
 
