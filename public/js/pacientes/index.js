@@ -41,6 +41,51 @@ $("#dni").keyup(function(){
     }
 });
 
+/*----------------------- BUSCAR PACIENTES ---------------------- */
+$("#buscador_pacientes").keyup(function(){
+    paciente =$("#buscador_pacientes").val()
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Pacientes/buscarPacientes',
+        data:{paciente:paciente},
+        beforeSend: function() {
+        },
+        success:function(response){
+            $("#content_paciente_data_llena div").remove()
+            /* console.log("buscar pacient3 : ",response); */
+            for (let i = 0; i < response.length; i++) {
+                if(response[i]['id_usuario'] == null || response[i]['id_usuario'] == ''){
+                    doctor = 'NO ASIGNADO'
+                }else{
+                    doctor = response[i]['nombre_usuario']+' '+response[i]['apellido_usuario']
+                }   
+                if(response[i]['nombre_comercial'] == null || response[i]['nombre_comercial'] == ''){
+                    referido = 'NO REFERID'
+                }else{
+                    referido = response[i]['nombre_comercial']
+                }   
+                html = '<div class="col-md-6 mb-3 elemento">';
+                html += '<div class="card p-4">';
+                html += '<h5 class="text-center"><b>'+response[i]['codigo_paciente']+'</b></h5> <hr>';
+                html += '<p><b>DNI: </b> '+response[i]['dni']+'</p>';
+                html += '<p><b>NOMBRES: </b> '+response[i]['nombres']+' '+response[i]['apellidos']+'</p>';
+                html += '<p><b>DOCTOR: </b> '+doctor+'</p>';
+                html += '<p><b>REFERIDO: </b> '+referido+'</p>';
+                html += '<div class="d-flex justify-content-end">';
+                html += '<a href="'+baseurl+'Paciente_detalles?token='+response[i]['id']+'" class="btn btn-primary">DETALLE</a>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                $("#content_paciente_data_llena").append(html);
+            }
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+});
+/* ---------------------------------------------------------------- */
+
 function consultaReniec(dni){
     $.ajax({
         type:"POST",

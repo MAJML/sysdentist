@@ -112,4 +112,19 @@ class Pacientes
         $respuesta = $this->model->buscarPacienteCreado($dni, $email); 
         View::renderJson($respuesta);
     }
+
+    public function buscarPacientes()
+    {
+        $paciente = $_POST['paciente'];
+        if($_SESSION['tipo_empresa'] == 'Centro Radiologico'){
+            $pacientes = $this->model->TodosPacientesTotales();
+        }else if($_SESSION['id_empresa'] != '' || $_SESSION['id_empresa'] != null){
+            $pacientes = $this->model->PacientesAsignados($idUsuario = $_SESSION['id_session']);
+        }else{
+            $pacientes = $this->model->TodosPacientes();
+        }
+        $respuesta = $this->model->buscarPacientesTodosR($paciente);
+        View::renderJson($respuesta);
+    }
+
 }

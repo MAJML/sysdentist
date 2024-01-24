@@ -31,10 +31,15 @@
                                 src="<?=$baseUrl?>img/mas.png" alt="">&nbsp;AGREGAR PACIENTE NUEVO</button></span>
                     </div>
                     <!---------------------fin Boton del modal------------------------->
+
                     <div class="container">
                         <hr>
-
                         <?php if (count($pacientes) > 0): ?>
+                            <div class="col-md-12">
+                                <a href="">Actualizar Datos</a><hr>
+                                <input type="text" class="form-control" id="buscador_pacientes" placeholder="Buscar Pacientes">
+                            </div>
+                            <hr>
                             <div class="row col-md-12" id="content_paciente_data_llena">
                                 <?php foreach ($pacientes as $key => $value): ?>
                                     <div class="col-md-6 mb-3 elemento">

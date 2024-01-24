@@ -150,4 +150,29 @@ class PacientesModel extends Model
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function buscarPacientesTodosR($paciente)
+    {
+        $query = $this->db->prepare("SELECT 
+        PC.id,
+        PC.id_usuario,
+        PC.dni,
+        PC.nombres,
+        PC.apellidos,
+        PC.codigo_paciente,
+        PC.fecha_nacimiento,
+        US.nombre as 'nombre_usuario',
+        US.apellido as 'apellido_usuario',
+        US.especialidad as 'especialidad_usuario',
+        EM.razon_social,
+        EM.nombre_comercial,
+        EM.tipo_negocio
+        FROM pacientes PC
+        LEFT JOIN usuarios US on US.id=PC.id_usuario
+        LEFT JOIN empresa EM on EM.id=PC.id_empresa_padre
+        WHERE PC.dni like '%".$paciente."%' or PC.apellidos like '%".$paciente."%' or PC.nombres like '%".$paciente."%'");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
 }
