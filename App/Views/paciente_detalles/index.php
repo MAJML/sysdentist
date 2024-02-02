@@ -9853,7 +9853,7 @@ table.inputs td {
                                             </b><br>
                                             <hr>
                                             <img src="<?=$baseUrl?>img/logocsi.png" width="200px" alt=""><br><br>
-                                            <img src="<?=$baseUrl?>img/sysdentist.png" width="120px" alt=""><br><br>
+                                           <!--  <img src="<?=$baseUrl?>img/sysdentist.png" width="120px" alt=""><br><br> -->
                                         </div>
                                     </div>
                                 </div>
@@ -13281,7 +13281,7 @@ table.inputs td {
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6  col-xl-4">
                                 <label>Fecha de Nacimiento</label>
                                 <input id="option4" disabled type="date" class="form-control border border-info"
-                                    value="11/03/1998">
+                                    value="">
                             </div>
                             <!-----------------------Modificación---------------------------------->
                             <div class="col-12 col-sm-6 col-md-4 col-lg-6 col-xl-4">
@@ -13815,7 +13815,7 @@ table.inputs td {
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script> -->
 
-        <script src="<?=$baseUrl?>js/sign.js"></script>
+        <!-- <script src="<?=$baseUrl?>js/sign.js"></script> -->
         <script>
         /*---------Compartir paciente------------*/
         $("#ocultar").click(function() {
@@ -14050,7 +14050,7 @@ table.inputs td {
         })
         </script>
 
-        <script>
+        <!-- <script>
         $(".fc-today-button").click()
         document.addEventListener("DOMContentLoaded", function() {
 
@@ -14098,7 +14098,7 @@ table.inputs td {
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4'
         });
-        </script>
+        </script> -->
 
         <script>
         $(".acc").click(function() {
@@ -14109,7 +14109,7 @@ table.inputs td {
         })
         </script>
 
-        <script src="<?=$baseUrl?>js/wheelzoom.js"></script>
+        <!-- <script src="<?=$baseUrl?>js/wheelzoom.js"></script> -->
         <script>
         $("#modalimagen").on("click", function() {
             $(".vistainforme").modal("show")

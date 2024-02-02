@@ -18,6 +18,10 @@ class Paciente_detalles
         }
         date_default_timezone_set('America/Lima');
         $this -> model = new Paciente_detallesModel();
+        ini_set('memory_limit', '-1'); // Sin límite de memoria
+        ini_set('max_execution_time', '0'); // Tiempo de ejecución ilimitado
+        ini_set('post_max_size', '0'); // Tamaño máximo de POST ilimitado
+        ini_set('upload_max_filesize', '0');
     }
     
     public function index()
