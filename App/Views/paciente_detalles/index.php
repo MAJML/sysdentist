@@ -530,7 +530,7 @@ table.inputs td {
                                                                 <img src="<?=$baseUrl?>img/archivo-rar.png" width="50px" alt="">
                                                             </div>
 
-                                                            <p><?= date("j/m/Y")?></p>
+                                                            <p><?= date("j/m/Y", strtotime($value->created_at))?></p>
 
                                                             <div class="card-footer" style="background-color: white;">
                                                                 <div style="font-family: 'Manjari', sans-serif; font-size: 15px;">
@@ -11453,6 +11453,7 @@ table.inputs td {
                         <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 p-3">
                             <h5 class="card-title text-center"><?=$paciente->nombres.' '.$paciente->apellidos?></h5>
                             <span class="card-subtitle text-center mb-2" style="color: red;"><b><?=$paciente->codigo_paciente?></b></span>
+                            <input type="hidden" id="valor_seleccionado">
                         </div>
                         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 text-left">
                             <!-- <a href="" class="close" data-dismiss="modal" aria-label="Close">
@@ -11545,15 +11546,15 @@ table.inputs td {
                                             <span style="color: #ABB2B9; font-size: 25px;" id="texto_centro"><b>Seleccionar Centro Radiologíco</b></span>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 p-1" id="busquedaHospital">
-                                            <input class="form-control rounded-pill" type="search" placeholder="Buscar Centro">
+                                            <input class="form-control rounded-pill" type="search" id="inputBuscarCentro" placeholder="Buscar Centro">
                                         </div>
-
+                                        
                                         <div class="col-md-12 d-flex flex-wrap centros_radiologicos" id="">
 
                                             
                                         </div>
-
-
+                                        <div class="col-12 m-auto text-center d-flex justify-content-center mt-5 pt-4"><div id="paginacionDoctor"></div></div>
+                                        
                                     </div>
 
                                     <!-- <div class="row" style="padding: 0px 0px 200px 0px;" id="odontologo">
@@ -13790,6 +13791,7 @@ table.inputs td {
             </div>
         </div>
         <!---->
+
         <script>
         $(".nino").hide();
 

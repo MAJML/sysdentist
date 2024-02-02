@@ -130,6 +130,43 @@ $(document).on('submit', "#form_subir_archivos_rar_zip", function(event){
     });
 });
 
+/*----------------------- BUSCAR DOCTORES ---------------------- */
+$("#inputBuscarCentro").keyup(function(){
+    paginadoElemento()
+    doctor = $("#inputBuscarCentro").val()
+    centro = $("#valor_seleccionado").val()
+    /* $(".centros_radiologicos div").remove() */
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Paciente_detalles/buscarCentro',
+        data:{doctor:doctor, centro:centro},
+        beforeSend: function() {
+            $(".centros_radiologicos div").remove()
+        },
+        success:function(response){
+            /* $("#content_paciente_data_llena div").remove() */
+            /* console.log("buscar inputBuscarCentro : ",response); */
+            for (let i = 0; i < response.length; i++) {
+                html = '<div class="elementoDoctor col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
+                html += '<div class="card border border-info" id="">';
+                html += '<div class="card-body">';
+                html += '<div class="text-center">';
+                html += '<img src="'+baseurl+'img/dental.png" width="45" alt=""><br>';
+                html += '<span style="font-size: 16px;">'+response[i]['nombre_comercial']+'</span><br>';
+                html += '<span style="font-size: 16px;"> hay '+response[i]['doctores']+' doctores</span>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                $(".centros_radiologicos").append(html);
+            }
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+});
+/* ---------------------------------------------------------------- */
 
 $("#input_archivo_file").change(function(){
     $(".btn_subir_file_ar").attr('disabled', false)
@@ -161,6 +198,24 @@ function eliminarSelectFile(){
     $('.contador_divs_file').remove()
 }
 
+function paginadoElemento(){
+    var elementosPorPagina = 8;
+    var totalElementos = $('.elementoDoctor').length;
+    $('#paginacionDoctor').twbsPagination({
+        totalPages: Math.ceil(totalElementos / elementosPorPagina),
+        visiblePages: 5, 
+        onPageClick: function (event, page) {
+        var inicio = (page - 1) * elementosPorPagina;
+        var fin = inicio + elementosPorPagina;
+
+        $('.elementoDoctor').hide().slice(inicio, fin).show();
+        },
+            first: 'Primera',
+            prev: 'Anterior',
+            next: 'Siguiente',
+            last: 'Última'
+    });
+}
 
 $("#subir_imagen_radiografia").change(function(){
     
@@ -268,6 +323,7 @@ for (let index = 0; index < $('.pacientesArchivos').length; index++) {
 
 $(".tipodecentro1").click(function(){
     var centro = $(".tipodecentro1").attr('nombre')
+    $('#valor_seleccionado').val(centro)
     $.ajax({
         type:"POST",
         dataType:"json",
@@ -279,7 +335,7 @@ $(".tipodecentro1").click(function(){
         success:function(response){
             console.log("data centro : ",response);
             for (let i = 0; i < response.length; i++) {
-                html = '<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
+                html = '<div class="elementoDoctor col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
                 html += '<div class="card border border-info" id="">';
                 html += '<div class="card-body">';
                 html += '<div class="text-center">';
@@ -292,6 +348,7 @@ $(".tipodecentro1").click(function(){
                 html += '</div>';
                 $(".centros_radiologicos").append(html);
             }
+            paginadoElemento()
         },error:function(){
             console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
         }
@@ -300,6 +357,7 @@ $(".tipodecentro1").click(function(){
 
 $(".tipodecentro2").click(function(){
     var centro = $(".tipodecentro2").attr('nombre')
+    $('#valor_seleccionado').val(centro)
     $.ajax({
         type:"POST",
         dataType:"json",
@@ -311,7 +369,7 @@ $(".tipodecentro2").click(function(){
         success:function(response){
             /* console.log("data centro : ",response); */
             for (let i = 0; i < response.length; i++) {
-                html = '<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
+                html = '<div class="elementoDoctor col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
                 html += '<div class="card border border-info" id="">';
                 html += '<div class="card-body">';
                 html += '<div class="text-center">';
@@ -324,6 +382,7 @@ $(".tipodecentro2").click(function(){
                 html += '</div>';
                 $(".centros_radiologicos").append(html);
             }
+            paginadoElemento()
         },error:function(){
             console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
         }
@@ -332,6 +391,7 @@ $(".tipodecentro2").click(function(){
 
 $(".tipodecentro3").click(function(){
     var centro = $(".tipodecentro3").attr('nombre')
+    $('#valor_seleccionado').val(centro)
     $("#texto_centro").html('Seleccione Clinica Privada')
     $.ajax({
         type:"POST",
@@ -344,7 +404,7 @@ $(".tipodecentro3").click(function(){
         success:function(response){
             /* console.log("data centro : ",response); */
             for (let i = 0; i < response.length; i++) {
-                html = '<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
+                html = '<div class="elementoDoctor col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 p-1 select" onclick="centroUsuarios('+response[i]['id']+')">';
                 html += '<div class="card border border-info" id="">';
                 html += '<div class="card-body">';
                 html += '<div class="text-center">';
@@ -357,10 +417,12 @@ $(".tipodecentro3").click(function(){
                 html += '</div>';
                 $(".centros_radiologicos").append(html);
             }
+            paginadoElemento()
         },error:function(){
             console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
         }
     });
+    
 }); 
 
 function centroUsuarios(idCentro){

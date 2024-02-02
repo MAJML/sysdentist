@@ -135,4 +135,13 @@ class Paciente_detalles
         $respuesta = $this->model->enviarPacienteEmpresa($idPaciente, $idCentro);
         View::renderJson($respuesta);
     }
+
+    public function buscarCentro()
+    {
+        $doctor = $_POST['doctor'];
+        $centro = $_POST['centro'];
+        $respuesta = $this->model->ModelBuscarCentro($doctor, $centro);
+        View::renderJson($respuesta);
+    }
+
 }

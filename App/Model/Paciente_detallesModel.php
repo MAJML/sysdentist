@@ -102,4 +102,20 @@ class Paciente_detallesModel extends Model
             return "error";          
         }
     }
+
+    public function ModelBuscarCentro($doctor, $centro)
+    {
+        $query = $this->db->prepare("SELECT 
+        EM.id,
+        EM.ruc,
+        EM.razon_social,
+        EM.nombre_comercial,
+        EM.correo,
+        EM.tipo_negocio,
+        (select count(*) from usuarios US Where US.id_empresa=EM.id) as 'doctores'
+        FROM empresa EM WHERE tipo_negocio = '".$centro."' and nombre_comercial like '%".$doctor."%'");
+        $query->execute();
+        return $query->fetchAll();
+    }
+
 }
