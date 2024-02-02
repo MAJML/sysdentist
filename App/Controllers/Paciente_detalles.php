@@ -68,8 +68,8 @@ class Paciente_detalles
 
     public function SubirArchivos()
     {
-        ini_set('upload_max_filesize', '1000M');
-        ini_set('post_max_size', '1000M');
+        /* ini_set('upload_max_filesize', '1000M');
+        ini_set('post_max_size', '1000M'); */
         $id_paciente = $_POST["id_paciente"];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $uploadsDirectory = './img/archivos/'.$id_paciente.'/'; 
