@@ -152,19 +152,24 @@ function ListarUsuarios(){
         success:function(response){
             /* console.log("registrar sede : ", response); */
             for (let i = 0; i < response.length; i++) {
+                if(response[i]['foto_perfil_usuario'] != ''){
+                    fotoUsuario = baseurl+response[i]['foto_perfil_usuario'];
+                }else{
+                    fotoUsuario = 'https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg';
+                }
                 html = '<div class="col-sm-6 col-md-3 lalala"><br>';
                 html += '<div class="card rounded-0 text-center">'; 
                 html += '<div class="card-body">';
                 html += '<span><b>'+response[i]['sede']+'</b></span>';
-                html += '<h5 class="card-title"><img src="'+baseurl+response[i]['foto_perfil_usuario']+'" width="120px" height="120px" alt=""></h5>';
+                html += '<h5 class="card-title"><img src='+fotoUsuario+' width="120px" height="120px" alt=""></h5>';
                 html += '<span class="card-text">';
                 html += '<b>'+response[i]['apellido']+' '+response[i]['nombre']+'</b> <br>';
-                html += '<span class="text-muted"><b>'+response[i]['nombre']+'</b><br></span> Medico <br>';
+                html += '<span class="text-muted"><b>'+response[i]['nombre']+'</b><br></span> <br>';
                 html += '<span class="badge badge-pill badge-success">Activo</span><br><br>';
-                html += '<button type="button" data-toggle="modal" data-target=".bd" class="btn-sm btn btn-info rounded-0">Editar</button>';
-                html += '<button type="button" class="btn-sm btn rounded-0" style="background-color: #566573;">';
+                html += '<button type="button" data-toggle="modal" data-target=".bd" class="btn-sm btn btn-info rounded-0 btnEditarUsuario" onclick="DataUsuarioEdit('+response[i]['id']+')">Editar</button>';
+                html += '<button type="button" class="btn-sm btn rounded-0" style="background-color: #566573;" hidden>';
                 html += '<a href="#!" class="text-decoration-none text-white" data-toggle="modal" data-target=".firmas">Firma</a></button><br>';
-                html += '<button type="button" data-toggle="modal" data-target="#eliminar" class="btn-sm btn btn-danger rounded-0">Desactivar</button>';
+                html += '<button type="button" data-toggle="modal" data-target="#eliminar" class="btn-sm btn btn-danger rounded-0" hidden>Desactivar</button>';
                 html += '</span>';
                 html += '</div>';
                 html += '</div>';
@@ -175,3 +180,63 @@ function ListarUsuarios(){
         }
     });
 }
+
+function DataUsuarioEdit(id){
+    console.log('sadd : ', id);
+    $("#id_usuario_edit").val(id)
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Usuarios/DataUsuarioEdit',
+        data:{id:id},
+        success:function(response){
+            /* console.log("validar usuario response : ",response); */
+            $('#dni_edit').val(response['dni'])
+            $('#nombre_edit').val(response['nombre'])
+            $('#apellido_edit').val(response['apellido'])
+            $('#sexo_edit').val(response['genero'])
+            $('#celular_edit').val(response['telefono_movil'])
+            $('#colegiatura_edit').val(response['colegiatura'])
+            $('#especialidad_edit').val(response['especialidad'])
+            $('#tipo_edit').val(response['tipo_doctor'])
+            $('#email_edit').val(response['correo'])
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+}
+
+$(document).on('submit', "#form_editar_usuario", function(event){
+    event.preventDefault();
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Usuarios/ModificarUsuario',
+        data:new FormData(this),
+        contentType: false,
+        cache: false,
+        processData:false,
+        success:function(response){
+            $('.btn_cerrarModel_EditarForm').click();
+            /* console.log("la data del form Modificar Usuario : ",response); */
+            if(response == "ok"){
+                ListarUsuarios()
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Usuario Modificado",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "No se pudo MNodificar el usuario",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+});

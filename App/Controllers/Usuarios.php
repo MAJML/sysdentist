@@ -117,4 +117,26 @@ class Usuarios
         $respuesta = $this->model->verificarCorreoRepetido($correo);
         View::renderJson($respuesta);
     }
+
+    public function DataUsuarioEdit()
+    {
+        $id = $_POST['id'];
+        $respuesta = $this->model->DataUsuarioEdit($id);
+        View::renderJson($respuesta);
+    }
+
+    public function ModificarUsuario()
+    {
+        $data = array(
+            'id'                    => $_POST['id_usuario_edit'],
+            'sexo'                  => $_POST['sexo_edit'],
+            'celular'               => $_POST['celular_edit'],
+            'colegiatura'           => $_POST['colegiatura_edit'], 
+            'especialidad'          => $_POST['especialidad_edit'],
+            'tipo_edit'             => $_POST['tipo_edit'],
+            'email'                 => $_POST['email_edit']
+        );
+        $respuesta = $this->model->ModificarUsuario($data);
+        View::renderJson($respuesta);
+    }
 }

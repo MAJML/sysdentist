@@ -45,4 +45,29 @@ class UsuariosModel extends Model
         $query->execute();
         return $query->fetch();
     }
+
+    public function DataUsuarioEdit($id)
+    {
+        $query = $this->db->prepare("SELECT * FROM usuarios WHERE id = $id");
+        $query->execute();
+        return $query->fetch();
+    }
+
+    public function ModificarUsuario($data)
+    {
+        $query = $this->db->prepare('UPDATE usuarios SET 
+        telefono_movil="'.$data["celular"].'", 
+        correo="'.$data["email"].'", 
+        colegiatura="'.$data["colegiatura"].'", 
+        genero="'.$data["sexo"].'" ,
+        tipo_doctor="'.$data["tipo_edit"].'" ,
+        especialidad="'.$data["especialidad"].'" 
+        WHERE id="'.$data["id"].'"');
+        if($query->execute()){
+            return "ok";
+        }else{
+            return "error";          
+        }
+    }
+
 }

@@ -38,6 +38,7 @@
     <script src="<?=$baseUrl?>packages/list/main.js"></script>
     <script src="<?=$baseUrl?>js/theme-chooser.js"></script> -->
     <script> var baseurl = "<?=$baseUrl?>"; </script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
 </head>
 <body style="background-color: #FCFCFC">

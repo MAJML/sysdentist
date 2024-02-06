@@ -457,6 +457,9 @@ table.inputs td {
 #porcentaje {
     font-weight: bold;
 }
+.active{
+    border-bottom: 3px solid #908692 !important;
+}
 </style>
 </head>
 
@@ -485,7 +488,7 @@ table.inputs td {
                                     <ul class="nav align-content-center" style="background: ;">
                                         <li class="nav-item">
                                             <a class="nav-link active" id="imageness" data-toggle="tab" href="#imagen"
-                                                aria-selected="true">Imagenes</a>
+                                                aria-selected="false">Imagenes</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="archivoss" data-toggle="tab" href="#informes"
@@ -568,14 +571,11 @@ table.inputs td {
                                                             </div>
                                                             <span class="text-black-50"><img
                                                                     src="<?=$baseUrl?>img/edificio.png" alt=""
-                                                                    width="11px"><b> Hospital sede
-                                                                    1</b></span><br>
+                                                                    width="11px"><b> <?=$paciente->direccion?></b></span><br>
                                                             <span class="text-black-50"><img
-                                                                    src="<?=$baseUrl?>img/tor.png" alt="" width="12px">
-                                                                11/03/1998</span><br>
+                                                                    src="<?=$baseUrl?>img/tor.png" alt="" width="12px"> <?=$paciente->fecha_nacimiento?></span><br>
                                                             <span class="text-black-50"><img
-                                                                    src="<?=$baseUrl?>img/li.png" alt="" width="14px">
-                                                                <?=$paciente->dni?></span><br>
+                                                                    src="<?=$baseUrl?>img/li.png" alt="" width="14px"> <?=$paciente->dni?></span><br>
                                                         </div>
                                                         <div hidden class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 text-center p-1">
                                                             <a class="badge badge-pill text-white"
@@ -612,7 +612,7 @@ table.inputs td {
                                                                 <img src="<?=$baseUrl?>img/usuario.png" width="17px"
                                                                     alt="">&nbsp;INFORMACION PERSONAL
                                                             </div>
-                                                            <div class="col-2">
+                                                            <div class="col-2" hidden>
                                                                 <a href="#" id="ocultar" data-toggle="modal"
                                                                     data-target=".bd"
                                                                     class="text-right badge badge-pill"><img
@@ -4406,14 +4406,18 @@ table.inputs td {
                                 <div id="cargando">
                                     <p id="porcentaje">0%</p>
                                 </div>
-                                <form class="row" id="form_subir_archivos_rar_zip" method="post" enctype="multipart/form-data">
+                                <br><br>
+                                <form action="<?=$baseUrl?>Paciente_detalles/SubirArchivos2" class="dropzone" id="myDropzone">
+                                <input type="hidden" name="id_paciente" value="<?=$paciente->id?>"></input>
+                                </form>
+                                <br><hr><hr><br>
+
+                                <form class="row" id="form_subir_archivos_rar_zip" method="post" enctype="multipart/form-data" hidden>
                                     <div class="p-3 mb-2 col-12">
                                         <div class="row justify-content-center">
                                             <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                                 <div class="custom-file">
                                                     <input type="hidden" name="id_paciente" value="<?=$paciente->id?>"></input>
-                                                    <!-- <label for="archivos">Selecciona archivos (.zip o .rar):</label>
-                                                    <input type="file" name="archivos[]" id="archivos" multiple accept=".zip, .rar"> -->
                                                     <input type="file" class="custom-file-input" id="input_archivo_file" lang="es" name="archivos[]" multiple accept=".zip, .rar" required>
                                                     <label class="custom-file-label"
                                                         for="input_archivo_file">Subir archivos comprimidos .RAR .ZIP...</label>
@@ -14126,4 +14130,21 @@ table.inputs td {
             location.href = "detalles.php?id=historial"
         }
         </script>
+        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
         <script src="<?=$baseUrl?>js/paciente_detalles/index.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.dz-message button').html('Cargar Archivo rar, zip')
+                // Configurar Dropzone
+                Dropzone.options.myDropzone = {
+                    maxFilesize: 1024, // Tamaño máximo del archivo en MB
+                    acceptedFiles: ".zip, .rar, .7z", // Extensiones permitidas
+                    init: function () {
+                        this.on("success", function (file, response) {
+                            // Respuesta después de la carga exitosa
+                            console.log(response);
+                        });
+                    }
+                };
+            });
+        </script>

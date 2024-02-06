@@ -190,74 +190,74 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <form id="form_editar_usuario" method="post" class="modal-body">
                 <div class="row">
-                    <div class="col-6">
+                    <!-- <div class="col-6">
                         <label for="">Tipo de Documento:</label>
                         <select class="form-control border border-info">
                             <option value="" selected>DNI</option>
                             <option value="">Carnet de Extranjeria</option>
                         </select>
-                    </div>
+                    </div> -->
+                    <input type="hidden" id="id_usuario_edit" name="id_usuario_edit" required>
                     <div class="col-6">
-                        <label for="">DNI</label>
-                        <input disabled class="form-control border border-info" type="text" value="74125638">
+                        <label for="">Numero de Documento</label>
+                        <input disabled class="form-control border border-info" id="dni_edit" type="text" value="" required>
                     </div>
                     <div class="col-6">
                         <label for="">Nombre:</label>
-                        <input disabled class="form-control border border-info" value="GLORIA MANUELA" type="text">
+                        <input disabled class="form-control border border-info" id="nombre_edit" type="text">
                     </div>
                     <div class="col-6">
                         <label for="">Apellidos:</label>
-                        <input disabled class="form-control border border-info" value="LAJO ROJAS" type="text">
+                        <input disabled class="form-control border border-info" id="apellido_edit" type="text">
                     </div>
                     <div class="col-6">
                         <label for="">Sexo:</label>
-                        <select class="form-control border border-info" name="" id="">
-                            <option value="">Masculino</option>
-                            <option value="">Femenino</option>
+                        <select class="form-control border border-info" name="sexo_edit" id="sexo_edit" required>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
                         </select>
                     </div>
                     <div class="col-6">
                         <label for="">Número de Contacto: </label>
-                        <input class="form-control border border-info" value="963821456" type="text">
+                        <input class="form-control border border-info" id="celular_edit" name="celular_edit" type="text" required>
                     </div>
                     <div class="col-6">
                         <label for="">Colegiatura:</label>
-                        <input class="form-control border border-info" value="12345" type="text">
+                        <input class="form-control border border-info" id="colegiatura_edit" name="colegiatura_edit" type="text" required>
                     </div>
                     <div class="col-6">
                         <label for="">Especialidad:</label>
-                        <select name="" class="form-control border border-info" id="">
-                            <option value="">Seleccionar Especialidad</option>
-                            <option value="">SALUD PUBLICA ESTOMATOLOGICA</option>
-                            <option value="">REHABILITACION ORAL</option>
-                            <option value="">RADIOLOGIA BUCAL Y MAXILO FACIAL</option>
-                            <option value="">PERIODONCIA E IMPLANTES</option>
-                            <option value="">ORTODONCIA Y ORTOPEDIA MAXILAR</option>
-                            <option value="">ODONTOLOGIA RESTAURADORA Y ESTETICA</option>
-                            <option value="">ODONTOPEDIATRIA</option>
-                            <option value="">MEDICINA Y PATOLOGIA ESTOMATOLOGICA</option>
-                            <option value="">ESTOMATOLOGIA DE PACIENTES ESPECIALES</option>
-                            <option value="">CIRUGIA BUCAL MAXILO FACIAL</option>
-                            <option value="">AUDITORIA ODONTOLOGICA </option>
-                            <option selected value="">ENDODONCIA </option>
-                            <option value="">ORTODONCIA Y ORTOPEDIA MAXILAR </option>
-                            <option value="">ODONTOLOGO GENERAL </option>
-                            <option value="">IMPLANTOLOGIA ORAL INTEGRAL </option>
+                        <select name="especialidad_edit" class="form-control border border-info" id="especialidad_edit" required>
+                            <option>SALUD PUBLICA ESTOMATOLOGICA</option>
+                            <option>REHABILITACION ORAL</option>
+                            <option>RADIOLOGIA BUCAL Y MAXILO FACIAL</option>
+                            <option>PERIODONCIA E IMPLANTES</option>
+                            <option>ORTODONCIA Y ORTOPEDIA MAXILAR</option>
+                            <option>ODONTOLOGIA RESTAURADORA Y ESTETICA</option>
+                            <option>ODONTOPEDIATRIA</option>
+                            <option>MEDICINA Y PATOLOGIA ESTOMATOLOGICA</option>
+                            <option>ESTOMATOLOGIA DE PACIENTES ESPECIALES</option>
+                            <option>CIRUGIA BUCAL MAXILO FACIAL</option>
+                            <option>AUDITORIA ODONTOLOGICA </option>
+                            <option>ENDODONCIA </option>
+                            <option>ORTODONCIA Y ORTOPEDIA MAXILAR </option>
+                            <option>ODONTOLOGO GENERAL </option>
+                            <option>IMPLANTOLOGIA ORAL INTEGRAL </option>
                         </select>
                     </div>
                     <div class="col-6">
                         <label for="">Tipo:</label>
-                        <select name="" class="form-control border border-info" id="">
+                        <select name="tipo_edit" class="form-control border border-info" id="tipo_edit">
                             <option value="">Seleccionar Tipo</option>
-                            <option selected value="">Doctor (a)</option>
-                            <option value="">Tecnico (a)</option>
-                            <option value="">Radiologo (a)</option>
-                            <option value="">Asistente</option>
+                            <option value="Doctor (a)">Doctor (a)</option>
+                            <option value="Tecnico (a)">Tecnico (a)</option>
+                            <option value="Radiologo (a)">Radiologo (a)</option>
+                            <option value="Asistente">Asistente</option>
                         </select>
                     </div>
-                    <div class="col-6">
+                    <!-- <div class="col-6">
                         <label for="">Estado:</label>
                         <select class="form-control border border-info" name="" id="">
                             <option value="">Activo</option>
@@ -267,7 +267,7 @@
                     <div class="col-6">
                         <label for="">Sede:</label>
                         <select class="form-control border border-info" name="" id="">
-                            <option value="" selected>Los Olivos</option>
+                            <option value="">Los Olivos</option>
                             <option value="">La Victoria</option>
                             <option value="">San Juan de Miraflores</option>
                             <option value="">Villa Maria del Triunfo</option>
@@ -275,26 +275,25 @@
                             <option value="">San Juan de Lurigancho</option>
                             <option value="">Villa el Salvador</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="col-6">
                         <label for="">Correo Electronico:</label>
-                        <input class="form-control border border-info" value="gloria@gmail.com" type="text">
+                        <input class="form-control border border-info" id="email_edit" name="email_edit" type="email" required>
                     </div>
-                    <div class="col-12">
+                    <!-- <div class="col-12">
                         <label for="">Subir Foto de perfil:</label><br>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input border border-info" id="customFileLang"
-                                lang="es">
+                            <input type="file" class="custom-file-input border border-info" id="customFileLang" lang="es">
                             <label class="custom-file-label border border-info" for="customFileLang">Seleccionar
                                 Archivo</label>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="text-right"><br>
-                    <button type="button" class="btn btn-sm btn-success">Guardar</button>
-                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-sm btn-success">Guardar</button>
+                    <button type="button" class="btn btn-sm btn-danger btn_cerrarModel_EditarForm" data-dismiss="modal">Cerrar</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

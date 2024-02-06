@@ -70,6 +70,61 @@ class Paciente_detalles
         View::renderJson($respuesta);
     }
 
+    public function SubirArchivos2()
+    {
+        $id_paciente = $_POST['id_paciente'];
+        /* if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $uploadsDirectory = './img/archivos/'.$id_paciente.'/'; 
+            if (!is_dir($uploadsDirectory)) {
+                mkdir($uploadsDirectory, 0777);
+            }   
+            if (!empty($_FILES['file']['name'])) {
+                foreach ($_FILES['file']['name'] as $key => $name) {
+                    $tmpFilePath = $_FILES['file']['tmp_name'];
+                    $allowedExtensions = ['zip', 'rar'];
+                    $fileExtension = pathinfo($name, PATHINFO_EXTENSION);
+                    if (in_array($fileExtension, $allowedExtensions)) {
+                        $newFilePath = $uploadsDirectory . $name;
+                        move_uploaded_file($tmpFilePath, $newFilePath);
+                        $respuesta = $this->model->GuardarArchivoComprimido($id_paciente, $newFilePath);
+                        View::renderJson('guardado');
+                    } else {
+                        View::renderJson('error_tipe_archivo');
+                    }
+                }
+            } else {
+                View::renderJson('error');
+            }
+        } */
+
+        // Ruta donde se almacenarán los archivos subidos
+        $uploadDirectory = './img/archivos/'.$id_paciente.'/';
+        // Verificar si hay archivos para subir
+        if (!is_dir($uploadDirectory)) {
+            mkdir($uploadDirectory, 0777);
+        }   
+        if (!empty($_FILES)) {
+            $tempFile = $_FILES['file']['tmp_name'];
+            $fileName = $_FILES['file']['name'];
+            $newFilePath = $uploadDirectory . $fileName;
+
+            // Mover el archivo a la carpeta de destino
+            move_uploaded_file($tempFile, $newFilePath);
+            $respuesta = $this->model->GuardarArchivoComprimido($id_paciente, $newFilePath);
+            View::renderJson('guardado');
+            // Guardar la ruta en la base de datos
+            /* $sql = "INSERT INTO archivos (ruta) VALUES ('$targetFile')";
+            if ($conn->query($sql) === TRUE) {
+                echo "El archivo se ha subido y la ruta se ha guardado en la base de datos correctamente.";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            } */
+        }else{
+            View::renderJson('error_tipe_archivo');
+        }
+
+    }
+
     public function SubirArchivos()
     {
         /* ini_set('upload_max_filesize', '1000M');
