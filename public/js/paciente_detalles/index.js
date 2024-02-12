@@ -3,6 +3,73 @@ const historialDeFunciones = [];
 var arrayDataImagen = [];
 var arrayDataTipoImagen = [];
 var idPaciente = $("#id_paciente").val();
+
+/* $(".btn_sect_tomogarfia_f").click(function(){
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Paciente_detalles/JSDataFileArchivosSubidos',
+        data:{idPaciente:idPaciente},
+        beforeSend: function() {
+            $('#content_informes_archivos div').remove()
+        },
+        success:function(response){
+            console.log("JSDataFileArchivosSubidos : ",response);
+            for (let i = 0; i < response.length; i++) {
+                html = '<div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">';
+                html += '<div class="card shadow p-1 mb-3" data-toggle="popover" data-trigger="hover" data-placement="bottom" title="'+response[i]['archivo']+'" data-content="'+response[i]['archivo']+'">';
+                html += '<div class="card-body"><img src="'+baseurl+'img/archivo-rar.png" width="50px" alt=""></div>';
+                html += '<p>'+response[i]['created_at']+'</p>';
+                html += '<div class="card-footer" style="background-color: white;">';
+                html += '<div style="font-family: "Manjari", sans-serif; font-size: 15px;">';
+                html += '<span style="font-size: 12px;"><a href="'+response[i]['archivo']+'" download><img src="'+baseurl+'img/archiv0.png" style="width:25px;"><br>Descargar</a></span>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                $("#content_informes_archivos").append(html);
+            }
+            
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+    
+}); */
+
+function actualizar_rar_archivos(){
+    console.log('asdad');
+    $.ajax({
+        type:"POST",
+        dataType:"json",
+        url: baseurl+'Paciente_detalles/JSDataFileArchivosSubidos',
+        data:{idPaciente:idPaciente},
+        beforeSend: function() {
+            $('#content_informes_archivos div').remove()
+        },
+        success:function(response){
+            console.log("JSDataFileArchivosSubidos : ",response);
+            for (let i = 0; i < response.length; i++) {
+                html = '<div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">';
+                html += '<div class="card shadow p-1 mb-3" data-toggle="popover" data-trigger="hover" data-placement="bottom" title="'+response[i]['archivo']+'" data-content="'+response[i]['archivo']+'">';
+                html += '<div class="card-body"><img src="'+baseurl+'img/archivo-rar.png" width="50px" alt=""></div>';
+                html += '<p>'+response[i]['created_at']+'</p>';
+                html += '<div class="card-footer" style="background-color: white;">';
+                html += '<div style="font-family: "Manjari", sans-serif; font-size: 15px;">';
+                html += '<span style="font-size: 12px;"><a href="'+response[i]['archivo']+'" download><img src="'+baseurl+'img/archiv0.png" style="width:25px;"><br>Descargar</a></span>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                $("#content_informes_archivos").append(html);
+            }
+            
+        },error:function(){
+            console.log("ERROR GENERAL DEL SISTEMA, POR FAVOR INTENTE MÁS TARDE");
+        }
+    });
+}
+
 $("#btn_subir_imagen").click(function(){
     var elementos = document.getElementsByClassName('contador_divs_im');
     var ruta_imagen_radiografia = document.getElementsByClassName('ruta_imagen_radiografia');

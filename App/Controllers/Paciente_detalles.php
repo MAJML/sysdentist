@@ -39,6 +39,13 @@ class Paciente_detalles
         }
     }
 
+    public function JSDataFileArchivosSubidos()
+    {
+        $id = $_POST['idPaciente'];
+        $respuesta = $this->model->DataFileArchivosSubidos($id);
+        View::renderJson($respuesta);
+    }
+
     public function GuardarRadiografiaPaciente()
     {
         $idPaciente = $_POST['idPaciente'];

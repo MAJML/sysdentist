@@ -29,7 +29,7 @@ class Home
 
     public function iniciarSecion()
     {
-        $email = $_POST['email'];
+        $email = strtolower($_POST['email']);
         $password = $_POST['password'];
         $respuesta  = $this->model->comparandoData($email);
         $usuarios = $this->model->comparandoUsuarios($email);
@@ -70,7 +70,7 @@ class Home
             'ruc'               => $_POST['ruc'],
             'razon_social'      => $_POST['razon_social'],
             'nombre_comercial'  => $_POST['nombre_comercial'],
-            'correo'            => $_POST['correo'],
+            'correo'            => strtolower($_POST['correo']),
             'password'          => password_hash($_POST['password'], PASSWORD_DEFAULT),
             'tipo_negocio'      => $_POST['tipo_negocio']
         );

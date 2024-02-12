@@ -491,7 +491,7 @@ table.inputs td {
                                                 aria-selected="false">Imagenes</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="archivoss" data-toggle="tab" href="#informes"
+                                            <a class="nav-link btn_sect_tomogarfia_f" onclick="actualizar_rar_archivos()" id="archivoss" data-toggle="tab" href="#informes"
                                                 aria-selected="false">Tomografía</a>
                                         </li>
                                     </ul>
@@ -523,23 +523,15 @@ table.inputs td {
                                             </div>
                                         </div>
                                         <div class="tab-pane p-3  fade" id="informes" aria-labelledby="archivoss">
-                                            <div class="row text-center">
+                                            <div class="row text-center" id="content_informes_archivos">
                                                 <?php foreach ($pacienteArchivosFile as $key => $value): ?>
                                                     <div class="col-12 col-sm-4 col-md-6 col-lg-4 col-xl-4">
-                                                        <div class="card shadow p-1 mb-3" data-toggle="popover"
-                                                            data-trigger="hover" data-placement="bottom" title="<?=$value->created_at?>"
-                                                            data-content="<?=$value->archivo?>">
-                                                            <div class="card-body">
-                                                                <img src="<?=$baseUrl?>img/archivo-rar.png" width="50px" alt="">
-                                                            </div>
-
+                                                        <div class="card shadow p-1 mb-3" data-toggle="popover" data-trigger="hover" data-placement="bottom" title="<?=$value->created_at?>" data-content="<?=$value->archivo?>">
+                                                            <div class="card-body"><img src="<?=$baseUrl?>img/archivo-rar.png" width="50px" alt=""></div>
                                                             <p><?= date("j/m/Y", strtotime($value->created_at))?></p>
-
                                                             <div class="card-footer" style="background-color: white;">
                                                                 <div style="font-family: 'Manjari', sans-serif; font-size: 15px;">
-                                                                    <span style="font-size: 12px;">
-                                                                        <a href="<?=$value->archivo?>" download><img src="<?=$baseUrl?>img/archiv0.png" style="width:25px;"><br>Descargar</a>
-                                                                    </span>
+                                                                    <span style="font-size: 12px;"><a href="<?=$value->archivo?>" download><img src="<?=$baseUrl?>img/archiv0.png" style="width:25px;"><br>Descargar</a></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -14140,9 +14132,13 @@ table.inputs td {
                     maxFilesize: 1024, // Tamaño máximo del archivo en MB
                     acceptedFiles: ".zip, .rar, .7z", // Extensiones permitidas
                     init: function () {
+                        actualizar_rar_archivos()
+                        console.log('eyyyy');
                         this.on("success", function (file, response) {
                             // Respuesta después de la carga exitosa
                             console.log(response);
+                            actualizar_rar_archivos()
+                            console.log('exitosooo');
                         });
                     }
                 };
