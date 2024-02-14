@@ -68,9 +68,13 @@ class PacientesModel extends Model
 
     public function TodosPacientes()
     {
-        $query = $this->db->prepare("SELECT 
+        $query = $this->db->prepare("SELECT
+        distinct
         PC.id,
         PC.id_usuario,
+        (select count(*) from examenes_archivos where paciente_id=PC.id) as 'archivos',
+        US.sede,
+        PC.created_at as 'creacion_paciente',
         PC.dni,
         PC.nombres,
         PC.apellidos,
@@ -93,8 +97,12 @@ class PacientesModel extends Model
     public function TodosPacientesTotales()
     {
         $query = $this->db->prepare("SELECT 
+        distinct
         PC.id,
         PC.id_usuario,
+        (select count(*) from examenes_archivos where paciente_id=PC.id) as 'archivos',
+        US.sede,
+        PC.created_at as 'creacion_paciente',
         PC.dni,
         PC.nombres,
         PC.apellidos,
@@ -130,8 +138,12 @@ class PacientesModel extends Model
         LEFT JOIN usuarios US on US.id=PC.id_usuario
         WHERE PC.id_usuario = $idUsuario"); */
         $query = $this->db->prepare("SELECT 
+        distinct
         PC.id,
         PC.id_usuario,
+        (select count(*) from examenes_archivos where paciente_id=PC.id) as 'archivos',
+        US.sede,
+        PC.created_at as 'creacion_paciente',
         PC.dni,
         PC.nombres,
         PC.apellidos,

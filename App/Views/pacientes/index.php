@@ -1,3 +1,8 @@
+<style>
+    .text-uppercase{
+        text-transform: uppercase !important;
+    }
+</style>
 <div class="container" style="font-size: 14px;">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
@@ -22,7 +27,8 @@
                 <div class="row" style="font-size: 14px;">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-9">
                         <span class=""
-                            style="color: #444c64; font-size: 30px;font-family: 'Montserrat', sans-serif;"><b>Directorio de Pacientes</b>
+                            style="color: #444c64; font-size: 30px;font-family: 'Montserrat', sans-serif;"><b>Directorio
+                                de Pacientes</b>
                     </div>
                     <!---------------------Boton del modal----------------------------->
                     <div class="col-12 col-sm-12 col-md-12 col-lg-3 text-right">
@@ -35,49 +41,81 @@
                     <div class="container">
                         <hr>
                         <?php if (count($pacientes) > 0): ?>
-                            <div class="col-md-12">
-                                <a href="">Actualizar Datos</a><hr>
-                                <input type="text" class="form-control" id="buscador_pacientes" placeholder="Buscar Pacientes">
-                            </div>
+                        <div class="col-md-12">
+                            <a href="">Actualizar Datos</a>
                             <hr>
-                            <div class="row col-md-12" id="content_paciente_data_llena">
-                                <?php foreach ($pacientes as $key => $value): ?>
-                                    <div class="col-md-6 mb-3 elemento">
+                            <input type="text" class="form-control" id="buscador_pacientes"
+                                placeholder="Buscar Pacientes" hidden>
+                        </div>
+                        <hr>
+                        <div class="row col-md-12 mb-5 pb-5" id="content_paciente_data_llena">
+
+                            <table id="example" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>PACIENTE</th>
+                                        <th>DOCTOR</th>
+                                        <th>DESCRIPCION ESTUDIO</th>
+                                        <th>SEDE</th>
+                                        <th>FECHA</th>
+                                        <th>CODIGO</th>
+                                        <th>VER</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($pacientes as $key => $value): ?>                  
+                                    <tr>
+                                        <td class="text-uppercase"><?=$value->nombres.' '.$value->apellidos?></td>
+                                        <td class="text-uppercase"><?= ($value->id_usuario != '' || $value->id_usuario != null) ? $value->nombre_usuario.' '.$value->apellido_usuario:'NO ASIGNADO' ?></td>
+                                        <td class="text-uppercase"><?= ($value->archivos > 0) ? "Hay ".$value->archivos." archivos subidos" : "Ningun Archivo Subido" ?></td>
+                                        <td class="text-uppercase"><?= ($value->sede != '' || $value->sede != NULL) ? $value->sede : 'NO ASIGNADO' ?></td>
+                                        <td class="text-uppercase"><?= $value->creacion_paciente ?></td>
+                                        <td class="text-uppercase"><b><?=$value->codigo_paciente?></b></td>
+                                        <td><a href="<?=$baseUrl?>Paciente_detalles?token=<?=$value->id?>" class="btn btn-sm btn-primary">DETALLE</a></td>
+                                    </tr>
+                                    <!-- <div class="col-md-6 mb-3 elemento">
                                         <div class="card p-4">
                                             <h5 class="text-center"><b><?=$value->codigo_paciente?></b></h5>
                                             <hr>
                                             <p><b>DNI: </b> <?=$value->dni?></p>
                                             <p><b>NOMBRES: </b> <?=$value->nombres.' '.$value->apellidos?></p>
-                                            <p><b>DOCTOR: </b><?= ($value->id_usuario != '' || $value->id_usuario != null) ? $value->nombre_usuario.' '.$value->apellido_usuario:'NO ASIGNADO' ?></p>
-                                            <p><b>REFERIDO: </b><?= ($value->nombre_comercial != '' || $value->nombre_comercial != null)?$value->nombre_comercial:'NO REFERID'  ?></p>
+                                            <p><b>DOCTOR:
+                                                </b><?= ($value->id_usuario != '' || $value->id_usuario != null) ? $value->nombre_usuario.' '.$value->apellido_usuario:'NO ASIGNADO' ?>
+                                            </p>
+                                            <p><b>REFERIDO:
+                                                </b><?= ($value->nombre_comercial != '' || $value->nombre_comercial != null)?$value->nombre_comercial:'NO REFERID'  ?>
+                                            </p>
                                             <div class="d-flex justify-content-end">
-                                                <a href="<?=$baseUrl?>Paciente_detalles?token=<?=$value->id?>" class="btn btn-primary">DETALLE</a>
+                                                <a href="<?=$baseUrl?>Paciente_detalles?token=<?=$value->id?>"
+                                                    class="btn btn-primary">DETALLE</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 <?php endforeach; ?>
-                            </div>
+                                </tbody>
+                            </table>
+                        </div>
                         <?php else: ?>
-                            <div class="form-group row" id="content_paciente_s">
-                                <div class="col-sm-7">
-                                </div>
-                                <div class="col-sm-5" id="doctor">
-                                    <div class="row">
-                                        <div class="col-7" style="padding-top: 100px;">
-                                            <div class="card" style="border-radius: 50px 0px 50px 50px;">
-                                                <div class="card-body text-center">
-                                                    <span
-                                                        style="font-family: 'Montserrat', sans-serif;font-size: 17px;">Aquí
-                                                        puedes registrar nuevos pacientes</span><br>
-                                                </div>
+                        <div class="form-group row" id="content_paciente_s">
+                            <div class="col-sm-7">
+                            </div>
+                            <div class="col-sm-5" id="doctor">
+                                <div class="row">
+                                    <div class="col-7" style="padding-top: 100px;">
+                                        <div class="card" style="border-radius: 50px 0px 50px 50px;">
+                                            <div class="card-body text-center">
+                                                <span
+                                                    style="font-family: 'Montserrat', sans-serif;font-size: 17px;">Aquí
+                                                    puedes registrar nuevos pacientes</span><br>
                                             </div>
                                         </div>
-                                        <div class="col-5 text-right">
-                                            <img src="<?=$baseUrl?>img/manno.png" width="150">
-                                        </div>
+                                    </div>
+                                    <div class="col-5 text-right">
+                                        <img src="<?=$baseUrl?>img/manno.png" width="150">
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         <?php endif; ?>
                         <div id="paginacion"></div>
                     </div>
@@ -188,7 +226,8 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" style="color:#1A5276;font-family: 'Montserrat', sans-serif;"><b>Paciente Nuevo</b></h2>
+                <h2 class="modal-title" style="color:#1A5276;font-family: 'Montserrat', sans-serif;"><b>Paciente
+                        Nuevo</b></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -240,7 +279,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-6 col-xl-4">
                         <label>Discapacidad</label>
-                        <select class="form-control" id="sino" id="discapacidad" name="discapacidad" >
+                        <select class="form-control" id="sino" id="discapacidad" name="discapacidad">
                             <option value="no">NO</option>
                             <option value="si">SI</option>
                         </select>
@@ -261,15 +300,15 @@
                     <!--discapacitado-->
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Teléfono Móvil</label>
-                        <input type="text" class="form-control" id="telefono_movil" name="telefono_movil" >
+                        <input type="text" class="form-control" id="telefono_movil" name="telefono_movil">
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <label>Teléfono Fijo</label>
-                        <input type="text" class="form-control" id="telefono_fijo" name="telefono_fijo" >
+                        <input type="text" class="form-control" id="telefono_fijo" name="telefono_fijo">
                     </div>
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <label>Convenio</label>
-                        <select class="form-control" id="convenio" name="convenio" >
+                        <select class="form-control" id="convenio" name="convenio">
                             <option hidden>Elige Convenio</option>
                             <option value="Sin Convenio" selected>Sin Convenio</option>
                             <option value="Medilink: SaludTotal">Medilink: SaludTotal</option>
@@ -277,21 +316,20 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
                         <label>Actividad o Profesión</label>
-                        <input type="text" class="form-control" id="actividad_profesional" name="actividad_profesional"
-                            >
+                        <input type="text" class="form-control" id="actividad_profesional" name="actividad_profesional">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <label>Dirección</label>
                         <textarea class="form-control" rows="1" id="direccion" name="direccion"></textarea>
                     </div>
-                    
+
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" hidden>
                         <h4>LUGAR DE NACIMIENTddO</h4>
                         <hr>
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4" hidden>
                         <label>Departamento</label>
-                        <select class="form-control" id="dep_nac" name="dep_nac" >
+                        <select class="form-control" id="dep_nac" name="dep_nac">
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -301,7 +339,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4" hidden>
                         <label>Provincia</label>
-                        <select class="form-control" id="prov_nac" name="prov_nac" >
+                        <select class="form-control" id="prov_nac" name="prov_nac">
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -311,7 +349,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4" hidden>
                         <label>Distrito</label>
-                        <select class="form-control" id="dist_nac" name="dist_nac" >
+                        <select class="form-control" id="dist_nac" name="dist_nac">
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -325,7 +363,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Departamento</label>
-                        <select class="form-control" id="dep_proc" name="dep_proc" >
+                        <select class="form-control" id="dep_proc" name="dep_proc">
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -335,7 +373,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Provincia</label>
-                        <select class="form-control" id="prov_proc" name="prov_proc" >
+                        <select class="form-control" id="prov_proc" name="prov_proc">
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -345,7 +383,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4">
                         <label>Distrito</label>
-                        <select class="form-control" id="dist_proc" name="dist_proc" >
+                        <select class="form-control" id="dist_proc" name="dist_proc">
                             <option>LIMA</option>
                             <option>AREQUIPA</option>
                             <option>AMAZONAS</option>
@@ -634,8 +672,8 @@
             <div class="modal-body">
                 <div class="text-center">
                     <div style="background-color: #00216B">
-                        <span id="sys" class="navbar-brand" style="color:white;"><img id="sysd" src="<?=$baseUrl?>img/nav-03.png"
-                                alt=""><b>SysDentist</b></span><br>
+                        <span id="sys" class="navbar-brand" style="color:white;"><img id="sysd"
+                                src="<?=$baseUrl?>img/nav-03.png" alt=""><b>SysDentist</b></span><br>
                     </div>
                     <div class="row">
                         <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 fotodoctor">
@@ -645,12 +683,14 @@
                             <div class="card" style="border-radius: 40px 40px 40px 40px;">
                                 <div class="card-body text-center"><br><br>
                                     <span>ASISTENCIA TÉCNICA:<br>
-                                        <img src="<?=$baseUrl?>img/viejo.png" width="20px" alt=""><b>(01) 325 6478</b> <br>
+                                        <img src="<?=$baseUrl?>img/viejo.png" width="20px" alt=""><b>(01) 325 6478</b>
+                                        <br>
                                     </span>
                                     <hr>
                                     <span>CONSULTAS Y SUGERENCIAS:</span><br>
                                     <img src="<?=$baseUrl?>img/viejo.png" width="20px" alt=""><b>(01) 422 6797</b> <br>
-                                    <img src="<?=$baseUrl?>img/whatsapp.png" width="20px" alt=""> <b>983 523 514 </b><br>
+                                    <img src="<?=$baseUrl?>img/whatsapp.png" width="20px" alt=""> <b>983 523 514
+                                    </b><br>
                                     <hr>
                                     <img src="<?=$baseUrl?>img/logocsi.png" width="200px" alt=""><br><br>
                                     <img src="<?=$baseUrl?>img/sysdentist.png" width="120px" alt=""><br><br>
@@ -694,28 +734,30 @@
     </div>
 </div>
 <script src="<?=$baseUrl?>js/pacientes/index.js"></script>
-
-  
 <script>
-    // Aquí es donde inicializamos el plugin de paginación
-    $(document).ready(function() {
+new DataTable('#example');
+</script>
+
+<script>
+// Aquí es donde inicializamos el plugin de paginación
+$(document).ready(function() {
     var elementosPorPagina = 8; // Número de elementos por página
     var totalElementos = $('.elemento').length; // Total de elementos
 
     $('#paginacion').twbsPagination({
         totalPages: Math.ceil(totalElementos / elementosPorPagina),
         visiblePages: 5, // Número de páginas visibles en la paginación
-        onPageClick: function (event, page) {
-        // Lógica para mostrar los elementos de la página actual
-        var inicio = (page - 1) * elementosPorPagina;
-        var fin = inicio + elementosPorPagina;
+        onPageClick: function(event, page) {
+            // Lógica para mostrar los elementos de la página actual
+            var inicio = (page - 1) * elementosPorPagina;
+            var fin = inicio + elementosPorPagina;
 
-        $('.elemento').hide().slice(inicio, fin).show();
+            $('.elemento').hide().slice(inicio, fin).show();
         },
         first: 'Primera',
         prev: 'Anterior',
         next: 'Siguiente',
         last: 'Última'
     });
-    });
+});
 </script>
